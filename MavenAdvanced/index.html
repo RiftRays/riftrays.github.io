@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="RiftRays&#39;s Blog">
+<meta name="description" content="年轻且优秀 积极且颓废">
+<meta name="theme-color" content="#000">
+<title>Maven 进阶 | RiftRays&#39;s Blog</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1713170724295">
+<link rel="stylesheet" href="/media/css/pisces.css">
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.loli.net/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/pojoaque.css"
+  rel="stylesheet">
+
+<script src="https://jsdelivr.codeqihan.com/npm/pace-js@1.0.2/pace.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/black/pace-theme-center-atom.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="/styles/main.css">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/media/js/jquery.js"></script>
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://jsdelivr.codeqihan.com/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://jsdelivr.codeqihan.com/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+
+<script defer src="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+
+  <meta name="description" content="Maven 进阶" />
+  <meta name="keywords" content="Maven,Java" />
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    <style>
+.gridea-search-input{
+    height: 30px;
+    width: 200px;
+    box-sizing: border-box;
+    padding: 0 15px 0 30px;
+    border: 1px solid #e3e3e3;
+    border-radius: 15px;
+    color: #273849;
+    outline: none;
+    transition: border-color 0.2s ease;
+    background: #fff url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='80' height='65'%3E%3Cpath d='M936.265 854.34L757.43 675.52c46.499-63.168 74.02-141.125 74.02-225.398 0-210.1-170.945-381.039-381.055-381.039S69.346 240.023 69.346 450.122c0 210.105 170.94 381.043 381.049 381.043 84.275 0 162.235-27.52 225.405-74.019l178.833 178.819c11.27 11.265 26.036 16.903 40.813 16.903 14.777 0 29.543-5.638 40.819-16.903 22.536-22.546 22.536-59.09 0-81.625zM163.14 450.122C163.14 291.733 292 162.87 450.396 162.87s287.261 128.862 287.261 287.252c0 158.39-128.867 287.252-287.261 287.252S163.14 608.512 163.14 450.122z' fill='%23C4C4C4'/%3E%3C/svg%3E") 8px 7px no-repeat;
+    background-size: 20px;
+    vertical-align: middle !important;
+}
+.gridea-search-input:focus {
+  border-color: #666666;
+  right: 0;
+}
+</style>
+
+<div class="pisces">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>RiftRays&#39;s Blog</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">年轻且优秀 积极且颓废</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io" target="_self">
+                  <i class="fa fa-globe"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io/archives" target="_self">
+                  <i class="fa fa-archive"></i> 笔记
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io/tags" target="_self">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+          
+            
+              <li class="nav-item ">
+                <a href="/friends/" target="_self">
+                  
+                    <i class="fa fa-address-book"></i> 友链
+                  
+                </a>
+              </li>
+            
+          
+          
+            <li id="fa_search" class="nav-item">
+				<a href="javascript:void(0);">
+					<span class="language" data-lan="search">
+						<div class="gridea-search-div">
+							<form id="gridea-search-form" action="https://riftrays.github.io/search/">
+								<input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
+							</form>
+						</div>
+					</span>
+				</a>
+			</li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout pisces ">
+      <div class="section-layout-wrapper">
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body pisces" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">RiftRays</p>
+    
+    <div class="site-description right-motion">
+      
+        <p id="binft">年轻且优秀 积极且颓废</p>
+      
+    </div>
+    
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">24</span>
+        <span class="site-item-stat-name language" data-lan="article">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">11</span>
+        <span class="site-item-stat-name language" data-lan="tag">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+  
+  
+    <div class="sidebar-item sidebar-item-social">
+      <div class="social-item">
+        
+          
+            <a href="https://github.com/RiftRays">
+              <i class="fa fa-github-alt" title="GitHub"></i>
+            </a>
+          
+            <a href="mailto:RiftRays@gmail.com">
+              <i class="fa fa-envelope" title="Gmail"></i>
+            </a>
+          
+            <a href="">
+              <i class="fa fa-comments" title="WeChat"></i>
+            </a>
+          
+            <a href="">
+              <i class="fa fa-qq" title="QQ"></i>
+            </a>
+          
+        
+        
+      </div>
+    </div>
+  
+
+
+
+  <div style="width: 100%; position: relative;">
+    <canvas id="canvasDiyBlock" style="width:100%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+    <script src="/media/js/magic/clock.js"></script>
+  </div>
+
+</div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#%E4%BD%9C%E7%94%A8">作用</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE">安装配置</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95">基本用法</a></li>
+<li><a href="#maven%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">Maven常用命令</a></li>
+<li><a href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E6%8F%92%E4%BB%B6">生命周期与插件</a></li>
+<li><a href="#%E4%BE%9D%E8%B5%96%E8%8C%83%E5%9B%B4">依赖范围</a></li>
+<li><a href="#%E9%AB%98%E9%98%B6%E7%94%A8%E6%B3%95">高阶用法</a></li>
+<li><a href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8">实际应用</a></li>
+<li><a href="#%E7%A4%BA%E8%8C%83">示范</a></li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    jQuery.Velocity(hideElement, 'stop');
+    jQuery.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        jQuery.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://riftrays.github.io/MavenAdvanced/"> Maven 进阶 </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item">
+      <i class="fa fa-thumb-tack"></i>
+      <span class="language" data-lan="top">置顶</span>
+      <span class="post-meta-divider">|</span>
+    </span>
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2021-01-10 21:31:32">2021-01-10 21:31:32</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">标签:</span>
+       
+      <a href="https://riftrays.github.io/tag-Maven/"> <span>Maven</span> </a>、   
+      <a href="https://riftrays.github.io/tag-Java/">
+        <span>Java</span>
+      </a>
+       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >16<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >4073<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+      
+    <span
+      id="/MavenAdvanced/"
+      data-flag-title="Maven 进阶"
+      class="meta-item pc-show leancloud_visitors"
+    >
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span
+        ><span class="language" data-lan="view">浏览量:</span>:<span
+          class="leancloud-visitors-count"
+        ></span
+      ></span>
+    </span>
+    
+  </div>
+</section>
+
+            <div class="post-body next-md-body" id="post_body">
+              <h1 id="概述">概述</h1>
+<p>Maven是一个流行的Java项目管理工具，它提供了一种规范化的方式来构建、管理和发布Java项目。</p>
+<img src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Maven/image-20230530182758182.4aiu7dbpv420.png" alt="image-20230530182758182" style="zoom:33%;" />
+<p>下面是一些与Maven相关的概念：</p>
+<ol>
+<li>
+<p>项目对象模型（Project Object Model，POM）：POM是Maven项目的核心文件，它以XML格式描述了项目的元数据、依赖关系、构建配置和插件等信息。POM定义了项目的结构、构建过程和目标。</p>
+</li>
+<li>
+<p>坐标（Coordinates）：在Maven中，每个项目都有一个<code>唯一的坐标</code>，用于标识项目的组织、唯一ID和版本号。坐标通常由groupId（组织ID）、artifactId（项目ID）和version（版本号）组成。</p>
+</li>
+<li>
+<p>依赖（Dependencies）：Maven使用依赖管理来管理项目所需的外部库或模块。通过在POM中声明依赖，Maven可以自动下载并管理这些依赖，确保项目能够正确构建和运行。</p>
+</li>
+<li>
+<p>仓库（Repository）：Maven使用仓库来存储项目的依赖库和构建产物。有两种类型的仓库：本地仓库（Local Repository）用于存储本地计算机上的依赖，远程仓库（Remote Repository）用于从互联网上下载依赖。</p>
+</li>
+<li>
+<p>生命周期（Lifecycle）：Maven定义了一系列的生命周期，包括clean、validate、compile、test、package、install和deploy等。每个生命周期由一系列的阶段（Phase）组成，而每个阶段由一系列的目标（Goal）构成。</p>
+</li>
+<li>
+<p>插件（Plugins）：Maven插件是用来扩展和定制构建过程的工具。插件提供了各种目标，可以用来执行特定的任务，例如编译代码、运行测试、生成文档等。Maven本身提供了一些常用的插件，同时也支持自定义插件。</p>
+</li>
+</ol>
+<h1 id="作用">作用</h1>
+<ol>
+<li>
+<p>项目构建：Maven提供了一种统一的项目结构和构建方式，使得项目的构建过程更加规范和易于管理。通过定义项目的POM文件，Maven可以自动化执行项目构建所需的步骤，例如编译源代码、运行单元测试、生成文档、打包项目等。</p>
+</li>
+<li>
+<p>依赖管理：Maven能够自动下载、安装和管理项目所需的外部依赖库。通过在POM文件中声明依赖，Maven可以自动解析和下载依赖，并确保项目构建时所需的依赖库可用。这简化了依赖管理的过程，减少了手动管理依赖的工作量。</p>
+</li>
+<li>
+<p>项目文档生成：Maven支持通过插件生成项目文档，例如使用Maven Site插件可以生成项目的网站文档，包括项目介绍、开发者文档、API文档等。这有助于提供项目的详细文档和说明，方便团队成员和其他开发者了解和使用项目。</p>
+</li>
+<li>
+<p>项目报告和统计：Maven能够生成各种报告和统计信息，帮助开发团队了解项目的状态和质量。例如，可以生成代码覆盖率报告、静态代码分析报告、测试结果报告等。这些报告和统计信息有助于发现潜在问题、优化代码质量以及改进项目的开发流程。</p>
+</li>
+<li>
+<p>项目部署和发布：Maven支持将项目构建产物（如JAR文件、WAR文件）部署到远程仓库或发布到中央仓库。这样其他开发者可以方便地访问和使用你的项目构建产物，提高代码的可重用性和共享性。</p>
+</li>
+</ol>
+<p>总的来说，Maven提供了一种标准化和自动化的方式来管理Java项目的构建、依赖、文档和部署等方面。它简化了项目的管理和维护工作，提高了开发效率，并促进了团队合作和代码质量的提升。</p>
+<h1 id="安装配置">安装配置</h1>
+<ol>
+<li>
+<p>下载Maven：</p>
+<ul>
+<li>访问Maven官方网站（https://maven.apache.org/），找到最新版本的Maven进行下载。</li>
+<li>下载完成后，解压缩Maven压缩包到你选择的目录。</li>
+</ul>
+</li>
+<li>
+<p>配置环境变量：</p>
+<ul>
+<li>在操作系统中配置Maven的环境变量，以便在命令行中能够直接运行Maven命令。</li>
+<li>在Windows系统中，右键点击&quot;我的电脑&quot;，选择&quot;属性&quot;，进入&quot;高级系统设置&quot;，点击&quot;环境变量&quot;。</li>
+<li>在系统变量中，找到&quot;Path&quot;变量，点击&quot;编辑&quot;，添加Maven的<code>bin</code>目录路径（例如：<code>C:\apache-maven-3.8.4\bin</code>）。</li>
+<li>在Unix/Linux系统中，编辑<code>~/.bashrc</code>或<code>~/.bash_profile</code>文件，添加以下行：<pre><code>export PATH=/path/to/maven/bin:$PATH
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>验证Maven安装：</p>
+<ul>
+<li>打开命令行终端（Windows下是CMD或PowerShell，Unix/Linux下是Terminal）。</li>
+<li>运行以下命令验证Maven是否正确安装：<pre><code>mvn -version
+</code></pre>
+</li>
+<li>如果能够显示Maven的版本信息，则表示安装成功。</li>
+</ul>
+</li>
+<li>
+<p>配置Maven的设置（可选）：</p>
+<ul>
+<li>Maven的配置文件是<code>settings.xml</code>，位于Maven的安装目录下的<code>conf</code>文件夹中。</li>
+<li>可以编辑<code>settings.xml</code>文件来配置Maven的行为，例如设置本地仓库路径、代理服务器、镜像等。</li>
+<li>如果没有特殊需求，可以使用默认的<code>settings.xml</code>文件，不进行修改。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li>
+<p>配置阿里巴巴的仓库：</p>
+<ul>
+<li>在<code>&lt;mirrors&gt;</code>标签下添加如下配置：<pre><code class="language-xml">&lt;mirror&gt;
+  &lt;id&gt;alibaba&lt;/id&gt;
+  &lt;name&gt;Alibaba Maven Repository&lt;/name&gt;
+  &lt;url&gt;https://maven.aliyun.com/repository/public&lt;/url&gt;
+  &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+&lt;/mirror&gt;
+</code></pre>
+</li>
+<li>这个配置将创建一个名为&quot;alibaba&quot;的镜像，将中央仓库（central）指向阿里巴巴的公共仓库。</li>
+</ul>
+</li>
+<li>
+<p>配置<code>.m2</code>路径：</p>
+<ul>
+<li>默认情况下，Maven将在用户主目录下的<code>.m2</code>文件夹中保存本地仓库。</li>
+<li>如果你想将本地仓库保存在不同的位置，可以在<code>&lt;settings&gt;</code>标签下添加如下配置：<pre><code class="language-xml">&lt;localRepository&gt;/path/to/custom/.m2/repository&lt;/localRepository&gt;
+</code></pre>
+</li>
+<li>将<code>/path/to/custom</code>替换为你希望存储<code>.m2</code>文件夹的路径。</li>
+</ul>
+</li>
+<li>
+<p>配置全球中央仓库：</p>
+<ul>
+<li>
+<p>在<code>&lt;mirrors&gt;</code>标签下添加如下配置：</p>
+<pre><code class="language-xml">&lt;mirror&gt;
+  &lt;id&gt;central&lt;/id&gt;
+  &lt;name&gt;Maven Central Repository&lt;/name&gt;
+  &lt;url&gt;https://repo.maven.apache.org/maven2/&lt;/url&gt;
+  &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+&lt;/mirror&gt;
+</code></pre>
+</li>
+<li>
+<p>这个配置将创建一个名为&quot;central&quot;的镜像，将中央仓库（central）指向全球Maven中央仓库。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="基本用法">基本用法</h1>
+<ol>
+<li>
+<p>创建一个Maven项目和POM文件：</p>
+<ul>
+<li>首先，确保你已经安装了Maven。然后，在命令行中进入你希望创建项目的目录。</li>
+<li>运行以下命令创建一个新的Maven项目：<pre><code>mvn archetype:generate -DgroupId=com.example -DartifactId=myproject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+</code></pre>
+</li>
+<li>这将创建一个基本的Maven项目结构，并生成一个默认的POM文件。</li>
+</ul>
+</li>
+<li>
+<p>配置项目的坐标、依赖和插件：</p>
+<ul>
+<li>打开生成的POM文件（位于项目根目录下），在其中配置项目的坐标信息。</li>
+<li><code>&lt;groupId&gt;</code>表示项目的组织ID，<code>&lt;artifactId&gt;</code>表示项目的唯一ID，<code>&lt;version&gt;</code>表示项目的版本号。你可以根据需要进行修改。</li>
+<li>在POM文件的<code>&lt;dependencies&gt;</code>部分添加项目所需的依赖库。每个依赖都使用<code>&lt;dependency&gt;</code>标签进行声明，指定依赖的坐标信息。</li>
+<li>如果需要使用插件来扩展构建过程，可以在POM文件的<code>&lt;build&gt;</code>部分配置插件。每个插件使用<code>&lt;plugin&gt;</code>标签进行声明，指定插件的坐标和配置信息。</li>
+</ul>
+</li>
+<li>
+<p>通过Maven进行项目构建、编译、测试和打包：</p>
+<ul>
+<li>在项目根目录下运行以下命令进行项目构建：<pre><code>mvn clean package
+</code></pre>
+</li>
+<li><code>clean</code>命令清理之前构建的结果，<code>package</code>命令编译项目源代码、运行测试并打包项目。你可以根据需要使用其他命令，如<code>compile</code>、<code>test</code>等。</li>
+<li>Maven将执行构建过程，并在目标文件夹（默认为<code>target</code>）中生成构建产物，如编译后的类文件、JAR文件等。</li>
+</ul>
+</li>
+<li>
+<p>管理项目的依赖关系：</p>
+<ul>
+<li>在POM文件的<code>&lt;dependencies&gt;</code>部分添加项目所需的依赖库。每个依赖使用<code>&lt;dependency&gt;</code>标签进行声明。</li>
+<li>指定依赖的坐标信息，包括groupId、artifactId和version等。Maven将根据这些信息自动下载和管理依赖。</li>
+<li>可以使用<code>&lt;scope&gt;</code>标签指定依赖的作用范围，如<code>compile</code>（默认值）、<code>test</code>、<code>runtime</code>等。</li>
+<li>可以使用<code>&lt;exclusions&gt;</code>标签排除依赖的传递性依赖关系，以避免冲突或不需要的依赖。</li>
+</ul>
+</li>
+<li>
+<p>使用Maven插件扩展构建过程：</p>
+<ul>
+<li>
+<p>在POM文件的<code>&lt;build&gt;</code>部分配置插件。每个插件使用<code>&lt;plugin&gt;</code>标签进行声明。</p>
+<ul>
+<li>
+<p>指定插件的坐标和配置信息，如groupId、artifactId和version等。</p>
+</li>
+<li>
+<p>有些插件有默认配置，你可以根据需要进行修改。可以查阅插件的文档了解可用的配置选项。</p>
+</li>
+<li>
+<p>插件可以用于各种任务，例如静态代码分析、代码生成、测试报告生成等。你可以根据项目需求选择适合的插件并配置相应的目标和参数。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>这些步骤将帮助你掌握Maven的基本用法和功能，以便进行项目的构建、依赖管理和插件扩展等操作。记住，随着实际项目的练习和深入学习，你将更加熟悉和灵活运用这些概念和技术。</p>
+<h1 id="maven常用命令">Maven常用命令</h1>
+<ul>
+<li><code>mvn clean</code>: 清除项目构建目录，删除生成的目标文件。</li>
+<li><code>mvn compile</code>: 编译项目源代码。</li>
+<li><code>mvn package</code>: 打包项目，生成JAR或WAR文件。</li>
+<li><code>mvn install</code>: 将项目构建结果安装到本地Maven仓库，供其他项目使用。</li>
+<li><code>mvn test</code>: 运行项目的单元测试。</li>
+<li><code>mvn clean install</code>: 清除构建目录并重新构建项目，安装到本地仓库。</li>
+</ul>
+<h1 id="生命周期与插件">生命周期与插件</h1>
+<p>Maven有三个内置的生命周期：clean、default和site。</p>
+<p>每个生命周期由一系列的阶段（phase）组成，每个阶段都代表了构建过程中的一个步骤。例如，default生命周期包含了compile、test、package等阶段。</p>
+<p>Maven插件可以扩展和定制Maven的功能。例如，<code>maven-compiler-plugin</code>用于编译Java代码，<code>maven-surefire-plugin</code>用于执行测试。</p>
+<h1 id="依赖范围">依赖范围</h1>
+<p>在Maven中，依赖范围（Dependency Scope）用于定义依赖项在编译、测试、运行和打包等不同阶段的可见性和有效性。以下是几个常用的依赖范围：</p>
+<ol>
+<li>
+<p>compile（编译依赖）：</p>
+<ul>
+<li>默认的依赖范围，用于编译、测试和运行阶段。</li>
+<li>编译依赖在编译、测试和运行时均可见。</li>
+</ul>
+</li>
+<li>
+<p>provided（已提供依赖）：</p>
+<ul>
+<li>适用于在编译和测试阶段需要依赖，但在运行时由目标环境（如应用服务器）提供。</li>
+<li>在编译和测试时可见，但在打包和运行时不包含在项目中。</li>
+</ul>
+</li>
+<li>
+<p>runtime（运行时依赖）：</p>
+<ul>
+<li>在运行和测试阶段需要依赖，但在编译时不需要。</li>
+<li>运行时依赖在运行和测试时可见，但在编译时不包含在项目中。</li>
+</ul>
+</li>
+<li>
+<p>test（测试依赖）：</p>
+<ul>
+<li>仅在测试阶段使用的依赖，不会在编译、运行和打包阶段使用。</li>
+<li>测试依赖仅在测试时可见，不会包含在项目的编译和打包结果中。</li>
+</ul>
+</li>
+<li>
+<p>system（系统依赖）：</p>
+<ul>
+<li>指定项目中的依赖来自于系统路径，而不是通过仓库中的坐标来解析。</li>
+<li>需要显式指定依赖的路径，使用<code>&lt;systemPath&gt;</code>元素来定义。</li>
+</ul>
+</li>
+</ol>
+<p>下面是一份比较不同依赖范围的表格：</p>
+<table>
+<thead>
+<tr>
+<th>依赖范围</th>
+<th>用途</th>
+<th>编译阶段</th>
+<th>测试阶段</th>
+<th>运行阶段</th>
+<th>打包阶段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compile</td>
+<td>编译、测试和运行时可见</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>provided</td>
+<td>在编译和测试阶段需要依赖，但在运行时由目标环境提供</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>runtime</td>
+<td>运行和测试时需要依赖，但在编译时不需要</td>
+<td>❌</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>test</td>
+<td>仅在测试阶段使用的依赖，不会在编译、运行和打包阶段使用</td>
+<td>❌</td>
+<td>✔️</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>system</td>
+<td>依赖来自于系统路径，需要显式指定依赖的路径</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>import</td>
+<td>用于管理依赖的版本传递性，但本身不会参与构建和运行</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>test-compile</td>
+<td>仅在测试编译阶段使用的依赖，不会在测试运行和生产环境使用</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>test-runtime</td>
+<td>仅在测试运行阶段使用的依赖，不会在测试编译和生产环境使用</td>
+<td>❌</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>system-test</td>
+<td>仅在测试阶段使用的系统依赖，不会在编译、运行和打包阶段使用</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>provided-test</td>
+<td>在编译和测试阶段需要依赖，但在运行时由目标环境提供的测试依赖</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<p>注意：✔️ 表示依赖在该阶段可见和有效，❌ 表示依赖在该阶段不可见或无效。</p>
+<p>在<code>&lt;dependencies&gt;</code>标签中，可以为每个依赖项指定所需的依赖范围。例如：</p>
+<pre><code class="language-xml">&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;com.example&lt;/groupId&gt;
+    &lt;artifactId&gt;my-library&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;com.example&lt;/groupId&gt;
+    &lt;artifactId&gt;test-library&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<h1 id="高阶用法">高阶用法</h1>
+<ol>
+<li>
+<p>使用Maven的生命周期、阶段和目标管理构建过程：</p>
+<ul>
+<li>Maven定义了一套标准的生命周期，包括clean、validate、compile、test、package、install和deploy等。</li>
+<li>生命周期由一系列阶段组成，每个阶段由一个或多个目标构成。例如，compile阶段包含了编译源代码的目标。</li>
+<li>通过在命令行中指定生命周期、阶段或目标，你可以按顺序执行构建过程中的特定步骤。</li>
+<li>例如，运行以下命令执行clean生命周期的install阶段：<pre><code>mvn clean install
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>配置Maven插件以满足项目需求：</p>
+<ul>
+<li>Maven提供了许多内置插件，可以满足常见的构建和开发需求。你可以在POM文件中配置这些插件并指定相关的目标和参数。</li>
+<li>你还可以使用自定义插件来满足特定的项目需求。自定义插件需要在POM文件中声明，并提供插件的实现和配置信息。</li>
+</ul>
+</li>
+<li>
+<p>使用Maven的属性、配置文件和环境变量进行灵活的配置：</p>
+<ul>
+<li>Maven支持使用属性（Properties）来灵活配置项目。属性可以在POM文件中定义，也可以从外部配置文件中加载。</li>
+<li>你可以在POM文件中使用<code>${property}</code>的形式引用属性值，也可以通过命令行参数或环境变量来覆盖属性值。</li>
+<li>Maven还支持使用配置文件来配置插件和构建过程。你可以在POM文件中引用配置文件，并在配置文件中设置插件的参数。</li>
+</ul>
+</li>
+<li>
+<p>使用Maven的多模块项目管理复杂的项目结构：</p>
+<ul>
+<li>Maven支持创建多模块项目，其中一个父项目管理多个子项目。父项目和子项目分别有自己的POM文件。</li>
+<li>父项目的POM文件可以定义模块（modules）列表，列出所有子项目的相对路径。</li>
+<li>每个子项目都有自己独立的POM文件，可以定义自己的依赖、插件和构建配置。子项目可以独立构建，也可以作为整个多模块项目的一部分构建。</li>
+</ul>
+</li>
+</ol>
+<h1 id="实际应用">实际应用</h1>
+<ul>
+<li>Maven广泛应用于Java项目的构建和依赖管理，可以帮助你更高效地管理项目结构和依赖项。</li>
+<li>它可以自动下载所需的依赖库，并支持项目的编译、测试和打包等常见操作。</li>
+<li>Maven还可以与持续集成工具（如Jenkins）集成，实现自动化构建和部署。</li>
+</ul>
+<h1 id="示范">示范</h1>
+<p>在<code>src/main/java</code>目录下创建一个Java源代码文件，例如<code>HelloWorld.java</code>：</p>
+<pre><code class="language-java">public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello, Maven!&quot;);
+    }
+}
+</code></pre>
+<p>在根目录下的<code>pom.xml</code>中添加依赖：</p>
+<pre><code class="language-xml">&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;junit&lt;/groupId&gt;
+        &lt;artifactId&gt;junit&lt;/artifactId&gt;
+        &lt;version&gt;4.13.1&lt;/version&gt;
+        &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<p>使用Maven编译和运行项目：</p>
+<pre><code class="language-bash">mvn compile
+mvn exec:java -Dexec.mainClass=&quot;HelloWorld&quot;
+</code></pre>
+<p>以上示例展示了Maven的基本用法和项目配置。您可以根据实际需求在<code>pom.xml</code>中添加更多依赖和插件。</p>
+
+            </div>
+            
+              <div class="reward-btn">
+                <div class="reward-btn-text">赞赏</div>
+              </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      RiftRays
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://riftrays.github.io/MavenAdvanced/" title="Maven 进阶">https://riftrays.github.io/MavenAdvanced/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://riftrays.github.io/tag-Maven/"># Maven</a>
+    
+      <a href="https://riftrays.github.io/tag-Java/"># Java</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="SonatypeNexus" href="https://riftrays.github.io/6Dq1YTrSe/">SonatypeNexus</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="SonatypeNexus" href="https://riftrays.github.io/6Dq1YTrSe/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="Spring Boot" href="https://riftrays.github.io/springboot/">Spring Boot</a>
+        <a class="nav-mobile-next" title="Spring Boot" href="https://riftrays.github.io/springboot/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+            
+  
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-box">
+  <footer class="footer">
+    <center id="runTimeBox">
+      已运行:<span id="run_time"></span>
+    </center>
+    <span id="busuanzi_container_site_pv">浏览数:<span id="busuanzi_value_site_pv"></span> 次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span> 人</span>
+
+    <script>
+      BirthDay = new Date('2019/01/01');
+      if (BirthDay.getTime()) {
+        function runTime() {
+          str = "";
+          today = new Date();
+          timeold = today.getTime() - BirthDay.getTime();
+          msPerDay = 24 * 60 * 60 * 1000;
+          e_daysold = timeold / msPerDay;
+          daysold = Math.floor(e_daysold);
+          str += daysold + "天";
+          return str;
+        }
+        setInterval(function () {
+          $("#run_time").html(runTime());
+        }, 1000);
+      } else {
+        document.querySelector('.footer').removeChild(document.querySelector('#runTimeBox'));
+      }
+    </script>
+    <div class="poweredby">
+      Your time is limited, so don't waste it living someone else's life ... Stay Hungry. Stay Foolish.
+    </div>
+  </footer>
+  
+    
+        <div class="pisces back-to-top" id="back_to_top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span class="scrollpercent"> <span id="back_to_top_text">0</span>% </span>
+            
+        </div>
+        
+          
+            
+              <div class="bg-img">
+                <img src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/30_Throne2_1_4k.jpg" />
+              </div>
+              
+                
+                  
+                        
+</div>
+<script>
+  let sideBarOpen = "sidebar-open";
+  let body = document.body;
+  let back2Top = document.querySelector("#back_to_top"),
+    back2TopText = document.querySelector("#back_to_top_text"),
+    drawerBox = document.querySelector("#drawer_box"),
+    rightSideBar = document.querySelector(".sidebar"),
+    viewport = document.querySelector("body");
+
+  function scrollAnimation(currentY, targetY) {
+    let needScrollTop = targetY - currentY;
+    let _currentY = currentY;
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10);
+      _currentY += dist;
+      window.scrollTo(_currentY, currentY);
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY);
+      } else {
+        window.scrollTo(_currentY, targetY);
+      }
+    }, 1);
+  }
+
+  back2Top.addEventListener("click", function (e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+
+  window.addEventListener("scroll", function (e) {
+    let percent =
+      (document.scrollingElement.scrollTop /
+        (document.scrollingElement.scrollHeight -
+          document.scrollingElement.clientHeight)) *
+      100;
+    if (percent > 1 && !back2Top.classList.contains("back-top-active")) {
+      back2Top.classList.add("back-top-active");
+    }
+    if (percent == 0) {
+      back2Top.classList.remove("back-top-active");
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  let hasCacu = false;
+  window.addEventListener("resize", function (e) {
+    calcuHeight();
+  });
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (
+      (!hasCacu && back2Top.classList.contains("pisces")) ||
+      back2Top.classList.contains("gemini")
+    ) {
+      let sideBar = document.querySelector(".sidebar");
+      let navUl = document.querySelector("#site_nav");
+      sideBar.style =
+        "margin-top:" + (navUl.offsetHeight + navUl.offsetTop + 15) + "px;";
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+
+  let open = false,
+    MOTION_TIME = 300,
+    RIGHT_MOVE_DIS = "320px";
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll(".right-motion");
+    let right = drawerBox.classList.contains("right");
+
+    let transitionDir = right
+      ? "transition.slideRightIn"
+      : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingRight: "0px",
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingLeft: "0px",
+      };
+    }
+
+    drawerBox.onclick = function () {
+      open = !open;
+      jQuery.Velocity(rightSideBar, "stop");
+      jQuery.Velocity(viewport, "stop");
+      jQuery.Velocity(rightMotions, "stop");
+      if (open) {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: RIGHT_MOVE_DIS,
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, transitionDir, {});
+            },
+          }
+        );
+        jQuery.Velocity(viewport, openProp, {
+          duration: MOTION_TIME,
+        });
+      } else {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: "0px",
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, {
+                opacity: 0,
+              });
+            },
+          }
+        );
+        jQuery.Velocity(viewport, closeProp, {
+          duration: MOTION_TIME,
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle("muse-line");
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    };
+  }
+
+  // 链接跳转
+  let newWindow = "false";
+  if (newWindow === "true") {
+    let links = document.querySelectorAll(".post-body a");
+    links.forEach((item) => {
+      if (!item.classList.contains("btn")) {
+        item.setAttribute("target", "_blank");
+      }
+    });
+  }
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
+  // 离开当前页title变化
+  var leaveTitle = "😭菜~请给个机会~拜托了！";
+  var normal_title = document.title;
+  if (leaveTitle) {
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState == "hidden") {
+        normal_title = document.title;
+        document.title = leaveTitle;
+      } else {
+        document.title = normal_title;
+      }
+    });
+  }
+</script>
+
+<link rel="stylesheet" href="/media/css/jquery.fancybox.css" />
+<script src="/media/js/jquery.fancybox.js"></script>
+
+<script>
+  let images = document.querySelectorAll(".section img");
+  images.forEach((image) => {
+    var parent = image.parentElement;
+    var next = image.nextElementSibling;
+    parent.removeChild(image);
+    var aelem = document.createElement("a");
+    aelem.href = image.src;
+    aelem.dataset["fancybox"] = "images";
+    aelem.dataset["rel"] = "fancybox-button";
+    aelem.classList.add("fancybox");
+    aelem.appendChild(image);
+    parent.insertBefore(aelem, next);
+  });
+</script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+            <img id="zfb" class="reward-img" src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/1689773094686.jpg" alt="赞赏码">
+          
+          
+            <img id="wx" class="reward-img" src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/mm_facetoface_collect_qrcode_1689773482372.jpg" alt="赞赏码">
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip"> 多多打赏~鼓励作者更多原创内容！</p>
+    </div>
+    <div class="bottom">
+      
+      <div id="zfbBtn" class="pay-text">
+        支付宝
+      </div>
+      
+      
+      <div id="wxBtn" class="pay-text">
+        微信支付
+      </div>
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        jQuery.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        jQuery.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        jQuery.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        jQuery.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      jQuery.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      jQuery.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
+  </div>
+</body>
+<input hidden id="copy" />
+<script>
+  !function () {
+    let times = document.querySelectorAll('.publish-time');
+    for (let i = 0; i < times.length; i++) {
+      let date = times[i].dataset.t;
+      let time = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
+      if (time < 60) {
+        str = time + '秒之前';
+      } else if (time < 3600) {
+        str = Math.floor(time / 60) + '分钟之前';
+      } else if (time >= 3600 && time < 86400) {
+        str = Math.floor(time / 3600) + '小时之前';
+      } else if (time >= 86400 && time < 259200) {
+        str = Math.floor(time / 86400) + '天之前';
+      } else {
+        str = times[i].textContent;
+      }
+      times[i].textContent = str;
+    }
+  }();
+</script>
+
+<script>
+  let language = '';
+  if (language !== '') {
+    let map = new Map();
+    if (language === 'en') {
+      map.set('search', 'Search');
+      map.set('category', 'Categories');
+      map.set('article', 'Articles');
+      map.set('tag', 'Tags');
+      map.set('top', 'Top');
+      map.set('publish', 'published');
+      map.set('minute', ' minutes');
+      map.set('read-more', 'Read More');
+      map.set('view', 'View');
+      map.set('words', ' words');
+      map.set('category-in', 'category in');
+      map.set('preview', 'Meta');
+      map.set('index', 'Toc');
+      map.set('no-archives', "You haven't created yet");
+      map.set('archives', " articles in total");
+      map.set('cloud-tags', " tags in total");
+      map.set('copyright', "Copyright: ");
+      map.set('author', "Author: ");
+      map.set('link', "Link: ");
+      map.set('leave-message', "Leave a message");
+      map.set('format', "Links Format");
+      map.set('site-name', "Name: ");
+      map.set('site-link', "Link: ");
+      map.set('site-desc', "Desc: ");
+      map.set('stat', " related results, taking ");
+      map.set('stat-time', " ms");
+      map.set('site-img', "Image: ");
+    }
+
+    if (map.size > 0) {
+      let lanElems = document.querySelectorAll('.language');
+      lanElems.forEach(elem => {
+        let lan = elem.dataset.lan, text = map.get(lan);
+        if (elem.__proto__ === HTMLInputElement.prototype) {
+          elem.placeholder = text
+        } else {
+          if (elem.dataset.count) {
+            text = elem.dataset.count + text;
+          }
+          elem.textContent = text;
+        }
+      })
+    }
+  }
+
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+
+</script>
+<script src="/media/js/motion.js"></script>
+
+
+  <script
+    src="https://jsdelivr.codeqihan.com/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+  <script>
+    var scroll = new SmoothScroll('a[href*="#"]', {
+      speed: 200
+    });
+  </script>
+
+
+
+<script src="/media/js/mouse/peace.js"></script>
+
+
+  <script src="/media/js/cool.js"></script>
+
+
+
+  <div class="snow-container"></div>
+  <script color="0,205,205" pointer-events="auto" zIndex="-1" opacity='0.7' count="99" src="/media/js/bg/canvas-nest.js"></script>
+
+</html>

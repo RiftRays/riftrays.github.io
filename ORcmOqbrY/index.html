@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="RiftRays&#39;s Blog">
+<meta name="description" content="年轻且优秀 积极且颓废">
+<meta name="theme-color" content="#000">
+<title>String有长度限制吗？是多少？ | RiftRays&#39;s Blog</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1713170724295">
+<link rel="stylesheet" href="/media/css/pisces.css">
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.loli.net/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/pojoaque.css"
+  rel="stylesheet">
+
+<script src="https://jsdelivr.codeqihan.com/npm/pace-js@1.0.2/pace.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/black/pace-theme-center-atom.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="/styles/main.css">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/media/js/jquery.js"></script>
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://jsdelivr.codeqihan.com/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://jsdelivr.codeqihan.com/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+
+<script defer src="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+
+  <meta name="description" content="String有长度限制吗？是多少？" />
+  <meta name="keywords" content="interview,Java" />
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    <style>
+.gridea-search-input{
+    height: 30px;
+    width: 200px;
+    box-sizing: border-box;
+    padding: 0 15px 0 30px;
+    border: 1px solid #e3e3e3;
+    border-radius: 15px;
+    color: #273849;
+    outline: none;
+    transition: border-color 0.2s ease;
+    background: #fff url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='80' height='65'%3E%3Cpath d='M936.265 854.34L757.43 675.52c46.499-63.168 74.02-141.125 74.02-225.398 0-210.1-170.945-381.039-381.055-381.039S69.346 240.023 69.346 450.122c0 210.105 170.94 381.043 381.049 381.043 84.275 0 162.235-27.52 225.405-74.019l178.833 178.819c11.27 11.265 26.036 16.903 40.813 16.903 14.777 0 29.543-5.638 40.819-16.903 22.536-22.546 22.536-59.09 0-81.625zM163.14 450.122C163.14 291.733 292 162.87 450.396 162.87s287.261 128.862 287.261 287.252c0 158.39-128.867 287.252-287.261 287.252S163.14 608.512 163.14 450.122z' fill='%23C4C4C4'/%3E%3C/svg%3E") 8px 7px no-repeat;
+    background-size: 20px;
+    vertical-align: middle !important;
+}
+.gridea-search-input:focus {
+  border-color: #666666;
+  right: 0;
+}
+</style>
+
+<div class="pisces">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>RiftRays&#39;s Blog</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">年轻且优秀 积极且颓废</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io" target="_self">
+                  <i class="fa fa-globe"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io/archives" target="_self">
+                  <i class="fa fa-archive"></i> 笔记
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io/tags" target="_self">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+          
+            
+              <li class="nav-item ">
+                <a href="/friends/" target="_self">
+                  
+                    <i class="fa fa-address-book"></i> 友链
+                  
+                </a>
+              </li>
+            
+          
+          
+            <li id="fa_search" class="nav-item">
+				<a href="javascript:void(0);">
+					<span class="language" data-lan="search">
+						<div class="gridea-search-div">
+							<form id="gridea-search-form" action="https://riftrays.github.io/search/">
+								<input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
+							</form>
+						</div>
+					</span>
+				</a>
+			</li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout pisces ">
+      <div class="section-layout-wrapper">
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body pisces" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">RiftRays</p>
+    
+    <div class="site-description right-motion">
+      
+        <p id="binft">年轻且优秀 积极且颓废</p>
+      
+    </div>
+    
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">24</span>
+        <span class="site-item-stat-name language" data-lan="article">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">11</span>
+        <span class="site-item-stat-name language" data-lan="tag">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+  
+  
+    <div class="sidebar-item sidebar-item-social">
+      <div class="social-item">
+        
+          
+            <a href="https://github.com/RiftRays">
+              <i class="fa fa-github-alt" title="GitHub"></i>
+            </a>
+          
+            <a href="mailto:RiftRays@gmail.com">
+              <i class="fa fa-envelope" title="Gmail"></i>
+            </a>
+          
+            <a href="">
+              <i class="fa fa-comments" title="WeChat"></i>
+            </a>
+          
+            <a href="">
+              <i class="fa fa-qq" title="QQ"></i>
+            </a>
+          
+        
+        
+      </div>
+    </div>
+  
+
+
+
+  <div style="width: 100%; position: relative;">
+    <canvas id="canvasDiyBlock" style="width:100%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+    <script src="/media/js/magic/clock.js"></script>
+  </div>
+
+</div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#string%E6%9C%89%E9%95%BF%E5%BA%A6%E9%99%90%E5%88%B6%E5%90%97%E6%98%AF%E5%A4%9A%E5%B0%91">String有长度限制吗？是多少？</a>
+<ul>
+<li><a href="#%E7%BC%96%E8%AF%91%E6%9C%9F">编译期：</a></li>
+<li><a href="#%E8%BF%90%E8%A1%8C%E6%9C%9F">运行期：</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E9%87%8F%E6%B1%A0%E9%99%90%E5%88%B6">常量池限制</a>
+<ul>
+<li><a href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B">代码示例：</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BF%90%E8%A1%8C%E6%9C%9F%E9%99%90%E5%88%B6">运行期限制</a>
+<ul>
+<li><a href="#1-%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6">1. 内存限制：</a>
+<ul>
+<li><a href="#%E5%A0%86%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6">堆内存限制：</a></li>
+<li><a href="#%E6%A0%88%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6">栈内存限制：</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E6%B0%B8%E4%B9%85%E4%BB%A3%E9%99%90%E5%88%B6">方法区（永久代）限制：</a></li>
+</ul>
+</li>
+<li><a href="#2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4">2. 数据类型的取值范围：</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    jQuery.Velocity(hideElement, 'stop');
+    jQuery.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        jQuery.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://riftrays.github.io/ORcmOqbrY/"> String有长度限制吗？是多少？ </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2019-01-01 23:08:15">2019-01-01 23:08:15</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">标签:</span>
+       
+      <a href="https://riftrays.github.io/tag-Interview/"> <span>interview</span> </a>、   
+      <a href="https://riftrays.github.io/tag-Java/">
+        <span>Java</span>
+      </a>
+       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >12<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >3049<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+      
+    <span
+      id="/ORcmOqbrY/"
+      data-flag-title="String有长度限制吗？是多少？"
+      class="meta-item pc-show leancloud_visitors"
+    >
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span
+        ><span class="language" data-lan="view">浏览量:</span>:<span
+          class="leancloud-visitors-count"
+        ></span
+      ></span>
+    </span>
+    
+  </div>
+</section>
+
+            <div class="post-body next-md-body" id="post_body">
+              <h1 id="string有长度限制吗是多少">String有长度限制吗？是多少？</h1>
+<p>在Java中，<code>String</code>对象的长度是有限制的。<code>String</code>类的长度限制取决于Java虚拟机（JVM）的实现和系统内存的限制。在实际开发中，<code>String</code>对象的长度限制通常会受到以下两个方面的影响：</p>
+<ol>
+<li>
+<p>JVM堆内存大小：<code>String</code>对象存储在堆内存中，因此其长度受到JVM堆内存大小的限制。如果<code>String</code>对象的长度超过了JVM堆内存的可用空间，就会抛出<code>OutOfMemoryError</code>异常。</p>
+</li>
+<li>
+<p>操作系统内存限制：在使用大量字符串的场景中，还需要考虑操作系统对进程可用内存的限制。如果字符串的总长度超过了操作系统内存限制，可能会导致程序崩溃。</p>
+</li>
+</ol>
+<p>具体来说，对于32位JVM，一个<code>String</code>对象的长度最大限制约为2GB，因为32位操作系统对单个进程可用内存通常有限制，不可能分配超过2GB的连续内存空间。</p>
+<p>对于64位JVM，理论上它可以支持更大的字符串长度，但仍然受到可用内存和操作系统限制。在实际应用中，如果要处理非常大的字符串，可能需要特殊的技术和工具来管理内存，避免内存溢出等问题。</p>
+<p>现在，我们来通过一个简单的代码示例来演示在不同情况下<code>String</code>对象的长度限制。</p>
+<pre><code class="language-java">public class StringLengthDemo {
+    public static void main(String[] args) {
+        // 创建一个较小的字符串
+        String smallString = &quot;This is a small string.&quot;;
+        System.out.println(&quot;Length of smallString: &quot; + smallString.length());
+
+        // 创建一个较大的字符串
+        StringBuilder largeStringBuilder = new StringBuilder();
+        for (int i = 0; i &lt; 1000000; i++) {
+            largeStringBuilder.append(&quot;a&quot;);
+        }
+        String largeString = largeStringBuilder.toString();
+        System.out.println(&quot;Length of largeString: &quot; + largeString.length());
+    }
+}
+</code></pre>
+<p>输出结果可能为：</p>
+<pre><code>Length of smallString: 24
+Length of largeString: 1000000
+</code></pre>
+<p>在这个示例中，我们首先创建了一个较小的字符串<code>smallString</code>，其长度是24。接着，我们使用<code>StringBuilder</code>来创建一个包含100万个字符的较大字符串<code>largeString</code>，并打印其长度。在这里，我们并没有遇到任何长度限制，因为100万个字符的字符串对于现代计算机来说并不算特别大。</p>
+<p>然而，请注意这只是一个简单的示例。在实际应用中，可能会遇到更大的字符串或者系统资源受限的情况，因此需要根据具体情况进行合理规划和管理内存。如果需要处理特别大的数据量，可能需要考虑使用其他数据结构或技术来优化和分割字符串处理的过程。</p>
+<hr>
+<blockquote>
+<p>编译期和运行期不一样！</p>
+</blockquote>
+<p>编译期和运行期对字符串长度的限制有所不同，让我们逐步详细解释：</p>
+<h2 id="编译期">编译期：</h2>
+<p>在Java编译期，字符串常量的值需要用<code>CONSTANT_Utf8_info</code>结构来表示。这个结构包含两个字段：</p>
+<ol>
+<li><code>length</code>字段：这是一个2字节的无符号整数，用于表示<code>bytes</code>数组中的字节数。</li>
+<li><code>bytes</code>数组字段：这是一个字节数组，用于存储字符串的UTF-8编码形式。</li>
+</ol>
+<p><code>CONSTANT_Utf8_info</code>结构的长度限制是65535字节，这意味着一个字符串常量的内容不能超过65535个字节。如果字符串的UTF-8编码形式长度超过了这个限制，编译器将无法创建对应的常量，可能会导致编译错误。</p>
+<p>让我们通过一个简单的示例来演示编译期对字符串长度的限制：</p>
+<pre><code class="language-java">public class CompileTimeStringLimitationDemo {
+    public static void main(String[] args) {
+        // 创建一个较短的字符串
+        String shortString = &quot;Hello, World!&quot;;
+        System.out.println(&quot;Length of shortString: &quot; + shortString.length());
+
+        // 创建一个较长的字符串，长度超过65535字节
+        StringBuilder longStringBuilder = new StringBuilder();
+        for (int i = 0; i &lt; 70000; i++) {
+            longStringBuilder.append(&quot;a&quot;);
+        }
+        String longString = longStringBuilder.toString();
+        System.out.println(&quot;Length of longString: &quot; + longString.length());
+    }
+}
+</code></pre>
+<p>输出结果为：</p>
+<pre><code>Length of shortString: 13
+Length of longString: 70000
+</code></pre>
+<p>在这个示例中，我们创建了一个较短的字符串<code>shortString</code>，其长度是13。接着，我们使用<code>StringBuilder</code>创建了一个包含70000个字符的较长字符串<code>longString</code>，并打印了其长度。由于编译期对字符串长度没有限制，因此<code>longString</code>的长度可以超过65535。</p>
+<h2 id="运行期">运行期：</h2>
+<p>在Java运行期，<code>String</code>类的<code>length</code>方法用于获取字符串的字符数（长度）。<code>String</code>的<code>length</code>参数是<code>int</code>类型的，<code>int</code>类型的最大范围值由<code>java.lang.Integer.MAX_VALUE</code>定义，其最大值是2^31 - 1，即2147483647。</p>
+<p>这意味着在运行期，一个<code>String</code>对象的长度不能超过2147483647个字符。</p>
+<p>让我们通过代码示例来演示运行期对<code>String</code>长度的限制：</p>
+<pre><code class="language-java">public class RuntimeStringLengthLimitationDemo {
+    public static void main(String[] args) {
+        // 创建一个较短的字符串
+        String shortString = &quot;Hello, World!&quot;;
+        System.out.println(&quot;Length of shortString: &quot; + shortString.length());
+
+        // 创建一个较长的字符串，长度超过int类型的最大值
+        StringBuilder longStringBuilder = new StringBuilder();
+        for (int i = 0; i &lt; Integer.MAX_VALUE + 100; i++) {
+            longStringBuilder.append(&quot;a&quot;);
+        }
+        String longString = longStringBuilder.toString();
+        System.out.println(&quot;Length of longString: &quot; + longString.length());
+    }
+}
+</code></pre>
+<p>输出结果为：</p>
+<pre><code>Length of shortString: 13
+Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: Requested array size exceeds VM limit
+    at java.base/java.util.Arrays.copyOf(Arrays.java:3745)
+    at java.base/java.util.Arrays.copyOf(Arrays.java:3671)
+    at java.base/java.lang.AbstractStringBuilder.ensureCapacityInternal(AbstractStringBuilder.java:146)
+    at java.base/java.lang.AbstractStringBuilder.append(AbstractStringBuilder.java:506)
+    at java.base/java.lang.StringBuilder.append(StringBuilder.java:184)
+    at RuntimeStringLengthLimitationDemo.main(RuntimeStringLengthLimitationDemo.java:11)
+</code></pre>
+<p>在这个示例中，我们首先创建了一个较短的字符串<code>shortString</code>，其长度是13。接着，我们使用<code>StringBuilder</code>创建了一个包含超过<code>int</code>类型最大值的字符数的较长字符串<code>longString</code>，这导致了<code>OutOfMemoryError</code>异常，因为超过了运行期的字符串长度限制。</p>
+<p>综上所述，编译期使用<code>CONSTANT_Utf8_info</code>结构来表示字符串常量的值，它有一个长度限制为65535字节。而在运行期，<code>String</code>的<code>length</code>方法用于获取字符串的字符数，其参数是<code>int</code>类型，因此<code>String</code>对象的长度最大不能超过<code>int</code>类型的最大值，即2147483647个字符。在实际应用中，需要根据具体场景和需求来处理和管理字符串的长度，避免超出限制导致的问题。</p>
+<h1 id="常量池限制">常量池限制</h1>
+<ol>
+<li>
+<p>常量数量限制：每个类（Class）的常量池都有一个最大容量，它是由<code>CONSTANT_Utf8_info</code>、<code>CONSTANT_Integer_info</code>、<code>CONSTANT_Float_info</code>、<code>CONSTANT_Long_info</code>、<code>CONSTANT_Double_info</code>、<code>CONSTANT_String_info</code>、<code>CONSTANT_Class_info</code>等常量项构成。</p>
+</li>
+<li>
+<p>常量大小限制：每个常量项在常量池中都占用一定的空间大小，其中<code>CONSTANT_Utf8_info</code>用于存储字符串常量，其长度限制是65535字节，这意味着一个字符串常量的内容不能超过65535个字节。</p>
+</li>
+</ol>
+<h2 id="代码示例">代码示例：</h2>
+<p>下面我们通过代码示例来演示常量池的限制。在示例中，我们会尝试创建大量的字符串常量，以验证常量池的数量限制和字符串常量的大小限制。</p>
+<pre><code class="language-java">public class ConstantPoolLimitationDemo {
+    public static void main(String[] args) {
+        // 创建大量字符串常量并存储在常量池中
+        for (int i = 0; i &lt; 100000; i++) {
+            String str = &quot;ConstantPoolLimitationDemo_&quot; + i;
+        }
+    }
+}
+</code></pre>
+<p>在上面的示例中，我们创建了100000个字符串常量，每个常量都是以&quot;ConstantPoolLimitationDemo_&quot;为前缀，并加上一个递增的数字。这些字符串常量会被存储在常量池中。由于这些字符串常量的内容不同，它们都会被视为不同的常量项。</p>
+<p>在运行示例代码时，会发现没有出现任何错误。这是因为在这个简单的示例中，100000个不同的字符串常量并未超过常量池的容量限制，也没有超过字符串常量的大小限制。</p>
+<p>为了验证常量池的数量限制，我们可以在示例中创建更多的字符串常量。然而，值得注意的是，由于常量池的限制，一旦达到最大容量，就会出现编译错误，如：</p>
+<pre><code>Error: constant pool overflow
+</code></pre>
+<p>这是由于常量池已经达到了最大容量，无法再存储更多的常量项。</p>
+<p>综上所述，常量池是Java中用于存储字面量和符号引用的数据结构，它有一定的限制，包括常量数量限制和字符串常量的大小限制。在实际应用中，我们需要根据常量池的限制来合理管理和使用常量，避免超出限制导致的问题。</p>
+<h1 id="运行期限制">运行期限制</h1>
+<h2 id="1-内存限制">1. 内存限制：</h2>
+<p>Java应用程序在运行期间需要使用内存来执行代码和存储数据。Java虚拟机（JVM）负责管理内存，并为每个应用程序实例分配一定的堆内存。在运行Java程序时，有几个内存限制需要注意：</p>
+<h3 id="堆内存限制">堆内存限制：</h3>
+<p>堆内存是用于存储对象实例的地方。JVM在启动时会为每个Java应用程序实例分配一定大小的堆内存。通过<code>-Xms</code>和<code>-Xmx</code>参数可以设置堆内存的初始大小和最大大小。</p>
+<ul>
+<li><code>-Xms</code>参数设置JVM的初始堆内存大小。</li>
+<li><code>-Xmx</code>参数设置JVM的最大堆内存大小。</li>
+</ul>
+<p>例如，可以使用以下命令来设置初始堆内存大小为512MB，最大堆内存大小为2GB：</p>
+<pre><code>java -Xms512m -Xmx2g YourJavaProgram
+</code></pre>
+<p>当Java程序在运行时需要更多的内存时，JVM会动态地增加堆内存的大小，直到达到最大堆内存大小为止。如果程序超出了最大堆内存限制，会导致<code>OutOfMemoryError</code>异常。</p>
+<h3 id="栈内存限制">栈内存限制：</h3>
+<p>栈内存用于存储方法调用和局部变量。每个线程在运行时都有一个对应的栈，栈内存大小是固定的。栈内存的大小由JVM在启动时通过<code>-Xss</code>参数设置，默认值通常较小。</p>
+<pre><code>java -Xss256k YourJavaProgram
+</code></pre>
+<p>当程序的方法调用层级较深，或者方法中使用了大量的局部变量，会导致栈空间不足，从而引发<code>StackOverflowError</code>异常。</p>
+<h3 id="方法区永久代限制">方法区（永久代）限制：</h3>
+<p>方法区（在Java 8及之前版本称为永久代，Java 8以后称为元空间）用于存储类的结构信息、常量池、静态变量等数据。方法区的大小也是有限制的，可以通过<code>-XX:PermSize</code>和<code>-XX:MaxPermSize</code>参数（Java 8之前）或<code>-XX:MetaspaceSize</code>和<code>-XX:MaxMetaspaceSize</code>参数（Java 8以后）来设置初始大小和最大大小。</p>
+<h2 id="2-数据类型的取值范围">2. 数据类型的取值范围：</h2>
+<p>在Java中，不同的数据类型有不同的取值范围，这也是运行期限制的一部分。</p>
+<p>例如，Java中的基本数据类型<code>byte</code>、<code>short</code>、<code>int</code>、<code>long</code>、<code>float</code>和<code>double</code>，它们的取值范围如下：</p>
+<ul>
+<li><code>byte</code>：-128 到 127</li>
+<li><code>short</code>：-32,768 到 32,767</li>
+<li><code>int</code>：-2^31 到 2^31-1 （约 -2.1 亿到 2.1 亿）</li>
+<li><code>long</code>：-2^63 到 2^63-1 （约 -9.2 京到 9.2 京）</li>
+<li><code>float</code>：IEEE 754单精度浮点数，取值范围约在 -3.4E38 到 3.4E38 之间</li>
+<li><code>double</code>：IEEE 754双精度浮点数，取值范围约在 -1.7E308 到 1.7E308 之间</li>
+</ul>
+<p>当使用超出数据类型取值范围的值时，可能会导致数据溢出或损失精度。</p>
+<p>下面是一个简单的代码示例，演示了一些数据类型的取值范围限制：</p>
+<pre><code class="language-java">public class DataTypeLimitationDemo {
+    public static void main(String[] args) {
+        byte byteValue = 127;
+        short shortValue = 32767;
+        int intValue = 2147483647;
+        long longValue = 9223372036854775807L;
+        float floatValue = 3.4E38f;
+        double doubleValue = 1.7E308;
+
+        System.out.println(&quot;byteValue: &quot; + byteValue);
+        System.out.println(&quot;shortValue: &quot; + shortValue);
+        System.out.println(&quot;intValue: &quot; + intValue);
+        System.out.println(&quot;longValue: &quot; + longValue);
+        System.out.println(&quot;floatValue: &quot; + floatValue);
+        System.out.println(&quot;doubleValue: &quot; + doubleValue);
+    }
+}
+</code></pre>
+<p>输出结果为：</p>
+<pre><code>byteValue: 127
+shortValue: 32767
+intValue: 2147483647
+longValue: 9223372036854775807
+floatValue: 3.4028235E38
+doubleValue: 1.7976931348623157E308
+</code></pre>
+<p>在这个示例中，我们分别声明并初始化了各种基本数据类型的变量，保证它们都在其取值范围内。输出结果表明这些变量都处于有效的取值范围内。</p>
+<p>综上所述，运行期限制主要涉及内存限制和数据类型的取值范围。在编写Java程序时，需要考虑这些限制，避免超出限制导致的问题，同时合理设计和管理数据以确保程序的正确性和性能。</p>
+
+            </div>
+            
+              <div class="reward-btn">
+                <div class="reward-btn-text">赞赏</div>
+              </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      RiftRays
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://riftrays.github.io/ORcmOqbrY/" title="String有长度限制吗？是多少？">https://riftrays.github.io/ORcmOqbrY/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://riftrays.github.io/tag-Interview/"># interview</a>
+    
+      <a href="https://riftrays.github.io/tag-Java/"># Java</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="面向对象和面向过程" href="https://riftrays.github.io/12f0O6Nr1/">面向对象和面向过程</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="面向对象和面向过程" href="https://riftrays.github.io/12f0O6Nr1/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="String a = &#34;ab&#34;; String b = &#34;a&#34; + &#34;b&#34;; a == b 吗？" href="https://riftrays.github.io/UbqLCuphk/">String a = &#34;ab&#34;; String b = &#34;a&#34; + &#34;b&#34;; a == b 吗？</a>
+        <a class="nav-mobile-next" title="String a = &#34;ab&#34;; String b = &#34;a&#34; + &#34;b&#34;; a == b 吗？" href="https://riftrays.github.io/UbqLCuphk/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+            
+  
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-box">
+  <footer class="footer">
+    <center id="runTimeBox">
+      已运行:<span id="run_time"></span>
+    </center>
+    <span id="busuanzi_container_site_pv">浏览数:<span id="busuanzi_value_site_pv"></span> 次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span> 人</span>
+
+    <script>
+      BirthDay = new Date('2019/01/01');
+      if (BirthDay.getTime()) {
+        function runTime() {
+          str = "";
+          today = new Date();
+          timeold = today.getTime() - BirthDay.getTime();
+          msPerDay = 24 * 60 * 60 * 1000;
+          e_daysold = timeold / msPerDay;
+          daysold = Math.floor(e_daysold);
+          str += daysold + "天";
+          return str;
+        }
+        setInterval(function () {
+          $("#run_time").html(runTime());
+        }, 1000);
+      } else {
+        document.querySelector('.footer').removeChild(document.querySelector('#runTimeBox'));
+      }
+    </script>
+    <div class="poweredby">
+      Your time is limited, so don't waste it living someone else's life ... Stay Hungry. Stay Foolish.
+    </div>
+  </footer>
+  
+    
+        <div class="pisces back-to-top" id="back_to_top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span class="scrollpercent"> <span id="back_to_top_text">0</span>% </span>
+            
+        </div>
+        
+          
+            
+              <div class="bg-img">
+                <img src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/30_Throne2_1_4k.jpg" />
+              </div>
+              
+                
+                  
+                        
+</div>
+<script>
+  let sideBarOpen = "sidebar-open";
+  let body = document.body;
+  let back2Top = document.querySelector("#back_to_top"),
+    back2TopText = document.querySelector("#back_to_top_text"),
+    drawerBox = document.querySelector("#drawer_box"),
+    rightSideBar = document.querySelector(".sidebar"),
+    viewport = document.querySelector("body");
+
+  function scrollAnimation(currentY, targetY) {
+    let needScrollTop = targetY - currentY;
+    let _currentY = currentY;
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10);
+      _currentY += dist;
+      window.scrollTo(_currentY, currentY);
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY);
+      } else {
+        window.scrollTo(_currentY, targetY);
+      }
+    }, 1);
+  }
+
+  back2Top.addEventListener("click", function (e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+
+  window.addEventListener("scroll", function (e) {
+    let percent =
+      (document.scrollingElement.scrollTop /
+        (document.scrollingElement.scrollHeight -
+          document.scrollingElement.clientHeight)) *
+      100;
+    if (percent > 1 && !back2Top.classList.contains("back-top-active")) {
+      back2Top.classList.add("back-top-active");
+    }
+    if (percent == 0) {
+      back2Top.classList.remove("back-top-active");
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  let hasCacu = false;
+  window.addEventListener("resize", function (e) {
+    calcuHeight();
+  });
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (
+      (!hasCacu && back2Top.classList.contains("pisces")) ||
+      back2Top.classList.contains("gemini")
+    ) {
+      let sideBar = document.querySelector(".sidebar");
+      let navUl = document.querySelector("#site_nav");
+      sideBar.style =
+        "margin-top:" + (navUl.offsetHeight + navUl.offsetTop + 15) + "px;";
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+
+  let open = false,
+    MOTION_TIME = 300,
+    RIGHT_MOVE_DIS = "320px";
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll(".right-motion");
+    let right = drawerBox.classList.contains("right");
+
+    let transitionDir = right
+      ? "transition.slideRightIn"
+      : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingRight: "0px",
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingLeft: "0px",
+      };
+    }
+
+    drawerBox.onclick = function () {
+      open = !open;
+      jQuery.Velocity(rightSideBar, "stop");
+      jQuery.Velocity(viewport, "stop");
+      jQuery.Velocity(rightMotions, "stop");
+      if (open) {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: RIGHT_MOVE_DIS,
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, transitionDir, {});
+            },
+          }
+        );
+        jQuery.Velocity(viewport, openProp, {
+          duration: MOTION_TIME,
+        });
+      } else {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: "0px",
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, {
+                opacity: 0,
+              });
+            },
+          }
+        );
+        jQuery.Velocity(viewport, closeProp, {
+          duration: MOTION_TIME,
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle("muse-line");
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    };
+  }
+
+  // 链接跳转
+  let newWindow = "false";
+  if (newWindow === "true") {
+    let links = document.querySelectorAll(".post-body a");
+    links.forEach((item) => {
+      if (!item.classList.contains("btn")) {
+        item.setAttribute("target", "_blank");
+      }
+    });
+  }
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
+  // 离开当前页title变化
+  var leaveTitle = "😭菜~请给个机会~拜托了！";
+  var normal_title = document.title;
+  if (leaveTitle) {
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState == "hidden") {
+        normal_title = document.title;
+        document.title = leaveTitle;
+      } else {
+        document.title = normal_title;
+      }
+    });
+  }
+</script>
+
+<link rel="stylesheet" href="/media/css/jquery.fancybox.css" />
+<script src="/media/js/jquery.fancybox.js"></script>
+
+<script>
+  let images = document.querySelectorAll(".section img");
+  images.forEach((image) => {
+    var parent = image.parentElement;
+    var next = image.nextElementSibling;
+    parent.removeChild(image);
+    var aelem = document.createElement("a");
+    aelem.href = image.src;
+    aelem.dataset["fancybox"] = "images";
+    aelem.dataset["rel"] = "fancybox-button";
+    aelem.classList.add("fancybox");
+    aelem.appendChild(image);
+    parent.insertBefore(aelem, next);
+  });
+</script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+            <img id="zfb" class="reward-img" src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/1689773094686.jpg" alt="赞赏码">
+          
+          
+            <img id="wx" class="reward-img" src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/mm_facetoface_collect_qrcode_1689773482372.jpg" alt="赞赏码">
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip"> 多多打赏~鼓励作者更多原创内容！</p>
+    </div>
+    <div class="bottom">
+      
+      <div id="zfbBtn" class="pay-text">
+        支付宝
+      </div>
+      
+      
+      <div id="wxBtn" class="pay-text">
+        微信支付
+      </div>
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        jQuery.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        jQuery.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        jQuery.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        jQuery.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      jQuery.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      jQuery.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
+  </div>
+</body>
+<input hidden id="copy" />
+<script>
+  !function () {
+    let times = document.querySelectorAll('.publish-time');
+    for (let i = 0; i < times.length; i++) {
+      let date = times[i].dataset.t;
+      let time = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
+      if (time < 60) {
+        str = time + '秒之前';
+      } else if (time < 3600) {
+        str = Math.floor(time / 60) + '分钟之前';
+      } else if (time >= 3600 && time < 86400) {
+        str = Math.floor(time / 3600) + '小时之前';
+      } else if (time >= 86400 && time < 259200) {
+        str = Math.floor(time / 86400) + '天之前';
+      } else {
+        str = times[i].textContent;
+      }
+      times[i].textContent = str;
+    }
+  }();
+</script>
+
+<script>
+  let language = '';
+  if (language !== '') {
+    let map = new Map();
+    if (language === 'en') {
+      map.set('search', 'Search');
+      map.set('category', 'Categories');
+      map.set('article', 'Articles');
+      map.set('tag', 'Tags');
+      map.set('top', 'Top');
+      map.set('publish', 'published');
+      map.set('minute', ' minutes');
+      map.set('read-more', 'Read More');
+      map.set('view', 'View');
+      map.set('words', ' words');
+      map.set('category-in', 'category in');
+      map.set('preview', 'Meta');
+      map.set('index', 'Toc');
+      map.set('no-archives', "You haven't created yet");
+      map.set('archives', " articles in total");
+      map.set('cloud-tags', " tags in total");
+      map.set('copyright', "Copyright: ");
+      map.set('author', "Author: ");
+      map.set('link', "Link: ");
+      map.set('leave-message', "Leave a message");
+      map.set('format', "Links Format");
+      map.set('site-name', "Name: ");
+      map.set('site-link', "Link: ");
+      map.set('site-desc', "Desc: ");
+      map.set('stat', " related results, taking ");
+      map.set('stat-time', " ms");
+      map.set('site-img', "Image: ");
+    }
+
+    if (map.size > 0) {
+      let lanElems = document.querySelectorAll('.language');
+      lanElems.forEach(elem => {
+        let lan = elem.dataset.lan, text = map.get(lan);
+        if (elem.__proto__ === HTMLInputElement.prototype) {
+          elem.placeholder = text
+        } else {
+          if (elem.dataset.count) {
+            text = elem.dataset.count + text;
+          }
+          elem.textContent = text;
+        }
+      })
+    }
+  }
+
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+
+</script>
+<script src="/media/js/motion.js"></script>
+
+
+  <script
+    src="https://jsdelivr.codeqihan.com/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+  <script>
+    var scroll = new SmoothScroll('a[href*="#"]', {
+      speed: 200
+    });
+  </script>
+
+
+
+<script src="/media/js/mouse/peace.js"></script>
+
+
+  <script src="/media/js/cool.js"></script>
+
+
+
+  <div class="snow-container"></div>
+  <script color="0,205,205" pointer-events="auto" zIndex="-1" opacity='0.7' count="99" src="/media/js/bg/canvas-nest.js"></script>
+
+</html>

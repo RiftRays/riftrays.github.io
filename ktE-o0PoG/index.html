@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="RiftRays&#39;s Blog">
+<meta name="description" content="年轻且优秀 积极且颓废">
+<meta name="theme-color" content="#000">
+<title>Java中的金额表示与计算 | RiftRays&#39;s Blog</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1713170724295">
+<link rel="stylesheet" href="/media/css/pisces.css">
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.loli.net/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/pojoaque.css"
+  rel="stylesheet">
+
+<script src="https://jsdelivr.codeqihan.com/npm/pace-js@1.0.2/pace.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/black/pace-theme-center-atom.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="/styles/main.css">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/media/js/jquery.js"></script>
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://jsdelivr.codeqihan.com/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://jsdelivr.codeqihan.com/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+
+<script defer src="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+
+  <meta name="description" content="Java中的金额表示与计算" />
+  <meta name="keywords" content="interview,Java" />
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    <style>
+.gridea-search-input{
+    height: 30px;
+    width: 200px;
+    box-sizing: border-box;
+    padding: 0 15px 0 30px;
+    border: 1px solid #e3e3e3;
+    border-radius: 15px;
+    color: #273849;
+    outline: none;
+    transition: border-color 0.2s ease;
+    background: #fff url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='80' height='65'%3E%3Cpath d='M936.265 854.34L757.43 675.52c46.499-63.168 74.02-141.125 74.02-225.398 0-210.1-170.945-381.039-381.055-381.039S69.346 240.023 69.346 450.122c0 210.105 170.94 381.043 381.049 381.043 84.275 0 162.235-27.52 225.405-74.019l178.833 178.819c11.27 11.265 26.036 16.903 40.813 16.903 14.777 0 29.543-5.638 40.819-16.903 22.536-22.546 22.536-59.09 0-81.625zM163.14 450.122C163.14 291.733 292 162.87 450.396 162.87s287.261 128.862 287.261 287.252c0 158.39-128.867 287.252-287.261 287.252S163.14 608.512 163.14 450.122z' fill='%23C4C4C4'/%3E%3C/svg%3E") 8px 7px no-repeat;
+    background-size: 20px;
+    vertical-align: middle !important;
+}
+.gridea-search-input:focus {
+  border-color: #666666;
+  right: 0;
+}
+</style>
+
+<div class="pisces">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>RiftRays&#39;s Blog</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">年轻且优秀 积极且颓废</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io" target="_self">
+                  <i class="fa fa-globe"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io/archives" target="_self">
+                  <i class="fa fa-archive"></i> 笔记
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io/tags" target="_self">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+          
+            
+              <li class="nav-item ">
+                <a href="/friends/" target="_self">
+                  
+                    <i class="fa fa-address-book"></i> 友链
+                  
+                </a>
+              </li>
+            
+          
+          
+            <li id="fa_search" class="nav-item">
+				<a href="javascript:void(0);">
+					<span class="language" data-lan="search">
+						<div class="gridea-search-div">
+							<form id="gridea-search-form" action="https://riftrays.github.io/search/">
+								<input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
+							</form>
+						</div>
+					</span>
+				</a>
+			</li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout pisces ">
+      <div class="section-layout-wrapper">
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body pisces" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">RiftRays</p>
+    
+    <div class="site-description right-motion">
+      
+        <p id="binft">年轻且优秀 积极且颓废</p>
+      
+    </div>
+    
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">24</span>
+        <span class="site-item-stat-name language" data-lan="article">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">11</span>
+        <span class="site-item-stat-name language" data-lan="tag">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+  
+  
+    <div class="sidebar-item sidebar-item-social">
+      <div class="social-item">
+        
+          
+            <a href="https://github.com/RiftRays">
+              <i class="fa fa-github-alt" title="GitHub"></i>
+            </a>
+          
+            <a href="mailto:RiftRays@gmail.com">
+              <i class="fa fa-envelope" title="Gmail"></i>
+            </a>
+          
+            <a href="">
+              <i class="fa fa-comments" title="WeChat"></i>
+            </a>
+          
+            <a href="">
+              <i class="fa fa-qq" title="QQ"></i>
+            </a>
+          
+        
+        
+      </div>
+    </div>
+  
+
+
+
+  <div style="width: 100%; position: relative;">
+    <canvas id="canvasDiyBlock" style="width:100%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+    <script src="/media/js/magic/clock.js"></script>
+  </div>
+
+</div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E7%94%A8%E6%B5%AE%E7%82%B9%E6%95%B0%E8%A1%A8%E7%A4%BA%E9%87%91%E9%A2%9D">为什么不能用浮点数表示金额？</a></li>
+<li><a href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6">十进制转换为二进制</a></li>
+<li><a href="#%E4%B8%8D%E6%98%AF%E6%89%80%E6%9C%89%E6%95%B0%E9%83%BD%E8%83%BD%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA">不是所有数都能用二进制表示</a></li>
+<li><a href="#ieee-754">IEEE 754</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    jQuery.Velocity(hideElement, 'stop');
+    jQuery.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        jQuery.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://riftrays.github.io/ktE-o0PoG/"> Java中的金额表示与计算 </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2019-01-01 23:53:01">2019-01-01 23:53:01</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">标签:</span>
+       
+      <a href="https://riftrays.github.io/tag-Interview/"> <span>interview</span> </a>、   
+      <a href="https://riftrays.github.io/tag-Java/">
+        <span>Java</span>
+      </a>
+       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >18<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >4456<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+      
+    <span
+      id="/ktE-o0PoG/"
+      data-flag-title="Java中的金额表示与计算"
+      class="meta-item pc-show leancloud_visitors"
+    >
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span
+        ><span class="language" data-lan="view">浏览量:</span>:<span
+          class="leancloud-visitors-count"
+        ></span
+      ></span>
+    </span>
+    
+  </div>
+</section>
+
+            <div class="post-body next-md-body" id="post_body">
+              <h2 id="为什么不能用浮点数表示金额">为什么不能用浮点数表示金额？</h2>
+<p>浮点数在计算机中是以二进制表示的，但是很多十进制的小数（如0.1、0.01等）在二进制中无法精确表示，因为它们的二进制表示是无限循环的。</p>
+<p>例如，0.1在二进制表示中是0.00011001100110011...（无限循环），由于计算机的存储是有限的，所以在存储和计算过程中会进行截断，导致精度丢失。这样，进行一系列浮点数运算后，可能得到的结果会存在舍入误差，从而导致计算结果与预期不符。</p>
+<p>这种舍入误差在数值计算中是非常危险的，尤其在涉及金额和金融计算时更为严重。小的舍入误差可能在单个计算中不明显，但在大量的计算中会累积起来，导致计算结果出现较大的偏差，影响到财务数据的准确性和可靠性。</p>
+<p>为了避免在金额计算中产生舍入误差，更好的做法是使用整数类型（如整型或长整型）来表示金额，或者使用专门的高精度计算库（如Java中的BigDecimal类），这样可以确保金额计算的精确性。这些方法在进行金融和货币计算时更为可靠，避免了因浮点数运算而产生的不确定性。</p>
+<p>使用BigDecimal类进行高精度运算时，可以设置精确的小数位数、进行四舍五入等操作，确保计算结果的准确性和可靠性。对于涉及金额等重要数据的计算，建议始终使用BigDecimal来进行处理，从而避免由于浮点数带来的不确定性和精度丢失问题。这样可以保证在金融等关键领域的应用中数据的准确性和可信度。</p>
+<h2 id="十进制转换为二进制">十进制转换为二进制</h2>
+<ol>
+<li>
+<p>十进制整数转换为二进制整数的方法是“除2取余，逆序排列”法。</p>
+</li>
+<li>
+<p>用2整除十进制整数，得到一个商和余数，再用2去除商，继续得到商和余数，直到商为小于1时停止。将先得到的余数作为二进制数的低位有效位，后得到的余数作为高位有效位，依次排列起来。</p>
+</li>
+<li>
+<p>十进制小数转换为二进制小数的方法是“乘2取整，顺序排列”法。</p>
+</li>
+<li>
+<p>用2乘十进制小数，得到一个积，将积的整数部分取出，再用2乘余下的小数部分，继续得到积，再取出积的整数部分。如此进行，直到积中的小数部分为零，此时0或1为二进制的最后一位，或者达到所要求的精度为止。</p>
+</li>
+</ol>
+<p>举例：</p>
+<ul>
+<li>十进制整数127转换成二进制为1111111。</li>
+<li>十进制小数0.625转换成二进制为0.101。</li>
+</ul>
+<h2 id="不是所有数都能用二进制表示">不是所有数都能用二进制表示</h2>
+<p>在计算机中，浮点数的表示是有限的，而不是精确的。无论是单精度浮点数（float）还是双精度浮点数（double），它们都是采用有限的位数来表示小数部分的。因此，对于某些十进制小数，其在二进制表示中会产生无限循环的情况，从而无法精确地表示。</p>
+<p>0.1 的二进制表示是无限循环的，即 (0.1)10 = (0.000110011001100…)2。由于计算机的浮点数表示是有限的，它只能取近似值来表示这种无限循环的小数。因此，对于像 0.1 这样的小数，计算机无法精确地表示它，而只能使用近似值来表示，从而导致精度丢失。</p>
+<p>在实际编程中，特别是涉及到涉及到金融和精确计算的场景，我们应该避免直接使用浮点数进行高精度运算，因为会导致精度丢失。而应该使用专门的精确计算类，如 Java 中的 BigDecimal，来进行高精度的计算，从而避免精度丢失的问题。</p>
+<h2 id="ieee-754">IEEE 754</h2>
+<p>IEEE 754标准定义了浮点数的表示方法，它通过三元组{S, E, M}来表示一个浮点数N，其中：</p>
+<ul>
+<li>S（sign）表示N的符号位，对应值s满足：N &gt; 0时，s = 0；N ≤ 0时，s = 1。</li>
+<li>E（exponent）表示N的指数位，位于S和M之间的若干位。对应值e值也可正可负。</li>
+<li>M（mantissa）表示N的尾数位，恰好位于N末尾。M也叫有效数字位（significand）、系数位（coefficient），甚至被称作“小数”。</li>
+</ul>
+<p>根据IEEE 754标准，浮点数的实际值n由下方的式子表示：</p>
+<p>n = (-1)^s * (1.M) * 2^(e - Bias)</p>
+<p>其中，Bias是一个偏移值，它在单精度浮点数中为127，在双精度浮点数中为1023。这样，通过浮点数的表示方式，计算机可以用有限的位数来表示一个范围更大的数，并提供一定的精度。</p>
+<p>然而，正如您指出的，由于浮点数表示的精度是有限的，对于某些小数，特别是无限循环的二进制数，计算机无法精确地表示它们。这导致在浮点数运算中可能会出现一些精度丢失的情况。</p>
+<p>为了避免精度丢失，特别是在涉及到金额等精确计算的场景，我们应该使用专门的精确计算类，如Java中的BigDecimal，来进行高精度的计算。BigDecimal能够提供更高的精度，从而避免了浮点数运算带来的精度问题。</p>
+<hr>
+<p><strong>为什么不能用BigDecimal的equals方法做等值比较？</strong></p>
+<p>在Java中，对于比较浮点数，包括BigDecimal，不能简单地使用<code>equals()</code>方法进行等值比较，这是因为浮点数是近似值的表示，在进行浮点数运算时可能会存在精度损失。这个问题同样适用于使用<code>double</code>或<code>float</code>进行浮点数运算。</p>
+<p>在<code>BigDecimal</code>中，<code>equals()</code>方法是继承自<code>Object</code>类的方法，它用于比较对象的引用是否相等，而不是比较数值是否相等。如果要在<code>BigDecimal</code>中比较数值是否相等，应该使用<code>compareTo()</code>方法或<code>equals()</code>方法的重载版本。</p>
+<p>例如，<code>BigDecimal</code>的<code>compareTo()</code>方法用于比较两个<code>BigDecimal</code>对象的数值是否相等，它返回一个整数值，表示两个数值的大小关系。如果返回值为0，则表示两个<code>BigDecimal</code>对象的数值相等。</p>
+<p>示例：</p>
+<pre><code class="language-java">BigDecimal num1 = new BigDecimal(&quot;0.1&quot;);
+BigDecimal num2 = new BigDecimal(&quot;0.100&quot;);
+
+if (num1.equals(num2)) {
+    System.out.println(&quot;num1 and num2 are equal using equals() method.&quot;);
+} else {
+    System.out.println(&quot;num1 and num2 are not equal using equals() method.&quot;);
+}
+
+if (num1.compareTo(num2) == 0) {
+    System.out.println(&quot;num1 and num2 are equal using compareTo() method.&quot;);
+} else {
+    System.out.println(&quot;num1 and num2 are not equal using compareTo() method.&quot;);
+}
+</code></pre>
+<p>输出：</p>
+<pre><code>num1 and num2 are not equal using equals() method.
+num1 and num2 are equal using compareTo() method.
+</code></pre>
+<p>在上面的示例中，<code>equals()</code>方法返回<code>false</code>，因为它比较的是对象的引用，而不是数值。而<code>compareTo()</code>方法返回0，表示<code>num1</code>和<code>num2</code>的数值是相等的。</p>
+<p>因此，要在<code>BigDecimal</code>中比较数值是否相等，应该使用<code>compareTo()</code>方法或<code>equals()</code>方法的重载版本，并根据具体情况选择适当的精度来比较数值。例如，可以使用<code>compareTo()</code>方法来判断两个<code>BigDecimal</code>对象的数值是否相等，或使用<code>setScale()</code>方法设置精度后再使用<code>equals()</code>方法进行比较。</p>
+<hr>
+<blockquote>
+<p>Compares this  BigDecimal with the specified Object for equality.  Unlike compareTo, this method considers two BigDecimal objects equal only if they are equal in value and scale (thus 2.0 is not equal to 2.00 when compared by  this method)</p>
+</blockquote>
+<p><code>BigDecimal</code> 类的标度问题确实是一个相对复杂的主题。标度代表着小数部分的位数。</p>
+<p>首先，我们来解释一下 <code>BigDecimal</code> 构造方法的标度问题：</p>
+<ol>
+<li>
+<p><code>BigDecimal(int val)</code> 和 <code>BigDecimal(long val)</code>：这两个构造方法用于创建整数类型的 <code>BigDecimal</code> 对象，所以它们的标度都是0。</p>
+</li>
+<li>
+<p><code>BigDecimal(double val)</code>：使用 <code>BigDecimal(double)</code> 构造方法时，由于 <code>double</code> 类型本身就是近似值，创建出来的 <code>BigDecimal</code> 对象也会是近似值。比如，<code>new BigDecimal(0.1)</code> 所创建的 <code>BigDecimal</code> 值并不是精确的0.1，而是近似值0.1000000000000000055511151231257827021181583404541015625。这样的近似值决定了标度是这个近似值的位数，即55。</p>
+</li>
+</ol>
+<p>现在，让我们通过代码示例来验证上述描述：</p>
+<pre><code class="language-java">import java.math.BigDecimal;
+
+public class BigDecimalScaleExample {
+    public static void main(String[] args) {
+        // 使用BigDecimal(int)构造方法
+        BigDecimal intValue = new BigDecimal(100);
+        System.out.println(&quot;整数的标度：&quot; + intValue.scale()); // 输出：整数的标度：0
+
+        // 使用BigDecimal(long)构造方法
+        BigDecimal longValue = new BigDecimal(1000000000000L);
+        System.out.println(&quot;长整数的标度：&quot; + longValue.scale()); // 输出：长整数的标度：0
+
+        // 使用BigDecimal(double)构造方法
+        BigDecimal doubleValue1 = new BigDecimal(0.1);
+        BigDecimal doubleValue2 = new BigDecimal(0.10);
+        System.out.println(&quot;double值1的标度：&quot; + doubleValue1.scale()); // 输出：double值1的标度：55
+        System.out.println(&quot;double值2的标度：&quot; + doubleValue2.scale()); // 输出：double值2的标度：55
+    }
+}
+</code></pre>
+<blockquote>
+<p>小贴士：</p>
+<ol>
+<li>输出的结果中，整数类型的标度都是0，而使用 <code>BigDecimal(double)</code> 构造方法创建的 <code>BigDecimal</code> 对象的标度都是55，因为它们的近似值都是含有55位小数。</li>
+</ol>
+</blockquote>
+<hr>
+<p><strong>BigDecimal(double)和BigDecimal(String)有什么区别？</strong></p>
+<p><code>BigDecimal(double)</code> 和 <code>BigDecimal(String)</code> 构造方法之间有着明显的区别。</p>
+<ol>
+<li><code>BigDecimal(double)</code> 构造方法：</li>
+</ol>
+<p>由于 <code>double</code> 类型是不精确的，当我们使用 <code>BigDecimal(double)</code> 构造方法来创建 <code>BigDecimal</code> 对象时，得到的结果也是不精确的。这是因为 <code>double</code> 只能表示一个近似值，而不能精确表示某个具体的数字。</p>
+<p>例如，当我们使用 <code>new BigDecimal(0.1)</code> 创建一个 <code>BigDecimal</code> 对象时，实际上创建出来的值并不等于精确的0.1。而是近似值：0.1000000000000000055511151231257827021181583404541015625。这种近似值是由 <code>double</code> 类型本身决定的。</p>
+<ol start="2">
+<li><code>BigDecimal(String)</code> 构造方法：</li>
+</ol>
+<p>与使用 <code>BigDecimal(double)</code> 构造方法不同，当我们使用 <code>BigDecimal(String)</code> 构造方法来创建 <code>BigDecimal</code> 对象时，我们可以确切地指定要表示的数值。这是因为使用字符串来表示数值时不会引入浮点数的近似问题，字符串中的每个字符都会被精确地转换为相应的数字。</p>
+<p>例如，当我们使用 <code>new BigDecimal(&quot;0.1&quot;)</code> 创建一个 <code>BigDecimal</code> 对象时，创建出来的值正好等于精确的0.1。</p>
+<p>现在，让我们来通过代码示例来验证上述描述：</p>
+<pre><code class="language-java">import java.math.BigDecimal;
+
+public class BigDecimalComparisonExample {
+    public static void main(String[] args) {
+        // 使用BigDecimal(double)构造方法
+        BigDecimal doubleValue = new BigDecimal(0.1);
+        System.out.println(&quot;BigDecimal(double)值：&quot; + doubleValue); // 输出：BigDecimal(double)值：0.1000000000000000055511151231257827021181583404541015625
+
+        // 使用BigDecimal(String)构造方法
+        BigDecimal stringValue = new BigDecimal(&quot;0.1&quot;);
+        System.out.println(&quot;BigDecimal(String)值：&quot; + stringValue); // 输出：BigDecimal(String)值：0.1
+    }
+}
+</code></pre>
+<p>在以上代码示例中，我们使用了 <code>BigDecimal(double)</code> 和 <code>BigDecimal(String)</code> 构造方法分别创建了两个 <code>BigDecimal</code> 对象，并打印出它们的值。可以看到，使用 <code>BigDecimal(double)</code> 构造方法创建的值是近似值，而使用 <code>BigDecimal(String)</code> 构造方法创建的值是精确的。</p>
+<hr>
+<p><code>BigDecimal</code> 确实是通过一个 &quot;无标度值&quot; 和一个 &quot;标度&quot; 来表示一个数的。无标度值表示数字的实际值，而标度表示小数部分的位数。</p>
+<p>在 <code>BigDecimal</code> 中，无标度值的表示方式取决于实际情况：</p>
+<ol>
+<li>
+<p>当无标度值超过阈值（默认为 <code>Long.MAX_VALUE</code>）时，使用 <code>BigInteger</code> 类型的 <code>intVal</code> 字段存储无标度值，并且 <code>intCompact</code> 字段存储 <code>Long.MIN_VALUE</code>。这是因为无标度值过大无法用 <code>long</code> 类型完整表示，所以使用 <code>BigInteger</code> 进行存储。</p>
+</li>
+<li>
+<p>否则，当无标度值在可用的 <code>long</code> 范围内时，对无标度值进行压缩存储在 <code>long</code> 类型的 <code>intCompact</code> 字段中，用于后续计算，而 <code>intVal</code> 字段为空。</p>
+</li>
+</ol>
+<p>下面是对你提供的 <code>BigDecimal</code> 类的简化代码片段，用于说明 <code>intVal</code>、<code>scale</code> 和 <code>intCompact</code> 字段：</p>
+<pre><code class="language-java">import java.math.BigDecimal;
+import java.math.BigInteger;
+
+public class BigDecimalExplanation {
+    public static void main(String[] args) {
+        // 示例：使用BigDecimal表示数值
+        BigInteger intVal = new BigInteger(&quot;12345678901234567890&quot;);
+        int scale = 6;
+        long intCompact = Long.MIN_VALUE;
+
+        BigDecimal bigDecimalWithBigInt = new BigDecimal(intVal, scale);
+        BigDecimal bigDecimalWithCompact = new BigDecimal(intCompact, scale);
+
+        System.out.println(&quot;BigDecimal with BigInteger: &quot; + bigDecimalWithBigInt);
+        System.out.println(&quot;BigDecimal with long (compact): &quot; + bigDecimalWithCompact);
+    }
+}
+</code></pre>
+<p>在上面的代码示例中，我们创建了两个不同的 <code>BigDecimal</code> 对象：一个使用 <code>BigInteger</code> 的 <code>intVal</code> 字段表示无标度值，另一个使用 <code>long</code> 类型的 <code>intCompact</code> 字段表示无标度值。两个 <code>BigDecimal</code> 对象都具有相同的标度 <code>scale</code>。</p>
+<p>请注意，为了简化代码示例，我们直接创建了 <code>BigInteger</code> 和 <code>long</code> 类型的值，实际情况中，这些值通常是由其他计算过程或者输入得到的。</p>
+<hr>
+<p><strong>BigDecimal(double)有什么问题</strong></p>
+<p>使用 <code>BigDecimal(double)</code> 构造方法来创建 <code>BigDecimal</code> 对象时，由于双精度浮点数的不精确性，会导致精度损失的问题。为了解决这个问题，我们应该使用 <code>BigDecimal(String)</code> 构造方法来确保精确表示。</p>
+<p>下面是一个示例代码，演示了使用 <code>BigDecimal(String)</code> 构造方法来避免精度损失的情况：</p>
+<pre><code class="language-java">import java.math.BigDecimal;
+
+public class BigDecimalDoubleIssue {
+    public static void main(String[] args) {
+        double doubleValue = 0.1;
+        String stringValue = &quot;0.1&quot;;
+
+        BigDecimal bdFromDouble = new BigDecimal(doubleValue);
+        BigDecimal bdFromString = new BigDecimal(stringValue);
+
+        System.out.println(&quot;BigDecimal from double: &quot; + bdFromDouble);
+        System.out.println(&quot;BigDecimal from String: &quot; + bdFromString);
+    }
+}
+</code></pre>
+<p>在上述代码中，我们分别使用 <code>BigDecimal(double)</code> 和 <code>BigDecimal(String)</code> 构造方法创建了两个 <code>BigDecimal</code> 对象，并打印出了它们的值。请注意，当使用 <code>BigDecimal(double)</code> 构造方法时，精度损失会导致结果不准确，而使用 <code>BigDecimal(String)</code> 构造方法则可以确保精确表示。</p>
+<p>输出结果为：</p>
+<pre><code>BigDecimal from double: 0.1000000000000000055511151231257827021181583404541015625
+BigDecimal from String: 0.1
+</code></pre>
+<p>如你所见，使用 <code>BigDecimal(String)</code> 构造方法创建的 <code>BigDecimal</code> 对象确保了精确表示，而使用 <code>BigDecimal(double)</code> 构造方法则引起了精度损失。</p>
+<p>为了避免精度损失，我们应该始终使用 <code>BigDecimal(String)</code> 构造方法，将双精度浮点数转换为字符串后再进行构造。</p>
+<hr>
+<p><strong>使用BigDecimal(String)创建</strong></p>
+<p>对于 <code>BigDecimal(String)</code> 构造方法，我们可以通过传入一个字符串来精确地表示小数。例如，使用 <code>new BigDecimal(&quot;0.1&quot;)</code> 就可以创建一个精确表示为0.1的 <code>BigDecimal</code>，其标度为1。</p>
+<p>然而，需要注意的是，<code>new BigDecimal(&quot;0.10000&quot;)</code> 和 <code>new BigDecimal(&quot;0.1&quot;)</code> 这两个数的标度分别是5和1。如果我们使用 <code>BigDecimal</code> 的 <code>equals</code> 方法进行比较，得到的结果是 <code>false</code>，因为标度不同。</p>
+<p>为了创建一个精确表示0.1的 <code>BigDecimal</code>，我们可以使用以下两种方式：</p>
+<ol>
+<li>使用 <code>BigDecimal(String)</code> 构造方法：</li>
+</ol>
+<pre><code class="language-java">BigDecimal recommend1 = new BigDecimal(&quot;0.1&quot;);
+</code></pre>
+<ol start="2">
+<li>使用 <code>BigDecimal.valueOf(double)</code> 方法：</li>
+</ol>
+<pre><code class="language-java">BigDecimal recommend2 = BigDecimal.valueOf(0.1);
+</code></pre>
+<p>现在，让我们来解释一下 <code>BigDecimal.valueOf(0.1)</code> 是如何保证精确性的。</p>
+<p>解释:</p>
+<p><code>BigDecimal.valueOf(double)</code> 方法是 <code>BigDecimal</code> 类的一个静态工厂方法。当我们调用 <code>BigDecimal.valueOf(0.1)</code> 时，它会将 <code>double</code> 类型的参数转换为字符串，然后再使用 <code>BigDecimal(String)</code> 构造方法来创建 <code>BigDecimal</code> 对象。</p>
+<p>在这个过程中，有一个关键点是：<code>BigDecimal</code> 的 <code>BigDecimal(String)</code> 构造方法能够确保精确地表示字符串中的小数。尽管传入的参数是一个 <code>double</code> 类型的近似值，但在转换为字符串时，它会保留足够的位数，从而确保精确性。</p>
+<p>以下是可执行的完整代码示例来展示 <code>BigDecimal.valueOf(0.1)</code> 是如何保证精确性的：</p>
+<pre><code class="language-java">import java.math.BigDecimal;
+
+public class BigDecimalExample {
+    public static void main(String[] args) {
+        // 使用 BigDecimal(String) 构造方法创建精确表示0.1的 BigDecimal
+        BigDecimal recommend1 = new BigDecimal(&quot;0.1&quot;);
+
+        // 使用 BigDecimal.valueOf(double) 方法创建精确表示0.1的 BigDecimal
+        BigDecimal recommend2 = BigDecimal.valueOf(0.1);
+
+        // 打印结果
+        System.out.println(&quot;Recommended 1: &quot; + recommend1);
+        System.out.println(&quot;Recommended 2: &quot; + recommend2);
+
+        // 使用 equals 方法进行比较
+        System.out.println(&quot;Equals: &quot; + recommend1.equals(recommend2));
+    }
+}
+</code></pre>
+<p>输出结果为：</p>
+<pre><code>Recommended 1: 0.1
+Recommended 2: 0.1
+Equals: true
+</code></pre>
+<p>如你所见，通过 <code>BigDecimal.valueOf(0.1)</code> 方法创建的 <code>BigDecimal</code> 精确地表示了0.1，并且与使用 <code>BigDecimal(String)</code> 构造方法创建的 <code>BigDecimal</code> 是相等的。</p>
+<hr>
+<p>总结:</p>
+<p>计算机采用二进制表示数据，而很多十进制小数（如0.1）在二进制中是无限循环小数，因此无法精确表示。为了处理这个问题，计算机引入了单精度浮点数（float）和双精度浮点数（double）等近似表示方法。</p>
+<p>这样的近似表示导致了精度损失，因此在进行计算时，得到的结果也可能不是完全准确的。</p>
+<p>为了避免精度损失，我们应该使用 <code>BigDecimal(String)</code> 构造方法来创建 <code>BigDecimal</code> 对象，从而确保精确表示小数。</p>
+<p>下面是一个可执行的完整代码示例，展示了如何使用 <code>BigDecimal(String)</code> 构造方法创建 <code>BigDecimal</code> 对象，并进行精确的计算：</p>
+<pre><code class="language-java">import java.math.BigDecimal;
+
+public class BigDecimalExample {
+    public static void main(String[] args) {
+        // 使用 BigDecimal(String) 构造方法创建 BigDecimal 对象
+        BigDecimal decimalValue = new BigDecimal(&quot;0.1&quot;);
+        BigDecimal otherValue = new BigDecimal(&quot;0.2&quot;);
+
+        // 精确计算
+        BigDecimal sum = decimalValue.add(otherValue);
+        BigDecimal product = decimalValue.multiply(otherValue);
+
+        // 打印结果
+        System.out.println(&quot;BigDecimal 1: &quot; + decimalValue);
+        System.out.println(&quot;BigDecimal 2: &quot; + otherValue);
+        System.out.println(&quot;Sum: &quot; + sum);
+        System.out.println(&quot;Product: &quot; + product);
+    }
+}
+</code></pre>
+<p>在上述代码中，我们使用 <code>BigDecimal(String)</code> 构造方法来创建两个 <code>BigDecimal</code> 对象，分别表示0.1和0.2。然后，我们使用 <code>add</code> 方法对它们进行相加，并使用 <code>multiply</code> 方法进行乘法运算。由于使用了 <code>BigDecimal(String)</code> 构造方法，保证了精确表示，因此得到的结果是准确的。</p>
+<p>输出结果为：</p>
+<pre><code>BigDecimal 1: 0.1
+BigDecimal 2: 0.2
+Sum: 0.3
+Product: 0.02
+</code></pre>
+
+            </div>
+            
+              <div class="reward-btn">
+                <div class="reward-btn-text">赞赏</div>
+              </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      RiftRays
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://riftrays.github.io/ktE-o0PoG/" title="Java中的金额表示与计算">https://riftrays.github.io/ktE-o0PoG/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://riftrays.github.io/tag-Interview/"># interview</a>
+    
+      <a href="https://riftrays.github.io/tag-Java/"># Java</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="负数取绝对值结果不一定是正数" href="https://riftrays.github.io/OFZTTPDRB/">负数取绝对值结果不一定是正数</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="负数取绝对值结果不一定是正数" href="https://riftrays.github.io/OFZTTPDRB/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="为什么需要包装类" href="https://riftrays.github.io/61iwbB9aB/">为什么需要包装类</a>
+        <a class="nav-mobile-next" title="为什么需要包装类" href="https://riftrays.github.io/61iwbB9aB/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+            
+  
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-box">
+  <footer class="footer">
+    <center id="runTimeBox">
+      已运行:<span id="run_time"></span>
+    </center>
+    <span id="busuanzi_container_site_pv">浏览数:<span id="busuanzi_value_site_pv"></span> 次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span> 人</span>
+
+    <script>
+      BirthDay = new Date('2019/01/01');
+      if (BirthDay.getTime()) {
+        function runTime() {
+          str = "";
+          today = new Date();
+          timeold = today.getTime() - BirthDay.getTime();
+          msPerDay = 24 * 60 * 60 * 1000;
+          e_daysold = timeold / msPerDay;
+          daysold = Math.floor(e_daysold);
+          str += daysold + "天";
+          return str;
+        }
+        setInterval(function () {
+          $("#run_time").html(runTime());
+        }, 1000);
+      } else {
+        document.querySelector('.footer').removeChild(document.querySelector('#runTimeBox'));
+      }
+    </script>
+    <div class="poweredby">
+      Your time is limited, so don't waste it living someone else's life ... Stay Hungry. Stay Foolish.
+    </div>
+  </footer>
+  
+    
+        <div class="pisces back-to-top" id="back_to_top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span class="scrollpercent"> <span id="back_to_top_text">0</span>% </span>
+            
+        </div>
+        
+          
+            
+              <div class="bg-img">
+                <img src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/30_Throne2_1_4k.jpg" />
+              </div>
+              
+                
+                  
+                        
+</div>
+<script>
+  let sideBarOpen = "sidebar-open";
+  let body = document.body;
+  let back2Top = document.querySelector("#back_to_top"),
+    back2TopText = document.querySelector("#back_to_top_text"),
+    drawerBox = document.querySelector("#drawer_box"),
+    rightSideBar = document.querySelector(".sidebar"),
+    viewport = document.querySelector("body");
+
+  function scrollAnimation(currentY, targetY) {
+    let needScrollTop = targetY - currentY;
+    let _currentY = currentY;
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10);
+      _currentY += dist;
+      window.scrollTo(_currentY, currentY);
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY);
+      } else {
+        window.scrollTo(_currentY, targetY);
+      }
+    }, 1);
+  }
+
+  back2Top.addEventListener("click", function (e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+
+  window.addEventListener("scroll", function (e) {
+    let percent =
+      (document.scrollingElement.scrollTop /
+        (document.scrollingElement.scrollHeight -
+          document.scrollingElement.clientHeight)) *
+      100;
+    if (percent > 1 && !back2Top.classList.contains("back-top-active")) {
+      back2Top.classList.add("back-top-active");
+    }
+    if (percent == 0) {
+      back2Top.classList.remove("back-top-active");
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  let hasCacu = false;
+  window.addEventListener("resize", function (e) {
+    calcuHeight();
+  });
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (
+      (!hasCacu && back2Top.classList.contains("pisces")) ||
+      back2Top.classList.contains("gemini")
+    ) {
+      let sideBar = document.querySelector(".sidebar");
+      let navUl = document.querySelector("#site_nav");
+      sideBar.style =
+        "margin-top:" + (navUl.offsetHeight + navUl.offsetTop + 15) + "px;";
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+
+  let open = false,
+    MOTION_TIME = 300,
+    RIGHT_MOVE_DIS = "320px";
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll(".right-motion");
+    let right = drawerBox.classList.contains("right");
+
+    let transitionDir = right
+      ? "transition.slideRightIn"
+      : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingRight: "0px",
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingLeft: "0px",
+      };
+    }
+
+    drawerBox.onclick = function () {
+      open = !open;
+      jQuery.Velocity(rightSideBar, "stop");
+      jQuery.Velocity(viewport, "stop");
+      jQuery.Velocity(rightMotions, "stop");
+      if (open) {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: RIGHT_MOVE_DIS,
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, transitionDir, {});
+            },
+          }
+        );
+        jQuery.Velocity(viewport, openProp, {
+          duration: MOTION_TIME,
+        });
+      } else {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: "0px",
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, {
+                opacity: 0,
+              });
+            },
+          }
+        );
+        jQuery.Velocity(viewport, closeProp, {
+          duration: MOTION_TIME,
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle("muse-line");
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    };
+  }
+
+  // 链接跳转
+  let newWindow = "false";
+  if (newWindow === "true") {
+    let links = document.querySelectorAll(".post-body a");
+    links.forEach((item) => {
+      if (!item.classList.contains("btn")) {
+        item.setAttribute("target", "_blank");
+      }
+    });
+  }
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
+  // 离开当前页title变化
+  var leaveTitle = "😭菜~请给个机会~拜托了！";
+  var normal_title = document.title;
+  if (leaveTitle) {
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState == "hidden") {
+        normal_title = document.title;
+        document.title = leaveTitle;
+      } else {
+        document.title = normal_title;
+      }
+    });
+  }
+</script>
+
+<link rel="stylesheet" href="/media/css/jquery.fancybox.css" />
+<script src="/media/js/jquery.fancybox.js"></script>
+
+<script>
+  let images = document.querySelectorAll(".section img");
+  images.forEach((image) => {
+    var parent = image.parentElement;
+    var next = image.nextElementSibling;
+    parent.removeChild(image);
+    var aelem = document.createElement("a");
+    aelem.href = image.src;
+    aelem.dataset["fancybox"] = "images";
+    aelem.dataset["rel"] = "fancybox-button";
+    aelem.classList.add("fancybox");
+    aelem.appendChild(image);
+    parent.insertBefore(aelem, next);
+  });
+</script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+            <img id="zfb" class="reward-img" src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/1689773094686.jpg" alt="赞赏码">
+          
+          
+            <img id="wx" class="reward-img" src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/mm_facetoface_collect_qrcode_1689773482372.jpg" alt="赞赏码">
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip"> 多多打赏~鼓励作者更多原创内容！</p>
+    </div>
+    <div class="bottom">
+      
+      <div id="zfbBtn" class="pay-text">
+        支付宝
+      </div>
+      
+      
+      <div id="wxBtn" class="pay-text">
+        微信支付
+      </div>
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        jQuery.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        jQuery.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        jQuery.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        jQuery.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      jQuery.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      jQuery.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
+  </div>
+</body>
+<input hidden id="copy" />
+<script>
+  !function () {
+    let times = document.querySelectorAll('.publish-time');
+    for (let i = 0; i < times.length; i++) {
+      let date = times[i].dataset.t;
+      let time = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
+      if (time < 60) {
+        str = time + '秒之前';
+      } else if (time < 3600) {
+        str = Math.floor(time / 60) + '分钟之前';
+      } else if (time >= 3600 && time < 86400) {
+        str = Math.floor(time / 3600) + '小时之前';
+      } else if (time >= 86400 && time < 259200) {
+        str = Math.floor(time / 86400) + '天之前';
+      } else {
+        str = times[i].textContent;
+      }
+      times[i].textContent = str;
+    }
+  }();
+</script>
+
+<script>
+  let language = '';
+  if (language !== '') {
+    let map = new Map();
+    if (language === 'en') {
+      map.set('search', 'Search');
+      map.set('category', 'Categories');
+      map.set('article', 'Articles');
+      map.set('tag', 'Tags');
+      map.set('top', 'Top');
+      map.set('publish', 'published');
+      map.set('minute', ' minutes');
+      map.set('read-more', 'Read More');
+      map.set('view', 'View');
+      map.set('words', ' words');
+      map.set('category-in', 'category in');
+      map.set('preview', 'Meta');
+      map.set('index', 'Toc');
+      map.set('no-archives', "You haven't created yet");
+      map.set('archives', " articles in total");
+      map.set('cloud-tags', " tags in total");
+      map.set('copyright', "Copyright: ");
+      map.set('author', "Author: ");
+      map.set('link', "Link: ");
+      map.set('leave-message', "Leave a message");
+      map.set('format', "Links Format");
+      map.set('site-name', "Name: ");
+      map.set('site-link', "Link: ");
+      map.set('site-desc', "Desc: ");
+      map.set('stat', " related results, taking ");
+      map.set('stat-time', " ms");
+      map.set('site-img', "Image: ");
+    }
+
+    if (map.size > 0) {
+      let lanElems = document.querySelectorAll('.language');
+      lanElems.forEach(elem => {
+        let lan = elem.dataset.lan, text = map.get(lan);
+        if (elem.__proto__ === HTMLInputElement.prototype) {
+          elem.placeholder = text
+        } else {
+          if (elem.dataset.count) {
+            text = elem.dataset.count + text;
+          }
+          elem.textContent = text;
+        }
+      })
+    }
+  }
+
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+
+</script>
+<script src="/media/js/motion.js"></script>
+
+
+  <script
+    src="https://jsdelivr.codeqihan.com/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+  <script>
+    var scroll = new SmoothScroll('a[href*="#"]', {
+      speed: 200
+    });
+  </script>
+
+
+
+<script src="/media/js/mouse/peace.js"></script>
+
+
+  <script src="/media/js/cool.js"></script>
+
+
+
+  <div class="snow-container"></div>
+  <script color="0,205,205" pointer-events="auto" zIndex="-1" opacity='0.7' count="99" src="/media/js/bg/canvas-nest.js"></script>
+
+</html>

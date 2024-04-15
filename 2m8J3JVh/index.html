@@ -1,0 +1,3298 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="RiftRays&#39;s Blog">
+<meta name="description" content="年轻且优秀 积极且颓废">
+<meta name="theme-color" content="#000">
+<title>Mybatis-Plus | RiftRays&#39;s Blog</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1713170724295">
+<link rel="stylesheet" href="/media/css/pisces.css">
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.loli.net/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/pojoaque.css"
+  rel="stylesheet">
+
+<script src="https://jsdelivr.codeqihan.com/npm/pace-js@1.0.2/pace.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/black/pace-theme-center-atom.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="/styles/main.css">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/media/js/jquery.js"></script>
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://jsdelivr.codeqihan.com/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://jsdelivr.codeqihan.com/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+
+<script defer src="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+
+  <meta name="description" content="Mybatis-Plus" />
+  <meta name="keywords" content="MyBatis,MyBatis-Plus,Java" />
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    <style>
+.gridea-search-input{
+    height: 30px;
+    width: 200px;
+    box-sizing: border-box;
+    padding: 0 15px 0 30px;
+    border: 1px solid #e3e3e3;
+    border-radius: 15px;
+    color: #273849;
+    outline: none;
+    transition: border-color 0.2s ease;
+    background: #fff url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='80' height='65'%3E%3Cpath d='M936.265 854.34L757.43 675.52c46.499-63.168 74.02-141.125 74.02-225.398 0-210.1-170.945-381.039-381.055-381.039S69.346 240.023 69.346 450.122c0 210.105 170.94 381.043 381.049 381.043 84.275 0 162.235-27.52 225.405-74.019l178.833 178.819c11.27 11.265 26.036 16.903 40.813 16.903 14.777 0 29.543-5.638 40.819-16.903 22.536-22.546 22.536-59.09 0-81.625zM163.14 450.122C163.14 291.733 292 162.87 450.396 162.87s287.261 128.862 287.261 287.252c0 158.39-128.867 287.252-287.261 287.252S163.14 608.512 163.14 450.122z' fill='%23C4C4C4'/%3E%3C/svg%3E") 8px 7px no-repeat;
+    background-size: 20px;
+    vertical-align: middle !important;
+}
+.gridea-search-input:focus {
+  border-color: #666666;
+  right: 0;
+}
+</style>
+
+<div class="pisces">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>RiftRays&#39;s Blog</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">年轻且优秀 积极且颓废</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io" target="_self">
+                  <i class="fa fa-globe"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io/archives" target="_self">
+                  <i class="fa fa-archive"></i> 笔记
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io/tags" target="_self">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+          
+            
+              <li class="nav-item ">
+                <a href="/friends/" target="_self">
+                  
+                    <i class="fa fa-address-book"></i> 友链
+                  
+                </a>
+              </li>
+            
+          
+          
+            <li id="fa_search" class="nav-item">
+				<a href="javascript:void(0);">
+					<span class="language" data-lan="search">
+						<div class="gridea-search-div">
+							<form id="gridea-search-form" action="https://riftrays.github.io/search/">
+								<input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
+							</form>
+						</div>
+					</span>
+				</a>
+			</li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout pisces ">
+      <div class="section-layout-wrapper">
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body pisces" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">RiftRays</p>
+    
+    <div class="site-description right-motion">
+      
+        <p id="binft">年轻且优秀 积极且颓废</p>
+      
+    </div>
+    
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">24</span>
+        <span class="site-item-stat-name language" data-lan="article">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">11</span>
+        <span class="site-item-stat-name language" data-lan="tag">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+  
+  
+    <div class="sidebar-item sidebar-item-social">
+      <div class="social-item">
+        
+          
+            <a href="https://github.com/RiftRays">
+              <i class="fa fa-github-alt" title="GitHub"></i>
+            </a>
+          
+            <a href="mailto:RiftRays@gmail.com">
+              <i class="fa fa-envelope" title="Gmail"></i>
+            </a>
+          
+            <a href="">
+              <i class="fa fa-comments" title="WeChat"></i>
+            </a>
+          
+            <a href="">
+              <i class="fa fa-qq" title="QQ"></i>
+            </a>
+          
+        
+        
+      </div>
+    </div>
+  
+
+
+
+  <div style="width: 100%; position: relative;">
+    <canvas id="canvasDiyBlock" style="width:100%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+    <script src="/media/js/magic/clock.js"></script>
+  </div>
+
+</div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4">搭建步骤</a></li>
+<li><a href="#%E4%BC%98%E7%82%B9%E7%89%B9%E6%80%A7">优点/特性</a></li>
+<li><a href="#%E4%B8%8Emybatis%E5%AF%B9%E6%AF%94">与Mybatis对比</a></li>
+<li><a href="#%E5%8F%96%E6%B6%88%E5%90%AF%E5%8A%A8banner%E5%9B%BE%E6%A0%87">取消启动banner图标</a></li>
+<li><a href="#mybatisplus%E7%9A%84crud%E6%93%8D%E4%BD%9C">MyBatisPlus的CRUD操作</a></li>
+<li><a href="#%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2">分页查询</a>
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0-2">概述</a></li>
+<li><a href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4">实现步骤</a></li>
+<li><a href="#%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F">分页插件配置方式</a></li>
+</ul>
+</li>
+<li><a href="#mybatisplus%E6%97%A5%E5%BF%97">MyBatisPlus日志</a></li>
+<li><a href="#dql%E7%BC%96%E7%A8%8B%E6%8E%A7%E5%88%B6">DQL编程控制</a>
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0-3">概述</a></li>
+<li><a href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4-2">实现步骤</a></li>
+<li><a href="#%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6">查询条件</a></li>
+<li><a href="#%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2">条件查询</a>
+<ul>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%B8%80%E6%8C%89%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2">方式一：按条件查询</a></li>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%BA%8Clambda%E6%A0%BC%E5%BC%8F%E6%8C%89%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2%E5%AE%8C%E6%95%B4">方式二：Lambda格式按条件查询（完整）</a></li>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%B8%89lambda%E6%A0%BC%E5%BC%8F%E6%8C%89%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2%E7%AE%80%E5%8C%96">方式三：Lambda格式按条件查询（简化）</a></li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4">完整实现步骤</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%84%E5%90%88%E6%9D%A1%E4%BB%B6">组合条件</a>
+<ul>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%B8%80%E5%B9%B6%E4%B8%94%E5%85%B3%E7%B3%BBand">方式一：并且关系（and）</a></li>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%BA%8C%E6%88%96%E8%80%85%E5%85%B3%E7%B3%BBor">方式二：或者关系（or）</a></li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4-2">完整实现步骤</a></li>
+</ul>
+</li>
+<li><a href="#null%E7%9A%84%E5%A4%84%E7%90%86">Null的处理</a>
+<ul>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%B8%80if%E8%AF%AD%E5%8F%A5%E6%8E%A7%E5%88%B6%E6%9D%A1%E4%BB%B6%E8%BF%BD%E5%8A%A0">方式一：if语句控制条件追加</a></li>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%BA%8C%E6%9D%A1%E4%BB%B6%E5%8F%82%E6%95%B0%E6%8E%A7%E5%88%B6">方式二：条件参数控制</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9F%A5%E8%AF%A2%E5%B0%84%E5%BD%B1">查询射影</a>
+<ul>
+<li><a href="#%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E5%8C%85%E5%90%AB%E6%A8%A1%E5%9E%8B%E7%B1%BB%E4%B8%AD%E9%83%A8%E5%88%86%E5%B1%9E%E6%80%A7">查询结果包含模型类中部分属性</a></li>
+<li><a href="#%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E5%8C%85%E5%90%AB%E6%A8%A1%E5%9E%8B%E7%B1%BB%E4%B8%AD%E6%9C%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E5%B1%9E%E6%80%A7">查询结果包含模型类中未定义的属性</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a>
+<ul>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E5%90%8D%E4%B8%8E%E8%A1%A8%E5%90%8D%E4%B8%8D%E4%B8%80%E8%87%B4">对象名与表名不一致</a></li>
+<li><a href="#%E5%AD%97%E6%AE%B5%E4%B8%8E%E5%B1%9E%E6%80%A7%E5%90%8D%E4%B8%8D%E4%B8%80%E8%87%B4">字段与属性名不一致</a></li>
+<li><a href="#%E5%B1%9E%E6%80%A7%E4%B8%AD%E5%AD%98%E5%9C%A8%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%AD%97%E6%AE%B5">属性中存在不存在的字段</a></li>
+<li><a href="#%E6%95%8F%E6%84%9F%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%8F%82%E4%B8%8E%E6%9F%A5%E8%AF%A2">敏感数据不参与查询</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#dml%E7%BC%96%E7%A8%8B%E6%8E%A7%E5%88%B6">DML编程控制</a>
+<ul>
+<li><a href="#id%E7%94%9F%E6%88%90%E7%AD%96%E7%95%A5">Id生成策略</a>
+<ul>
+<li><a href="#%E8%87%AA%E5%A2%9E%E7%AD%96%E7%95%A5auto">自增策略（AUTO）</a></li>
+<li><a href="#%E6%89%8B%E5%8A%A8%E6%8C%87%E5%AE%9Anone">手动指定（NONE）</a></li>
+<li><a href="#%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95assign_id">雪花算法（ASSIGN_ID）</a></li>
+<li><a href="#uuid%E7%AD%96%E7%95%A5uuid">UUID策略（UUID）</a></li>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%94%AE%E7%94%9F%E6%88%90%E7%AD%96%E7%95%A5input">自定义主键生成策略（INPUT）</a></li>
+<li><a href="#%E5%85%A8%E5%B1%80%E7%AD%96%E7%95%A5%E9%85%8D%E7%BD%AE">全局策略配置</a></li>
+</ul>
+</li>
+<li><a href="#%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C">批量操作</a>
+<ul>
+<li><a href="#%E5%A4%9A%E8%AE%B0%E5%BD%95%E5%88%A0%E9%99%A4%E6%89%B9%E9%87%8Fdelete">多记录删除（批量Delete）</a></li>
+<li><a href="#%E5%A4%9A%E8%AE%B0%E5%BD%95%E6%9F%A5%E8%AF%A2%E6%89%B9%E9%87%8Fselect">多记录查询（批量Select）</a></li>
+<li><a href="#%E5%A4%9A%E8%AE%B0%E5%BD%95%E6%9B%B4%E6%96%B0%E6%89%B9%E9%87%8Fupdate">多记录更新（批量Update）</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C">删除操作</a>
+<ul>
+<li><a href="#%E5%88%A0%E9%99%A4%E6%96%B9%E5%BC%8F">删除方式</a>
+<ul>
+<li><a href="#%E7%89%A9%E7%90%86%E5%88%A0%E9%99%A4">物理删除</a></li>
+<li><a href="#%E9%80%BB%E8%BE%91%E5%88%A0%E9%99%A4">逻辑删除</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4-3">实现步骤</a></li>
+<li><a href="#%E5%85%B3%E9%97%AD%E9%80%BB%E8%BE%91%E5%88%A0%E9%99%A4">关闭逻辑删除</a></li>
+<li><a href="#%E5%85%A8%E5%B1%80%E5%BC%80%E5%90%AF%E9%85%8D%E7%BD%AE">全局开启配置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%B9%90%E8%A7%82%E9%94%81">乐观锁</a>
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0-4">概述</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E4%B9%90%E8%A7%82%E9%94%81%E7%9A%84%E5%8E%9F%E7%90%86">使用乐观锁的原理</a></li>
+<li><a href="#%E4%B9%90%E8%A7%82%E9%94%81%E5%AE%9E%E7%8E%B0%E7%A4%BA%E4%BE%8B">乐观锁实现示例</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8">代码生成器</a></li>
+<li><a href="#%E6%96%B0%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8">新代码生成器</a>
+<ul>
+<li><a href="#%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90">快速生成</a></li>
+<li><a href="#%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%94%9F%E6%88%90">交互式生成</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    jQuery.Velocity(hideElement, 'stop');
+    jQuery.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        jQuery.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://riftrays.github.io/2m8J3JVh/"> Mybatis-Plus </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2020-01-05 21:47:14">2020-01-05 21:47:14</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">标签:</span>
+       
+      <a href="https://riftrays.github.io/tag-MyBatis/"> <span>MyBatis</span> </a>、   
+      <a href="https://riftrays.github.io/tag-MyBatis-Plus/"> <span>MyBatis-Plus</span> </a>、   
+      <a href="https://riftrays.github.io/tag-Java/">
+        <span>Java</span>
+      </a>
+       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >69<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >16590<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+      
+    <span
+      id="/2m8J3JVh/"
+      data-flag-title="Mybatis-Plus"
+      class="meta-item pc-show leancloud_visitors"
+    >
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span
+        ><span class="language" data-lan="view">浏览量:</span>:<span
+          class="leancloud-visitors-count"
+        ></span
+      ></span>
+    </span>
+    
+  </div>
+</section>
+
+            <div class="post-body next-md-body" id="post_body">
+              <h1 id="概述">概述</h1>
+<p>MyBatis-Plus（简称MP）是一个基于MyBatis的增强工具库，它简化了与数据库的交互，提供了更多的便利功能，帮助开发者更高效地进行数据库操作。MP提供了许多实用的功能，包括通用CRUD操作、分页查询、条件构造器、逻辑删除、乐观锁、自动填充字段等。</p>
+<p>官方网站：https://mybatis.plus/  (他人捐赠)</p>
+<p>官方网站：https://mp.baomidou.com/  （原始官网）</p>
+<h1 id="搭建步骤">搭建步骤</h1>
+<p><strong>步骤 1：创建一个新的Maven项目</strong></p>
+<p>首先，创建一个新的Maven项目作为你的工程。</p>
+<p><strong>步骤 2：添加依赖</strong></p>
+<p>在项目的pom.xml文件中添加MyBatis-Plus和MySQL的依赖。</p>
+<pre><code class="language-xml">&lt;dependencies&gt;
+    &lt;!-- MyBatis-Plus依赖 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+        &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+        &lt;version&gt;最新版本&lt;/version&gt;
+    &lt;/dependency&gt;
+    
+    &lt;!-- MySQL驱动依赖 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;mysql&lt;/groupId&gt;
+        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+        &lt;version&gt;最新版本&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<p>请确保将<code>最新版本</code>替换为MyBatis-Plus和MySQL驱动的实际版本号。</p>
+<p><strong>步骤 3：配置数据源</strong></p>
+<p>在<code>application.properties</code>或<code>application.yml</code>中配置数据库连接信息。</p>
+<pre><code class="language-properties">spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
+spring.datasource.username=your_mysql_username
+spring.datasource.password=your_mysql_password
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+</code></pre>
+<p>请将<code>your_database_name</code>、<code>your_mysql_username</code>和<code>your_mysql_password</code>替换为实际的数据库名、MySQL用户名和密码。</p>
+<p><strong>步骤 4：创建实体类</strong></p>
+<p>创建对应数据库表的实体类。例如，我们创建一个名为<code>User</code>的实体类。</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName(&quot;user&quot;)
+public class User {
+    @TableId(type = IdType.AUTO)
+    private Long id;
+    private String name;
+    private Integer age;
+    // 省略getter和setter方法
+}
+</code></pre>
+<p>在这里，我们使用了<code>@TableName</code>注解指定实体类对应的数据库表名，<code>@TableId</code>注解指定主键类型为自增。</p>
+<p><strong>步骤 5：创建Mapper接口</strong></p>
+<p>创建<code>UserMapper</code>接口，并继承<code>BaseMapper&lt;User&gt;</code>。</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserMapper extends BaseMapper&lt;User&gt; {
+}
+</code></pre>
+<p><strong>步骤 6：配置Mapper扫描路径</strong></p>
+<p>在<code>application.properties</code>或<code>application.yml</code>中配置Mapper的扫描路径。</p>
+<pre><code class="language-properties">mybatis-plus.mapper-locations=classpath:mapper/*.xml
+</code></pre>
+<p><strong>步骤 7：创建Mapper XML文件（可选）</strong></p>
+<p>在<code>resources</code>目录下创建<code>mapper</code>文件夹，并在其中创建<code>UserMapper.xml</code>文件。在该XML文件中，你可以编写自定义的SQL语句，MyBatis-Plus将会自动识别并与接口方法进行绑定。</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;mapper namespace=&quot;com.example.mapper.UserMapper&quot;&gt;
+
+    &lt;!-- 你可以在这里编写自定义的SQL语句，MyBatis-Plus会自动识别并与接口方法进行绑定 --&gt;
+
+&lt;/mapper&gt;
+</code></pre>
+<p><strong>步骤 8：使用MyBatis-Plus进行数据库操作</strong></p>
+<p>现在，你已经完成了MyBatis-Plus环境的搭建。你可以通过<code>UserMapper</code>接口进行数据库的增删改查操作。</p>
+<pre><code class="language-java">import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+    private final UserMapper userMapper;
+
+    @Autowired
+    public UserService(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
+
+    // 示例：插入数据
+    public void insertUser(User user) {
+        userMapper.insert(user);
+    }
+
+    // 示例：查询数据
+    public User getUserById(Long id) {
+        return userMapper.selectById(id);
+    }
+
+    // 示例：更新数据
+    public void updateUser(User user) {
+        userMapper.updateById(user);
+    }
+
+    // 示例：删除数据
+    public void deleteUser(Long id) {
+        userMapper.deleteById(id);
+    }
+}
+</code></pre>
+<p>这样，你就可以通过<code>UserService</code>中的方法来进行数据库操作，而无需编写具体的SQL语句。</p>
+<h1 id="优点特性">优点/特性</h1>
+<ol>
+<li>
+<p><strong>简化开发</strong><br>
+MyBatis-Plus封装了许多常用的CRUD操作，通过继承BaseMapper接口，无需编写繁琐的SQL语句，开发者可以更专注于业务逻辑的实现。这极大地简化了开发过程，提高了开发效率。</p>
+</li>
+<li>
+<p><strong>强大的查询功能</strong><br>
+MyBatis-Plus提供了丰富的查询条件构造器，支持链式调用，可以轻松地构建复杂的查询条件，包括等值、范围、模糊查询等。</p>
+</li>
+</ol>
+<pre><code class="language-java">// 示例：查询年龄在25到30岁之间，并且姓名包含&quot;John&quot;的用户
+List&lt;User&gt; userList = userMapper.selectList(
+    new QueryWrapper&lt;User&gt;()
+        .between(&quot;age&quot;, 25, 30)
+        .like(&quot;name&quot;, &quot;John&quot;)
+);
+</code></pre>
+<ol start="3">
+<li><strong>分页查询</strong><br>
+MyBatis-Plus提供了方便的分页查询功能，开发者只需传入页码和每页记录数即可轻松实现分页查询。</li>
+</ol>
+<pre><code class="language-java">// 示例：查询第2页，每页10条记录的用户列表
+Page&lt;User&gt; page = new Page&lt;&gt;(2, 10);
+IPage&lt;User&gt; userPage = userMapper.selectPage(page, null);
+List&lt;User&gt; userList = userPage.getRecords();
+</code></pre>
+<ol start="4">
+<li><strong>自动填充</strong><br>
+MyBatis-Plus支持自动填充功能，在插入和更新数据时，可以自动填充指定的字段，例如创建时间和更新时间。</li>
+</ol>
+<pre><code class="language-java">public class MyMetaObjectHandler implements MetaObjectHandler {
+
+    @Override
+    public void insertFill(MetaObject metaObject) {
+        this.strictInsertFill(metaObject, &quot;createTime&quot;, LocalDateTime.class, LocalDateTime.now());
+        this.strictUpdateFill(metaObject, &quot;updateTime&quot;, LocalDateTime.class, LocalDateTime.now());
+    }
+
+    @Override
+    public void updateFill(MetaObject metaObject) {
+        this.strictUpdateFill(metaObject, &quot;updateTime&quot;, LocalDateTime.class, LocalDateTime.now());
+    }
+}
+</code></pre>
+<ol start="5">
+<li><strong>乐观锁支持</strong><br>
+MyBatis-Plus支持乐观锁功能，通过在实体类字段上添加<code>@Version</code>注解，可以实现乐观锁的功能，防止并发修改冲突。</li>
+</ol>
+<pre><code class="language-java">public class User {
+    private Long id;
+    private String name;
+    private Integer age;
+    @Version
+    private Integer version; // 乐观锁版本号
+    // 省略getter和setter方法
+}
+</code></pre>
+<ol start="6">
+<li><strong>多租户支持</strong><br>
+MyBatis-Plus提供了多租户的支持，可以在SQL查询时自动添加租户字段的条件，实现数据隔离。</li>
+</ol>
+<pre><code class="language-java">// 示例：根据租户ID查询用户列表
+List&lt;User&gt; userList = userMapper.selectList(
+    new QueryWrapper&lt;User&gt;().eq(&quot;tenant_id&quot;, tenantId)
+);
+</code></pre>
+<ol start="7">
+<li><strong>逻辑删除</strong><br>
+MyBatis-Plus支持逻辑删除功能，通过在实体类字段上添加<code>@TableLogic</code>注解，可以实现逻辑删除的功能。</li>
+</ol>
+<pre><code class="language-java">public class User {
+    private Long id;
+    private String name;
+    private Integer age;
+    @TableLogic // 逻辑删除标志
+    private Integer deleted;
+    // 省略getter和setter方法
+}
+</code></pre>
+<ol start="8">
+<li>
+<p><strong>代码生成器</strong><br>
+MyBatis-Plus提供了代码生成器，可以根据数据库表自动生成实体类、Mapper接口以及XML文件，极大地提高了开发效率。</p>
+</li>
+<li>
+<p><strong>性能优化</strong><br>
+MyBatis-Plus对查询进行了优化，可以缓存SQL查询结果，减少数据库访问次数，提高性能。</p>
+</li>
+<li>
+<p><strong>可扩展性</strong><br>
+MyBatis-Plus提供了许多钩子方法和插件机制，允许开发者自定义扩展功能，满足特定的业务需求。</p>
+</li>
+</ol>
+<h1 id="与mybatis对比">与Mybatis对比</h1>
+<table>
+<thead>
+<tr>
+<th>MyBatis</th>
+<th>MyBatis-Plus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基于MyBatis，是MyBatis的增强版。</td>
+<td>基于MyBatis，是MyBatis的增强工具，提供了更多便捷的功能。</td>
+</tr>
+<tr>
+<td>需要手动编写大部分的SQL语句。</td>
+<td>封装了常用的CRUD操作，无需手动编写大部分的SQL语句。</td>
+</tr>
+<tr>
+<td>提供了基本的CRUD操作，如insert、update、delete、select。</td>
+<td>在基本的CRUD操作之上，增加了更多的操作方法，如Lambda查询、分页查询等。</td>
+</tr>
+<tr>
+<td>不提供自动填充、乐观锁、逻辑删除等功能。</td>
+<td>提供了自动填充、乐观锁、逻辑删除等强大功能。</td>
+</tr>
+<tr>
+<td>不提供代码生成器。</td>
+<td>提供了代码生成器，可以根据数据库表自动生成实体类、Mapper接口、XML文件。</td>
+</tr>
+<tr>
+<td>不提供分页查询功能。</td>
+<td>提供了方便的分页查询功能。</td>
+</tr>
+<tr>
+<td>不提供多租户支持。</td>
+<td>提供了多租户支持，可以实现数据隔离。</td>
+</tr>
+<tr>
+<td>不提供逻辑删除功能。</td>
+<td>提供了逻辑删除功能，可以实现数据逻辑删除。</td>
+</tr>
+<tr>
+<td>需要手动编写Mapper接口和XML文件。</td>
+<td>可以通过继承BaseMapper接口，自动实现部分CRUD操作，简化开发。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>MyBatis与MyBatis-Plus的代码实现对比：</strong></p>
+<p><strong>1. 使用MyBatis进行数据库操作</strong></p>
+<pre><code class="language-java">// UserMapper.java
+public interface UserMapper {
+    User selectUserById(Long id);
+    void insertUser(User user);
+    void updateUser(User user);
+    void deleteUser(Long id);
+}
+</code></pre>
+<pre><code class="language-xml">&lt;!-- UserMapper.xml --&gt;
+&lt;mapper namespace=&quot;com.example.mapper.UserMapper&quot;&gt;
+    &lt;select id=&quot;selectUserById&quot; resultType=&quot;com.example.entity.User&quot;&gt;
+        SELECT * FROM user WHERE id = #{id}
+    &lt;/select&gt;
+    &lt;insert id=&quot;insertUser&quot; parameterType=&quot;com.example.entity.User&quot;&gt;
+        INSERT INTO user (id, name, age) VALUES (#{id}, #{name}, #{age})
+    &lt;/insert&gt;
+    &lt;update id=&quot;updateUser&quot; parameterType=&quot;com.example.entity.User&quot;&gt;
+        UPDATE user SET name = #{name}, age = #{age} WHERE id = #{id}
+    &lt;/update&gt;
+    &lt;delete id=&quot;deleteUser&quot; parameterType=&quot;Long&quot;&gt;
+        DELETE FROM user WHERE id = #{id}
+    &lt;/delete&gt;
+&lt;/mapper&gt;
+</code></pre>
+<p><strong>2. 使用MyBatis-Plus进行数据库操作</strong></p>
+<pre><code class="language-java">// UserMapper.java
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserMapper extends BaseMapper&lt;User&gt; {
+}
+</code></pre>
+<pre><code class="language-java">// UserService.java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+    private final UserMapper userMapper;
+
+    @Autowired
+    public UserService(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
+
+    // 查询数据
+    public User getUserById(Long id) {
+        return userMapper.selectById(id);
+    }
+
+    // 插入数据
+    public void insertUser(User user) {
+        userMapper.insert(user);
+    }
+
+    // 更新数据
+    public void updateUser(User user) {
+        userMapper.updateById(user);
+    }
+
+    // 删除数据
+    public void deleteUser(Long id) {
+        userMapper.deleteById(id);
+    }
+}
+</code></pre>
+<p>通过对比以上代码，我们可以看到使用MyBatis-Plus的代码更加简洁，无需手动编写SQL语句，通过继承<code>BaseMapper</code>接口，就可以实现大部分的CRUD操作。此外，MyBatis-Plus还提供了一些额外的功能，如自动填充、乐观锁、逻辑删除等，可以进一步简化开发过程，并提供更多便捷的操作方法。</p>
+<h1 id="取消启动banner图标">取消启动banner图标</h1>
+<p>当使用MyBatis-Plus时，默认情况下，它会显示一个启动banner图标，其中包含MyBatis-Plus的Logo和版本信息。</p>
+<p>如果你希望取消MyBatis-Plus的启动banner图标显示，可以按照以下步骤进行配置：</p>
+<p><strong>方法一：通过配置文件取消</strong></p>
+<p>可以通过在<code>application.properties</code>或<code>application.yml</code>配置文件中添加如下配置来取消MyBatis-Plus的启动banner图标显示：</p>
+<pre><code class="language-properties">mybatis-plus.banner=false
+</code></pre>
+<p>或者在<code>application.yml</code>中：</p>
+<pre><code class="language-yaml">mybatis-plus:
+  banner: false
+</code></pre>
+<p><strong>方法二：通过编程方式取消</strong></p>
+<p>我们也可以通过编程方式取消MyBatis-Plus的启动banner图标显示。以下是一个Java代码示例：</p>
+<pre><code class="language-java">import org.springframework.boot.Banner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MyApplication {
+
+    public static void main(String[] args) {
+        SpringApplication app = new SpringApplication(MyApplication.class);
+        app.setBannerMode(Banner.Mode.OFF); // 取消启动banner图标的显示
+        app.run(args);
+    }
+
+}
+</code></pre>
+<p>在上述代码中，我们通过<code>SpringApplication</code>类的<code>setBannerMode()</code>方法将启动banner图标的显示模式设置为<code>Banner.Mode.OFF</code>，从而取消了启动时的图标显示。</p>
+<h1 id="mybatisplus的crud操作">MyBatisPlus的CRUD操作</h1>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>插入数据</td>
+<td>insert(entity)</td>
+<td>插入一条数据，如果数据已存在则会抛出异常。</td>
+</tr>
+<tr>
+<td>插入或更新数据</td>
+<td>insertOrUpdate(entity)</td>
+<td>插入或更新数据，根据实体类的主键判断数据是否存在，存在则更新，不存在则插入。</td>
+</tr>
+<tr>
+<td>更新数据</td>
+<td>updateById(entity)</td>
+<td>根据主键更新数据，实体类中未设置的字段会被更新为null。</td>
+</tr>
+<tr>
+<td>更新数据（忽略null值）</td>
+<td>update(entity, updateWrapper)</td>
+<td>根据条件更新数据，updateWrapper为条件构造器，可以指定更新的字段和条件。</td>
+</tr>
+<tr>
+<td>删除数据</td>
+<td>deleteById(id)</td>
+<td>根据主键删除数据。</td>
+</tr>
+<tr>
+<td>删除数据（条件删除）</td>
+<td>delete(deleteWrapper)</td>
+<td>根据条件删除数据，deleteWrapper为条件构造器，可以指定删除的条件。</td>
+</tr>
+<tr>
+<td>查询数据（根据ID）</td>
+<td>selectById(id)</td>
+<td>根据主键查询数据。</td>
+</tr>
+<tr>
+<td>查询数据（多个ID）</td>
+<td>selectBatchIds(ids)</td>
+<td>根据多个主键查询数据。</td>
+</tr>
+<tr>
+<td>查询数据（所有数据）</td>
+<td>selectList(null)</td>
+<td>查询所有数据。</td>
+</tr>
+<tr>
+<td>查询数据（条件查询）</td>
+<td>selectList(queryWrapper)</td>
+<td>根据条件查询数据，queryWrapper为条件构造器，可以指定查询的条件。</td>
+</tr>
+<tr>
+<td>查询数据（分页查询）</td>
+<td>selectPage(page, queryWrapper)</td>
+<td>分页查询数据，page为分页对象，queryWrapper为条件构造器，可以指定查询的条件。</td>
+</tr>
+<tr>
+<td>查询数据（总记录数）</td>
+<td>selectCount(queryWrapper)</td>
+<td>查询满足条件的数据总记录数，queryWrapper为条件构造器，可以指定查询的条件。</td>
+</tr>
+<tr>
+<td>查询一条数据</td>
+<td>selectOne(queryWrapper)</td>
+<td>查询满足条件的一条数据，如果满足条件的数据有多条，只返回第一条数据。</td>
+</tr>
+<tr>
+<td>查询数据（Lambda查询）</td>
+<td>lambdaQuery().list()</td>
+<td>使用Lambda表达式进行查询，更加直观和简洁。</td>
+</tr>
+<tr>
+<td>查询数据（自定义SQL）</td>
+<td>selectBySql(sql, params)</td>
+<td>执行自定义SQL语句查询数据，params为参数列表。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>代码实现辅助理解：</strong></p>
+<pre><code class="language-java">// 插入数据
+User user = new User();
+user.setName(&quot;John&quot;);
+user.setAge(25);
+userMapper.insert(user);
+
+// 更新数据
+User user = userMapper.selectById(1L);
+user.setAge(26);
+userMapper.updateById(user);
+
+// 删除数据
+userMapper.deleteById(1L);
+
+// 查询数据（根据ID）
+User user = userMapper.selectById(1L);
+
+// 查询数据（条件查询）
+List&lt;User&gt; userList = userMapper.selectList(
+    new QueryWrapper&lt;User&gt;()
+        .ge(&quot;age&quot;, 25)
+        .like(&quot;name&quot;, &quot;John&quot;)
+);
+
+// 查询数据（分页查询）
+Page&lt;User&gt; page = new Page&lt;&gt;(1, 5); // 查询第1页，每页5条记录
+IPage&lt;User&gt; userPage = userMapper.selectPage(page,
+    new QueryWrapper&lt;User&gt;()
+        .ge(&quot;age&quot;, 25)
+        .like(&quot;name&quot;, &quot;John&quot;)
+);
+List&lt;User&gt; userList = userPage.getRecords();
+
+// 查询数据（总记录数）
+int count = userMapper.selectCount(
+    new QueryWrapper&lt;User&gt;()
+        .ge(&quot;age&quot;, 25)
+        .like(&quot;name&quot;, &quot;John&quot;)
+);
+
+// 查询一条数据
+User user = userMapper.selectOne(
+    new QueryWrapper&lt;User&gt;()
+        .eq(&quot;age&quot;, 25)
+        .orderByDesc(&quot;create_time&quot;)
+);
+
+// 使用Lambda查询
+List&lt;User&gt; userList = new LambdaQueryChainWrapper&lt;&gt;(userMapper)
+    .ge(User::getAge, 25)
+    .like(User::getName, &quot;John&quot;)
+    .list();
+
+// 执行自定义SQL语句查询数据
+String sql = &quot;SELECT * FROM user WHERE age &gt;= ? AND name LIKE ?&quot;;
+List&lt;User&gt; userList = userMapper.selectBySql(sql, 25, &quot;%John%&quot;);
+</code></pre>
+<h1 id="分页查询">分页查询</h1>
+<h2 id="概述-2">概述</h2>
+<p>当使用MyBatis-Plus（MP）进行分页查询时，我们需要使用<code>Page</code>对象来表示分页信息，并结合<code>QueryWrapper</code>来构建查询条件。<code>Page</code>对象用于指定当前页码和每页记录数，而<code>QueryWrapper</code>用于添加其他查询条件。</p>
+<h2 id="实现步骤">实现步骤</h2>
+<p>假设我们有一个用户实体类<code>User</code>，对应数据库中的<code>user</code>表，表结构如下：</p>
+<pre><code class="language-sql">CREATE TABLE user (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50),
+  age INT,
+  email VARCHAR(100)
+);
+</code></pre>
+<p>首先，我们需要准备好Spring Boot项目，并添加相应的依赖。在<code>pom.xml</code>中添加MyBatis-Plus和数据库连接相关的依赖：</p>
+<pre><code class="language-xml">&lt;!-- MyBatis-Plus --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+    &lt;version&gt;3.4.3.1&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- 数据库连接相关依赖（此处以MySQL为例） --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;version&gt;8.0.26&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>接下来，我们需要配置数据库连接信息和MyBatis-Plus分页插件。在<code>application.properties</code>（或<code>application.yml</code>）中添加以下配置：</p>
+<p>配置方式一：</p>
+<pre><code class="language-properties"># 数据库连接配置
+spring.datasource.url=jdbc:mysql://localhost:3306/db_example
+spring.datasource.username=root
+spring.datasource.password=your_password
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# MyBatis-Plus配置
+mybatis-plus.configuration.map-underscore-to-camel-case=true
+mybatis-plus.configuration.use-generated-keys=true
+mybatis-plus.configuration.db-config.limit=100
+</code></pre>
+<p>在这个配置中，我们是直接在配置文件中使用属性进行配置。具体解释如下：</p>
+<ol>
+<li><code>mybatis-plus.configuration.map-underscore-to-camel-case=true</code>：<br>
+这个配置项表示是否将数据库字段的下划线命名转换为Java对象属性的驼峰命名。如果设置为<code>true</code>，例如数据库字段为<code>user_name</code>，对应的Java对象属性会变成<code>userName</code>。</li>
+<li><code>mybatis-plus.configuration.use-generated-keys=true</code>：<br>
+这个配置项表示是否使用数据库自动生成的主键值作为Java对象的主键属性。如果设置为<code>true</code>，在插入一条记录时，MyBatis-Plus会尝试将数据库自动生成的主键值设置到Java对象的主键属性中。</li>
+<li><code>mybatis-plus.configuration.db-config.limit=100</code>：<br>
+这个配置项设置数据库查询的默认分页大小。当在分页查询时没有指定具体的分页大小时，MyBatis-Plus会使用这个配置的默认值。这里设置的是默认分页大小为100。</li>
+</ol>
+<p>配置方式二：</p>
+<pre><code class="language-java">@Configuration
+public class MybatisPlusConfig {
+    
+    @Bean
+    public MybatisPlusInterceptor mybatisPlusInterceptor(){
+        //1 创建MybatisPlusInterceptor拦截器对象
+        MybatisPlusInterceptor mpInterceptor=new MybatisPlusInterceptor();
+        //2 添加分页拦截器
+        mpInterceptor.addInnerInterceptor(new PaginationInnerInterceptor());
+        return mpInterceptor;
+    }
+}
+</code></pre>
+<p>在这个配置中，我们是通过Java Config方式进行配置。具体解释如下：</p>
+<ol>
+<li>首先，我们创建了一个<code>MybatisPlusInterceptor</code>拦截器对象，它是MyBatis-Plus提供的拦截器，用于添加各种功能的插件。</li>
+<li>然后，我们通过<code>mpInterceptor.addInnerInterceptor(new PaginationInnerInterceptor())</code>方式，添加了分页拦截器。分页拦截器是MyBatis-Plus提供的插件，用于自动拦截分页查询的请求，并完成分页查询逻辑。</li>
+</ol>
+<p><strong>区别：</strong></p>
+<ol>
+<li>配置方式不同：
+<ul>
+<li>配置一是在<code>application.properties</code>或<code>application.yml</code>配置文件中直接设置属性值的方式来配置。</li>
+<li>配置二是通过Java Config方式来配置，即在Java类中使用<code>@Configuration</code>注解，并创建Bean对象来配置。</li>
+</ul>
+</li>
+<li>配置粒度不同：
+<ul>
+<li>配置一中的属性设置是全局生效的，影响整个项目的MyBatis-Plus行为。</li>
+<li>配置二中的拦截器配置是针对特定功能的，例如这里只添加了分页拦截器，如果需要其他功能，还可以添加其他的拦截器。</li>
+</ul>
+</li>
+<li>可扩展性不同：
+<ul>
+<li>配置一较为简单，但如果需要更复杂的功能或自定义插件，则可能需要额外的配置和编写自定义插件。</li>
+<li>配置二提供了更灵活的方式，可以根据实际需求选择不同的拦截器组合，也可以编写自定义的拦截器来实现更复杂的功能。</li>
+</ul>
+</li>
+</ol>
+<p>接下来，创建<code>User</code>实体类和对应的Mapper接口：</p>
+<pre><code class="language-java">// User实体类
+public class User {
+    private Long id;
+    private String name;
+    private Integer age;
+    private String email;
+
+    // Getters and Setters...
+}
+
+// UserMapper接口
+@Mapper
+public interface UserMapper extends BaseMapper&lt;User&gt; {
+    List&lt;User&gt; queryUserByPage(@Param(&quot;page&quot;) Page&lt;User&gt; page, @Param(&quot;user&quot;) User user);
+}
+</code></pre>
+<p>在上述代码中，我们使用<code>@Mapper</code>注解标记<code>UserMapper</code>接口，表明它是一个MyBatis的Mapper接口，并继承了<code>BaseMapper&lt;User&gt;</code>。<code>BaseMapper</code>是MyBatis-Plus提供的接口，包含了基本的增删改查方法。</p>
+<p>接下来，我们创建一个Service层，用于调用Mapper进行分页查询：</p>
+<pre><code class="language-java">@Service
+public class UserServiceImpl implements UserService {
+    @Autowired
+    private UserMapper userMapper;
+
+    @Override
+    public List&lt;User&gt; queryUserByPage(int currentPage, int pageSize, String name) {
+        Page&lt;User&gt; page = new Page&lt;&gt;(currentPage, pageSize);
+        QueryWrapper&lt;User&gt; queryWrapper = new QueryWrapper&lt;&gt;();
+        if (name != null &amp;&amp; !name.isEmpty()) {
+            queryWrapper.like(&quot;name&quot;, name);
+        }
+        return userMapper.queryUserByPage(page, null);
+    }
+}
+</code></pre>
+<p>在上述代码中，我们创建了一个<code>UserServiceImpl</code>实现<code>UserService</code>接口。在<code>queryUserByPage</code>方法中，我们创建了一个<code>Page</code>对象，用于指定当前页码和每页记录数。然后，我们创建了一个<code>QueryWrapper</code>对象，并根据传入的<code>name</code>参数（如果有）添加了模糊查询条件。</p>
+<p>接下来，在Controller层处理请求，将前端传来的分页参数传递给Service层进行分页查询：</p>
+<pre><code class="language-java">@RestController
+public class UserController {
+    @Autowired
+    private UserService userService;
+
+    @GetMapping(&quot;/users&quot;)
+    public List&lt;User&gt; getUsersByPage(@RequestParam(name = &quot;page&quot;, defaultValue = &quot;1&quot;) int currentPage,
+                                     @RequestParam(name = &quot;size&quot;, defaultValue = &quot;10&quot;) int pageSize,
+                                     @RequestParam(required = false) String name) {
+        return userService.queryUserByPage(currentPage, pageSize, name);
+    }
+}
+</code></pre>
+<p>在上述代码中，我们使用<code>@RestController</code>注解标记<code>UserController</code>类，表明它是一个控制器类。在<code>getUsersByPage</code>方法中，我们使用<code>@RequestParam</code>注解标记请求参数，并指定了默认值。</p>
+<p>现在，我们已经完成了整个分页查询的实现。当前端发起GET请求到<code>/users</code>时，Controller接收请求参数（当前页码、每页记录数、查询关键字），然后调用Service层的方法进行分页查询，最终将查询结果返回给前端。</p>
+<p>请确保你的数据库连接配置正确，并且数据库中有相应的数据。运行Spring Boot应用程序后，你可以通过类似以下的URL进行分页查询：</p>
+<pre><code>http://localhost:8080/users?page=1&amp;size=10&amp;name=John
+</code></pre>
+<p>以上URL将查询名为&quot;John&quot;的用户信息，返回第1页的10条记录。</p>
+<h2 id="分页插件配置方式">分页插件配置方式</h2>
+<ol>
+<li>
+<p><strong>使用Java Config配置分页插件：</strong><br>
+在Spring Boot项目中，你可以使用Java Config来配置MyBatis-Plus分页插件。在配置类中，创建一个<code>PaginationInterceptor</code>实例，并将其注册到MyBatis的<code>SqlSessionFactoryBean</code>中。</p>
+<p>示例代码：</p>
+<pre><code class="language-java">@Configuration
+public class MyBatisConfig {
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        return new PaginationInterceptor();
+    }
+}
+</code></pre>
+<p>在上述配置中，我们创建了一个<code>PaginationInterceptor</code>的Bean，并将其加入到MyBatis的配置中。这样，MyBatis-Plus分页插件就会自动生效，无需额外的配置。</p>
+</li>
+<li>
+<p><strong>使用MyBatis配置文件配置分页插件：</strong><br>
+如果你使用传统的MyBatis项目，你可以在MyBatis的配置文件中手动配置分页插件。在<code>mybatis-config.xml</code>中添加以下配置：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+    &lt;plugins&gt;
+        &lt;plugin interceptor=&quot;com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor&quot;/&gt;
+    &lt;/plugins&gt;
+&lt;/configuration&gt;
+</code></pre>
+<p>在上述配置中，我们使用<code>&lt;plugin&gt;</code>标签指定了<code>PaginationInterceptor</code>的类路径，这样MyBatis-Plus分页插件就会被自动注册。</p>
+</li>
+<li>
+<p><strong>使用分页拦截器配置插件参数：</strong><br>
+MyBatis-Plus的分页插件还支持自定义配置。你可以通过<code>PaginationInterceptor</code>来配置一些参数，例如数据库类型、是否开启合理化分页等。</p>
+<p>示例代码：</p>
+<pre><code class="language-java">@Configuration
+public class MyBatisConfig {
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        PaginationInterceptor interceptor = new PaginationInterceptor();
+        // 设置数据库类型，例如MySQL
+        interceptor.setDbType(DbType.MYSQL);
+        // 设置是否开启合理化分页
+        interceptor.setOverflow(true);
+        return interceptor;
+    }
+}
+</code></pre>
+<p>在上述示例中，我们创建了一个<code>PaginationInterceptor</code>的Bean，并设置了数据库类型为MySQL，以及开启了合理化分页功能。</p>
+</li>
+<li>
+<p><strong>使用物理分页配置插件参数：</strong><br>
+物理分页是一种更高效的分页方式，可以使用数据库的特定语法来执行分页查询。MyBatis-Plus也支持物理分页，你可以通过<code>PaginationInterceptor</code>配置物理分页参数。</p>
+<p>示例代码：</p>
+<pre><code class="language-java">@Configuration
+public class MyBatisConfig {
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        PaginationInterceptor interceptor = new PaginationInterceptor();
+        // 设置物理分页参数
+        interceptor.setDialectType(&quot;mysql&quot;);
+        return interceptor;
+    }
+}
+</code></pre>
+<p>在上述示例中，我们创建了一个<code>PaginationInterceptor</code>的Bean，并设置了物理分页的数据库类型为MySQL。</p>
+</li>
+</ol>
+<p>无论使用哪种配置方式，配置MyBatis-Plus分页插件都是非常简单的。根据你的项目需求和开发环境，选择合适的方式来配置分页插件即可。分页插件的配置通常只需在项目启动时完成一次，然后插件将自动拦截分页查询的请求。</p>
+<h1 id="mybatisplus日志">MyBatisPlus日志</h1>
+<p>当使用MyBatis-Plus时，我们可以通过配置来开启MyBatis-Plus的日志输出。MyBatis-Plus使用MyBatis的日志功能，因此我们需要同时配置MyBatis和MyBatis-Plus的日志。</p>
+<p><strong>步骤一：配置MyBatis的日志级别</strong></p>
+<p>首先，我们需要在配置文件中配置MyBatis的日志级别。MyBatis的日志级别分为TRACE、DEBUG、INFO、WARN和ERROR五个级别，级别从低到高依次为TRACE &lt; DEBUG &lt; INFO &lt; WARN &lt; ERROR。配置MyBatis的日志级别为DEBUG或更高级别，可以让我们看到SQL语句和执行结果。</p>
+<p>在<code>application.properties</code>或<code>application.yml</code>配置文件中添加如下配置：</p>
+<pre><code class="language-properties"># 配置MyBatis的日志级别为DEBUG
+logging.level.org.mybatis=DEBUG
+</code></pre>
+<p><strong>步骤二：配置日志框架</strong></p>
+<p>MyBatis-Plus使用Slf4j作为日志框架，因此我们需要在项目中添加Slf4j的依赖，并配置对应的日志桥接器。</p>
+<p>如果你的项目使用Maven，可以在<code>pom.xml</code>中添加以下依赖：</p>
+<pre><code class="language-xml">&lt;!-- Slf4j 日志门面 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+    &lt;version&gt;1.7.32&lt;/version&gt; &lt;!-- 使用当前最新版本 --&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Logback 日志框架 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+    &lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+    &lt;version&gt;1.2.6&lt;/version&gt; &lt;!-- 使用当前最新版本 --&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p><strong>步骤三：配置Logback的日志输出格式</strong></p>
+<p>接下来，我们需要配置Logback的日志输出格式，以便更清晰地查看MyBatis-Plus的日志信息。</p>
+<p>在项目的<code>src/main/resources</code>目录下创建<code>logback.xml</code>文件，并添加如下配置：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;configuration&gt;
+
+    &lt;!-- 定义日志输出的格式 --&gt;
+    &lt;property name=&quot;LOG_PATTERN&quot; value=&quot;%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n&quot; /&gt;
+
+    &lt;!-- 控制台输出日志 --&gt;
+    &lt;appender name=&quot;CONSOLE&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;
+        &lt;encoder&gt;
+            &lt;pattern&gt;${LOG_PATTERN}&lt;/pattern&gt;
+        &lt;/encoder&gt;
+    &lt;/appender&gt;
+
+    &lt;!-- MyBatis-Plus 的日志输出器 --&gt;
+    &lt;logger name=&quot;com.baomidou.mybatisplus.core&quot; level=&quot;DEBUG&quot;&gt;
+        &lt;appender-ref ref=&quot;CONSOLE&quot; /&gt;
+    &lt;/logger&gt;
+
+    &lt;!-- 设置根日志级别为DEBUG --&gt;
+    &lt;root level=&quot;DEBUG&quot;&gt;
+        &lt;appender-ref ref=&quot;CONSOLE&quot; /&gt;
+    &lt;/root&gt;
+
+&lt;/configuration&gt;
+</code></pre>
+<p>在上述配置中，我们定义了一个名为<code>CONSOLE</code>的控制台输出日志的Appender，并将日志输出格式设置为我们定义的<code>${LOG_PATTERN}</code>。然后，我们将MyBatis-Plus的日志级别设置为DEBUG，并将其日志输出到控制台。</p>
+<h1 id="dql编程控制">DQL编程控制</h1>
+<h2 id="概述-3">概述</h2>
+<p>当使用MyBatis-Plus（MP）进行DQL（Data Query Language）编程控制时，我们主要关注以下方面：</p>
+<ol>
+<li>实体类的定义：定义Java实体类，用于映射数据库表结构。</li>
+<li>Mapper接口的定义：定义Mapper接口，用于定义数据库的增删改查操作。</li>
+<li>Mapper XML的配置：配置Mapper接口对应的XML文件，实现具体的数据库操作。</li>
+<li>使用MyBatis-Plus提供的封装方法：使用MyBatis-Plus提供的便捷方法简化数据库操作。</li>
+</ol>
+<h2 id="实现步骤-2">实现步骤</h2>
+<p><strong>步骤一：实体类的定义</strong></p>
+<p>首先，我们需要定义一个Java实体类，用于映射数据库表的结构。实体类的字段应该与数据库表的字段对应，并使用注解来标识表名、字段名等信息。</p>
+<p>示例：假设我们有一个名为<code>User</code>的数据库表，包含<code>id</code>、<code>username</code>和<code>age</code>字段。</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName(&quot;user&quot;)
+public class User {
+
+    private Long id;
+    private String username;
+    private Integer age;
+
+    // 省略 getter 和 setter 方法
+}
+</code></pre>
+<p><strong>步骤二：Mapper接口的定义</strong></p>
+<p>接下来，我们需要定义一个Mapper接口，用于定义数据库的增删改查操作。这个接口不需要实现，只需要声明对应的方法。</p>
+<p>示例：我们定义一个名为<code>UserMapper</code>的接口，包含查询用户信息和插入用户信息的方法。</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+public interface UserMapper extends BaseMapper&lt;User&gt; {
+
+    List&lt;User&gt; selectAllUsers();
+
+    void insertUser(User user);
+}
+</code></pre>
+<p>注意：<code>UserMapper</code>继承了<code>BaseMapper&lt;User&gt;</code>，这是MyBatis-Plus提供的通用Mapper接口，通过继承它，我们可以省去很多基本的CRUD操作的实现。</p>
+<p><strong>步骤三：Mapper XML的配置</strong></p>
+<p>接下来，我们需要为<code>UserMapper</code>接口编写对应的Mapper XML文件，实现具体的数据库操作。</p>
+<p>示例：创建一个名为<code>UserMapper.xml</code>的XML文件，并放置在<code>resources/mapper</code>目录下。</p>
+<pre><code class="language-xml">&lt;!-- resources/mapper/UserMapper.xml --&gt;
+&lt;mapper namespace=&quot;com.example.mapper.UserMapper&quot;&gt;
+
+    &lt;!-- 查询所有用户信息 --&gt;
+    &lt;select id=&quot;selectAllUsers&quot; resultType=&quot;com.example.entity.User&quot;&gt;
+        SELECT id, username, age FROM user
+    &lt;/select&gt;
+
+    &lt;!-- 插入用户信息 --&gt;
+    &lt;insert id=&quot;insertUser&quot;&gt;
+        INSERT INTO user (username, age) VALUES (#{username}, #{age})
+    &lt;/insert&gt;
+
+&lt;/mapper&gt;
+</code></pre>
+<p><strong>步骤四：使用MyBatis-Plus提供的封装方法</strong></p>
+<p>在配置完成后，我们可以直接使用MyBatis-Plus提供的封装方法来进行数据库操作，而无需编写额外的SQL语句。</p>
+<p>示例：在Service层中使用<code>UserMapper</code>来查询所有用户信息和插入用户信息。</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public List&lt;User&gt; getAllUsers() {
+        return baseMapper.selectAllUsers();
+    }
+
+    @Override
+    public void addUser(User user) {
+        baseMapper.insertUser(user);
+    }
+}
+</code></pre>
+<p>在上述示例中，<code>UserServiceImpl</code>继承了<code>ServiceImpl&lt;UserMapper, User&gt;</code>，这是MyBatis-Plus提供的通用Service实现类。通过继承它，我们可以直接调用<code>baseMapper</code>来实现数据库操作。</p>
+<h2 id="查询条件">查询条件</h2>
+<p>在多条件查询中，我们可以使用不同的组合来灵活构建查询条件，以满足不同的查询需求。以下是多条件查询可能的组合方式的详细讲解：</p>
+<p>官方参考文档：https://baomidou.com/pages/10c804/</p>
+<table>
+<thead>
+<tr>
+<th>组合方式</th>
+<th>描述</th>
+<th>代码实现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单条件查询</td>
+<td>只使用一个条件进行查询</td>
+<td><code>queryWrapper.eq(&quot;name&quot;, &quot;John&quot;);</code></td>
+</tr>
+<tr>
+<td>多条件AND查询</td>
+<td>多个条件之间使用AND逻辑连接进行查询</td>
+<td><code>queryWrapper.eq(&quot;name&quot;, &quot;John&quot;).eq(&quot;age&quot;, 25);</code></td>
+</tr>
+<tr>
+<td>多条件OR查询</td>
+<td>多个条件之间使用OR逻辑连接进行查询</td>
+<td><code>queryWrapper.eq(&quot;name&quot;, &quot;John&quot;).or().eq(&quot;age&quot;, 30);</code></td>
+</tr>
+<tr>
+<td>多条件嵌套查询</td>
+<td>多个条件使用括号嵌套进行查询</td>
+<td><code>queryWrapper.eq(&quot;name&quot;, &quot;John&quot;).and(qw -&gt; qw.eq(&quot;age&quot;, 25).or().eq(&quot;age&quot;, 30));</code></td>
+</tr>
+<tr>
+<td>条件参数控制</td>
+<td>根据条件参数动态构建查询条件</td>
+<td><code>queryWrapper.eq(StringUtils.isNotBlank(name), &quot;name&quot;, name).eq(age != null, &quot;age&quot;, age);</code></td>
+</tr>
+<tr>
+<td>Lambda方式查询</td>
+<td>使用Lambda表达式进行条件查询</td>
+<td><code>lambdaQueryWrapper.eq(User::getName, &quot;John&quot;).eq(User::getAge, 25);</code></td>
+</tr>
+<tr>
+<td>Query方式查询</td>
+<td>使用Query对象进行条件查询</td>
+<td><code>queryWrapper.eq(&quot;name&quot;, &quot;John&quot;).eq(&quot;age&quot;, 25);</code></td>
+</tr>
+<tr>
+<td>带排序的查询</td>
+<td>在查询条件的基础上添加排序规则</td>
+<td><code>queryWrapper.eq(&quot;name&quot;, &quot;John&quot;).orderByAsc(&quot;age&quot;);</code></td>
+</tr>
+<tr>
+<td>带分组的查询</td>
+<td>在查询条件的基础上添加分组规则</td>
+<td><code>queryWrapper.eq(&quot;name&quot;, &quot;John&quot;).groupBy(&quot;age&quot;);</code></td>
+</tr>
+<tr>
+<td>带分页的查询</td>
+<td>在查询条件的基础上添加分页规则</td>
+<td><code>queryWrapper.eq(&quot;name&quot;, &quot;John&quot;).page(new Page&lt;&gt;(1, 10));</code></td>
+</tr>
+</tbody>
+</table>
+<p>请注意，以上代码实现仅用于示例，具体的使用方式可能会根据实际情况有所不同。多条件查询非常灵活，可以根据不同的业务需求组合不同的条件来获取符合要求的查询结果。</p>
+<p>在实际使用中，可以根据具体的业务需求选择适合的查询方式，根据条件的复杂程度和查询结果的需求，灵活组合各种条件查询方式，以满足不同场景的查询需求。</p>
+<h2 id="条件查询">条件查询</h2>
+<p>当使用MyBatis-Plus（MP）进行DQL（Data Query Language）编程控制中的条件查询时，我们可以通过不同的方式来实现按条件查询。</p>
+<p>在下面，我将详细并全面地讲解三种方式的条件查询：按条件查询、Lambda格式按条件查询（完整）、Lambda格式按条件查询（简化）。并结合代码来辅助理解。</p>
+<p>我们以查询用户信息为例，假设有一个名为<code>User</code>的数据库表，包含<code>id</code>、<code>username</code>和<code>age</code>字段。以下是用户的实体类定义：</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName(&quot;user&quot;)
+public class User {
+
+    private Long id;
+    private String username;
+    private Integer age;
+
+    // 省略 getter 和 setter 方法
+}
+</code></pre>
+<h3 id="方式一按条件查询">方式一：按条件查询</h3>
+<p>在MP中，我们可以使用<code>Wrapper</code>对象来构建查询条件，并将其作为参数传递给相应的查询方法。<code>Wrapper</code>是MP提供的查询条件构造器，我们可以通过它来设置各种查询条件。</p>
+<p>示例：按条件查询年龄在20岁以上的用户信息。</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public List&lt;User&gt; getUsersByAge(int age) {
+        QueryWrapper&lt;User&gt; queryWrapper = new QueryWrapper&lt;&gt;();
+        queryWrapper.ge(&quot;age&quot;, age);
+        return baseMapper.selectList(queryWrapper);
+    }
+}
+</code></pre>
+<p>在上述示例中，我们创建了一个<code>QueryWrapper&lt;User&gt;</code>对象，并使用<code>ge</code>方法设置查询条件为年龄大于等于指定的<code>age</code>值。然后，我们将<code>QueryWrapper</code>作为参数传递给<code>selectList</code>方法，完成按条件查询。</p>
+<h3 id="方式二lambda格式按条件查询完整">方式二：Lambda格式按条件查询（完整）</h3>
+<p>MP提供了Lambda表达式的方式来更简洁地构建查询条件。使用Lambda表达式，我们可以在编译时进行语法检查，避免了写错字段名或拼写错误的问题。</p>
+<p>示例：按条件查询年龄在20岁以上的用户信息，使用Lambda格式进行完整的条件构造。</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public List&lt;User&gt; getUsersByAge(int age) {
+        LambdaQueryWrapper&lt;User&gt; lambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();
+        lambdaQueryWrapper.ge(User::getAge, age);
+        return baseMapper.selectList(lambdaQueryWrapper);
+    }
+}
+</code></pre>
+<p>在上述示例中，我们创建了一个<code>LambdaQueryWrapper&lt;User&gt;</code>对象，并使用<code>ge</code>方法设置查询条件为年龄大于等于指定的<code>age</code>值。使用Lambda表达式，我们可以直接引用实体类的字段，并通过方法引用的方式指定要比较的字段。然后，我们将<code>LambdaQueryWrapper</code>作为参数传递给<code>selectList</code>方法，完成按条件查询。</p>
+<h3 id="方式三lambda格式按条件查询简化">方式三：Lambda格式按条件查询（简化）</h3>
+<p>对于简单的条件查询，我们可以进一步简化Lambda表达式的写法，使代码更加简洁。</p>
+<p>示例：按条件查询年龄在20岁以上的用户信息，使用Lambda格式进行简化的条件构造。</p>
+<pre><code class="language-java">import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public List&lt;User&gt; getUsersByAge(int age) {
+        return lambdaQuery().ge(User::getAge, age).list();
+    }
+}
+</code></pre>
+<p>在上述示例中，我们直接使用<code>lambdaQuery()</code>方法来创建<code>LambdaQueryWrapper&lt;User&gt;</code>对象，并链式调用<code>ge</code>方法设置查询条件为年龄大于等于指定的<code>age</code>值。然后，通过<code>list()</code>方法完成按条件查询。</p>
+<h3 id="完整实现步骤">完整实现步骤</h3>
+<ol>
+<li><code>User</code>实体类的定义：</li>
+</ol>
+<pre><code class="language-java">import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName(&quot;user&quot;)
+public class User {
+
+    private Long id;
+    private String username;
+    private Integer age;
+
+    // 省略 getter 和 setter 方法
+}
+</code></pre>
+<ol start="2">
+<li><code>UserMapper</code>接口的定义：</li>
+</ol>
+<pre><code class="language-java">import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+public interface UserMapper extends BaseMapper&lt;User&gt; {
+
+}
+</code></pre>
+<ol start="3">
+<li><code>UserMapper.xml</code>的配置：</li>
+</ol>
+<pre><code class="language-xml">&lt;!-- resources/mapper/UserMapper.xml --&gt;
+&lt;mapper namespace=&quot;com.example.mapper.UserMapper&quot;&gt;
+
+&lt;/mapper&gt;
+</code></pre>
+<ol start="4">
+<li>Service层的实现：</li>
+</ol>
+<pre><code class="language-java">import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public List&lt;User&gt; getUsersByAge(int age) {
+        return baseMapper.selectList(lambdaQuery().ge(User::getAge, age));
+    }
+}
+</code></pre>
+<h2 id="组合条件">组合条件</h2>
+<p>在MyBatis-Plus（MP）中，组合条件是指在查询时使用多个条件来限制结果集。常见的组合条件包括&quot;并且关系&quot;（and）和&quot;或者关系&quot;（or）。通过组合条件，我们可以更精确地筛选出满足特定条件的数据。</p>
+<h3 id="方式一并且关系and">方式一：并且关系（and）</h3>
+<p>在MP中，使用<code>Wrapper</code>对象来构建查询条件时，多个条件之间默认是&quot;并且关系&quot;（and），即多个条件都必须同时满足才能查询到数据。</p>
+<p>示例：按条件查询用户名为&quot;John&quot;且年龄在20岁以上的用户信息。</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public List&lt;User&gt; getUsersByNameAndAge(String name, int age) {
+        QueryWrapper&lt;User&gt; queryWrapper = new QueryWrapper&lt;&gt;();
+        queryWrapper.eq(&quot;username&quot;, name).ge(&quot;age&quot;, age);
+        return baseMapper.selectList(queryWrapper);
+    }
+}
+</code></pre>
+<p>在上述示例中，我们创建了一个<code>QueryWrapper&lt;User&gt;</code>对象，并使用<code>eq</code>方法设置查询条件为用户名等于指定的<code>name</code>值，同时使用<code>ge</code>方法设置查询条件为年龄大于等于指定的<code>age</code>值。这两个条件之间是&quot;并且关系&quot;，即查询结果要满足用户名为&quot;John&quot;且年龄在20岁以上的条件。</p>
+<h3 id="方式二或者关系or">方式二：或者关系（or）</h3>
+<p>如果我们需要使用&quot;或者关系&quot;来组合条件，可以使用<code>or</code>方法来实现。</p>
+<p>示例：按条件查询用户名为&quot;John&quot;或者年龄在20岁以上的用户信息。</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public List&lt;User&gt; getUsersByNameOrAge(String name, int age) {
+        QueryWrapper&lt;User&gt; queryWrapper = new QueryWrapper&lt;&gt;();
+        queryWrapper.eq(&quot;username&quot;, name).or().ge(&quot;age&quot;, age);
+        return baseMapper.selectList(queryWrapper);
+    }
+}
+</code></pre>
+<p>在上述示例中，我们创建了一个<code>QueryWrapper&lt;User&gt;</code>对象，并使用<code>eq</code>方法设置查询条件为用户名等于指定的<code>name</code>值。然后，使用<code>or</code>方法表示接下来的条件是&quot;或者关系&quot;。紧接着，我们使用<code>ge</code>方法设置查询条件为年龄大于等于指定的<code>age</code>值。这两个条件之间是&quot;或者关系&quot;，即查询结果要满足用户名为&quot;John&quot;或者年龄在20岁以上的条件。</p>
+<h3 id="完整实现步骤-2">完整实现步骤</h3>
+<ol>
+<li><code>User</code>实体类的定义：</li>
+</ol>
+<pre><code class="language-java">import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName(&quot;user&quot;)
+public class User {
+
+    private Long id;
+    private String username;
+    private Integer age;
+
+    // 省略 getter 和 setter 方法
+}
+</code></pre>
+<ol start="2">
+<li><code>UserMapper</code>接口的定义：</li>
+</ol>
+<pre><code class="language-java">import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+public interface UserMapper extends BaseMapper&lt;User&gt; {
+
+}
+</code></pre>
+<ol start="3">
+<li><code>UserMapper.xml</code>的配置：</li>
+</ol>
+<pre><code class="language-xml">&lt;!-- resources/mapper/UserMapper.xml --&gt;
+&lt;mapper namespace=&quot;com.example.mapper.UserMapper&quot;&gt;
+
+&lt;/mapper&gt;
+</code></pre>
+<ol start="4">
+<li>Service层的实现：</li>
+</ol>
+<pre><code class="language-java">import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public List&lt;User&gt; getUsersByNameAndAge(String name, int age) {
+        QueryWrapper&lt;User&gt; queryWrapper = new QueryWrapper&lt;&gt;();
+        queryWrapper.eq(&quot;username&quot;, name).ge(&quot;age&quot;, age);
+        return baseMapper.selectList(queryWrapper);
+    }
+
+    @Override
+    public List&lt;User&gt; getUsersByNameOrAge(String name, int age) {
+        QueryWrapper&lt;User&gt; queryWrapper = new QueryWrapper&lt;&gt;();
+        queryWrapper.eq(&quot;username&quot;, name).or().ge(&quot;age&quot;, age);
+        return baseMapper.selectList(queryWrapper);
+    }
+}
+</code></pre>
+<h2 id="null的处理">Null的处理</h2>
+<p>在多条件查询的场景中，有时候条件的值可能为空。在这种情况下，我们需要针对不同的情况进行处理，以确保查询条件正确且不出现错误。</p>
+<p>在MyBatis-Plus（MP）中，处理条件值为空的情况有多种方式，我们可以使用<code>Wrapper</code>对象的方法来构建查询条件，同时根据条件值是否为空来决定是否添加该条件。</p>
+<h3 id="方式一if语句控制条件追加">方式一：if语句控制条件追加</h3>
+<p>在这种方式中，我们可以使用if语句来判断条件是否为空，如果不为空，则将该条件追加到查询条件中。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public List&lt;User&gt; getUsersByAgeRange(Integer minAge, Integer maxAge) {
+        LambdaQueryWrapper&lt;User&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+        
+        if (minAge != null) {
+            queryWrapper.gt(User::getAge, minAge);
+        }
+        
+        if (maxAge != null) {
+            queryWrapper.lt(User::getAge, maxAge);
+        }
+        
+        return baseMapper.selectList(queryWrapper);
+    }
+}
+</code></pre>
+<p>在上述示例中，我们通过使用if语句判断<code>minAge</code>和<code>maxAge</code>是否为空，如果不为空，则使用<code>gt</code>和<code>lt</code>方法来设置年龄的大于和小于条件，实现了根据年龄范围来查询用户信息。</p>
+<h3 id="方式二条件参数控制">方式二：条件参数控制</h3>
+<p>MyBatis-Plus提供了条件参数控制的方法，我们可以在查询条件中使用条件判断来决定是否使用该条件。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public List&lt;User&gt; getUsersByAgeRange(Integer minAge, Integer maxAge) {
+        LambdaQueryWrapper&lt;User&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+        
+        queryWrapper.gt(minAge != null, User::getAge, minAge)
+                    .lt(maxAge != null, User::getAge, maxAge);
+        
+        return baseMapper.selectList(queryWrapper);
+    }
+}
+</code></pre>
+<p>在上述示例中，我们使用了条件参数控制，通过在<code>gt</code>和<code>lt</code>方法中传入一个boolean类型的条件判断，当该条件为true时，才会使用对应的查询条件，否则不使用该条件。</p>
+<h2 id="查询射影">查询射影</h2>
+<p>在MyBatis-Plus中，查询投影指的是从数据库中查询出特定字段，并将其映射到Java模型类或其他数据结构中。查询投影可以实现只查询模型类中部分属性、包含模型类未定义的属性以及进行分组和分页操作。</p>
+<h3 id="查询结果包含模型类中部分属性">查询结果包含模型类中部分属性</h3>
+<p>在查询投影中，如果我们只想查询模型类中的部分属性，可以使用<code>select</code>方法来指定要查询的字段。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public List&lt;User&gt; getUsersWithPartialAttributes() {
+        // 方式一
+        QueryWrapper&lt;User&gt; queryWrapper = new QueryWrapper&lt;&gt;();
+        queryWrapper.select(&quot;id&quot;, &quot;name&quot;, &quot;age&quot;);
+        // 方式二
+        LambdaQueryWrapper&lt;User&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+        queryWrapper.select(User::getId,User::getName,User::getAge);
+        return baseMapper.selectList(queryWrapper);
+    }
+}
+</code></pre>
+<p>在上述示例中，我们使用<code>QueryWrapper</code>对象并调用<code>select</code>方法，指定了要查询的字段名为&quot;id&quot;、&quot;name&quot;和&quot;age&quot;。这样，查询结果将只包含模型类中这三个属性的值。</p>
+<h3 id="查询结果包含模型类中未定义的属性">查询结果包含模型类中未定义的属性</h3>
+<p>有时候，我们希望查询结果中包含模型类中未定义的属性，比如使用聚合函数计算的字段，可以使用<code>select</code>方法来实现。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Map;
+
+@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public List&lt;Map&lt;String, Object&gt;&gt; getUsersWithAdditionalAttributes() {
+        QueryWrapper&lt;User&gt; queryWrapper = new QueryWrapper&lt;&gt;();
+        queryWrapper.select(&quot;count(*) as count, tel&quot;);
+        queryWrapper.groupBy(&quot;tel&quot;);
+        return baseMapper.selectMaps(queryWrapper);
+    }
+}
+</code></pre>
+<p>在上述示例中，我们使用<code>QueryWrapper</code>对象并调用<code>select</code>方法，指定了要查询的字段为&quot;count(<em>) as count&quot;和&quot;tel&quot;。其中，&quot;count(</em>) as count&quot;是使用聚合函数计算的字段，这个字段将返回每个电话号码对应的用户数量。我们还调用了<code>groupBy</code>方法，按照电话号码进行分组。这样，查询结果将包含模型类未定义的属性&quot;count&quot;和&quot;tel&quot;，并且按照电话号码分组。</p>
+<h2 id="常见问题">常见问题</h2>
+<h3 id="对象名与表名不一致">对象名与表名不一致</h3>
+<p>如果表名与实体类的类名不一致，我们可以使用<code>@TableName</code>注解来显式设置当前类对应的数据库表名称。通过<code>value</code>属性来指定映射的数据库表名。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-java">@Data
+@TableName(&quot;tbl_user&quot;) // 指定实体类对应的数据库表名为tbl_user
+public class User {
+    private Long id;
+    private String name;
+    private Integer age;
+    
+    // 其他属性...
+}
+</code></pre>
+<p>在上述示例中，我们使用<code>@TableName</code>注解，将实体类<code>User</code>映射到数据库表<code>tbl_user</code>。</p>
+<h3 id="字段与属性名不一致">字段与属性名不一致</h3>
+<p>在这种情况下，表的字段和实体类的属性名不一致，我们可以使用<code>@TableField</code>属性注解来显式设置当前属性对应的数据库表中的字段名。通过<code>value</code>属性来指定映射的数据库字段名。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-java">@Data
+@TableName(&quot;tbl_user&quot;)
+public class User {
+    private Long id;
+    
+    @TableField(&quot;user_name&quot;) // 表中的字段名为user_name
+    private String name;
+    
+    private Integer age;
+    // 其他属性...
+}
+</code></pre>
+<p>在上述示例中，我们使用<code>@TableField</code>注解，将实体类中的<code>name</code>属性映射到数据库表中的<code>user_name</code>字段。</p>
+<h3 id="属性中存在不存在的字段">属性中存在不存在的字段</h3>
+<p>有时候，我们希望在实体类中添加一些属性，但这些属性并未在数据库表中定义。在这种情况下，我们可以使用<code>@TableField</code>注解，通过<code>exist</code>属性设置属性在数据库表字段中是否存在，默认为<code>true</code>。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-java">@Data
+@TableName(&quot;tbl_user&quot;)
+public class User {
+    private Long id;
+    private String name;
+    
+    @TableField(exist = false) // online字段并未在数据库表中定义
+    private Boolean online;
+    
+    // 其他属性...
+}
+</code></pre>
+<p>在上述示例中，我们使用<code>@TableField</code>注解，将实体类中的<code>online</code>属性设置为在数据库表中不存在的字段。</p>
+<h3 id="敏感数据不参与查询">敏感数据不参与查询</h3>
+<p>MyBatis-Plus允许在查询时限制查询的字段，以避免开放过多字段的查看权限。我们可以使用<code>@TableField</code>注解，通过<code>select</code>属性设置该属性是否参与查询，默认为<code>true</code>。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-java">@Data
+@TableName(&quot;tbl_user&quot;)
+public class User {
+    private Long id;
+    private String name;
+    private Integer age;
+    
+    @TableField(select = false) // 密码字段在查询中不参与
+    private String password;
+    
+    // 其他属性...
+}
+</code></pre>
+<p>在上述示例中，我们使用<code>@TableField</code>注解，将实体类中的<code>password</code>属性设置为在查询中不参与。</p>
+<h1 id="dml编程控制">DML编程控制</h1>
+<h2 id="id生成策略">Id生成策略</h2>
+<p>在MyBatis-Plus中，主键生成策略是通过<code>@TableId</code>注解来指定的。MyBatis-Plus支持多种主键生成策略，可以根据不同的需求选择合适的策略。</p>
+<p>以下是几种常见的主键生成策略及对应的解释和代码实现：</p>
+<h3 id="自增策略auto">自增策略（AUTO）</h3>
+<p>这是最常见的主键生成策略，数据库自动递增生成主键。在MySQL中，通常使用AUTO_INCREMENT来实现自增。</p>
+<p>示例代码：</p>
+<pre><code class="language-java">@Data
+public class Log {
+    @TableId(type = IdType.AUTO)
+    private Long id;
+    // 其他属性...
+}
+</code></pre>
+<h3 id="手动指定none">手动指定（NONE）</h3>
+<p>手动指定主键值，需要在插入数据时自行设置主键值。</p>
+<p>示例代码：</p>
+<pre><code class="language-java">@Data
+public class Order {
+    @TableId(type = IdType.NONE)
+    private String orderId; // 手动指定订单号作为主键
+    // 其他属性...
+}
+</code></pre>
+<h3 id="雪花算法assign_id">雪花算法（ASSIGN_ID）</h3>
+<p>使用Twitter的Snowflake算法生成分布式唯一ID，适用于分布式环境。</p>
+<p>示例代码：</p>
+<pre><code class="language-java">@Data
+public class TakeoutOrder {
+    @TableId(type = IdType.ASSIGN_ID)
+    private Long orderId; // 使用雪花算法生成订单号作为主键
+    // 其他属性...
+}
+</code></pre>
+<h3 id="uuid策略uuid">UUID策略（UUID）</h3>
+<p>使用UUID作为主键，保证全局唯一性。</p>
+<p>示例代码：</p>
+<pre><code class="language-java">@Data
+public class Relation {
+    @TableId(type = IdType.UUID)
+    private String relationId; // 使用UUID作为关系表主键
+    // 其他属性...
+}
+</code></pre>
+<h3 id="自定义主键生成策略input">自定义主键生成策略（INPUT）</h3>
+<p>允许开发者自定义主键值，插入数据时需要自行设置主键值。</p>
+<p>示例代码：</p>
+<pre><code class="language-java">@Data
+public class Custom {
+    @TableId(type = IdType.INPUT)
+    private Long customId; // 自定义主键值
+    // 其他属性...
+}
+</code></pre>
+<p>以上列举了几种常见的主键生成策略，根据不同的表应用不同的id生成策略，你可以在实体类中使用不同的<code>@TableId</code>注解来设置不同的策略。</p>
+<pre><code class="language-java">@Data
+public class Log {
+    @TableId(type = IdType.AUTO)
+    private Long id;
+    // 其他属性...
+}
+
+@Data
+public class Order {
+    @TableId(type = IdType.NONE)
+    private String orderId;
+    // 其他属性...
+}
+
+@Data
+public class TakeoutOrder {
+    @TableId(type = IdType.ASSIGN_ID)
+    private Long orderId;
+    // 其他属性...
+}
+
+@Data
+public class Relation {
+    @TableId(type = IdType.UUID)
+    private String relationId;
+    // 其他属性...
+}
+
+@Data
+public class Custom {
+    @TableId(type = IdType.INPUT)
+    private Long customId;
+    // 其他属性...
+}
+</code></pre>
+<p>这样，不同的实体类对应不同的表就可以使用不同的主键生成策略。</p>
+<h3 id="全局策略配置">全局策略配置</h3>
+<p>在MyBatis-Plus中，id生成策略的控制可以通过全局策略配置来统一设置，以确保所有的实体类都使用相同的主键生成策略。全局策略配置是在MyBatis-Plus的配置文件中进行设置的，可以通过配置<code>GlobalConfiguration</code>来实现。</p>
+<p><strong>Step 1：创建全局配置类</strong></p>
+<p>首先，我们需要创建一个全局配置类，继承<code>GlobalConfiguration</code>类，并在该类中配置主键生成策略。</p>
+<pre><code class="language-java">@Configuration
+public class MybatisPlusConfig extends GlobalConfiguration {
+    
+    @Override
+    public IKeyGenerator keyGenerator() {
+        // 返回自定义的主键生成器
+        return new CustomKeyGenerator();
+    }
+}
+</code></pre>
+<p><strong>Step 2：自定义主键生成器</strong></p>
+<p>接下来，我们需要实现自定义的主键生成器。自定义主键生成器需要实现<code>IKeyGenerator</code>接口，并重写<code>executeSql()</code>方法来生成主键。</p>
+<pre><code class="language-java">public class CustomKeyGenerator implements IKeyGenerator {
+
+    @Override
+    public String executeSql(String incrementerName) {
+        // 在这里实现你的主键生成逻辑，可以使用雪花算法、UUID等方式生成主键
+        // 这里简单示例为使用UUID生成主键
+        return UUID.randomUUID().toString().replace(&quot;-&quot;, &quot;&quot;);
+    }
+}
+</code></pre>
+<p><strong>Step 3：配置全局策略</strong></p>
+<p>在MyBatis-Plus的配置文件中，将自定义的全局配置类加入到配置中。</p>
+<pre><code class="language-java">@EnableTransactionManagement
+@Configuration
+@MapperScan(&quot;com.example.mapper&quot;)
+public class MybatisPlusConfig {
+
+    @Bean
+    public GlobalConfiguration globalConfiguration() {
+        GlobalConfiguration conf = new GlobalConfiguration();
+        // 设置自定义的主键生成器
+        conf.setKeyGenerator(new CustomKeyGenerator());
+        return conf;
+    }
+}
+</code></pre>
+<p><strong>Step 4：使用全局策略配置</strong></p>
+<p>在以上配置完成后，MyBatis-Plus会自动使用全局策略配置中的主键生成器，来生成实体类中所有使用<code>@TableId</code>注解的主键。</p>
+<p>示例代码：</p>
+<pre><code class="language-java">@Data
+@TableName(&quot;tbl_log&quot;)
+public class Log {
+    @TableId(type = IdType.INPUT)
+    private Long id; // 使用自定义主键生成器生成主键
+
+    private String content;
+    // 其他属性...
+}
+</code></pre>
+<p>在上述示例中，我们使用了<code>@TableId</code>注解来设置主键，并通过全局策略配置中的自定义主键生成器生成主键值。</p>
+<p>使用全局策略配置可以确保所有的实体类都使用相同的主键生成策略，避免了在每个实体类中都重复配置主键生成策略的麻烦。同时，也提高了代码的复用性和可维护性。</p>
+<hr>
+<p>在MyBatis-Plus中，我们可以通过全局策略配置来统一设置所有实体类的主键生成策略。通过在Spring Boot的配置文件中配置相关参数，可以灵活地控制主键生成策略。</p>
+<p><strong>1. 配置文件中添加全局策略配置</strong></p>
+<p>在Spring Boot的配置文件（通常是application.properties或application.yml）中，可以添加以下配置项来设置全局的主键生成策略：</p>
+<pre><code class="language-properties"># application.properties
+# 设置全局主键生成策略
+mybatis-plus.global-config.db-config.id-type=UUID
+# 表名前缀
+mybatis-plus.global-config.db-config.table-prefix: t_
+</code></pre>
+<pre><code class="language-yaml"># application.yml
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: UUID
+      table-prefix: t_
+</code></pre>
+<p>在上述配置中，我们将全局的主键生成策略设置为UUID，这将影响所有使用MyBatis-Plus的实体类。</p>
+<p><strong>2. 全局策略配置类</strong></p>
+<p>除了在配置文件中设置全局策略，我们还可以通过编程的方式来配置全局策略。创建一个全局策略配置类，继承<code>com.baomidou.mybatisplus.core.config.GlobalConfig.DbConfig</code>，并重写相应的方法。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-java">@Configuration
+public class MybatisPlusConfig {
+
+    @Bean
+    public GlobalConfig globalConfig() {
+        GlobalConfig globalConfig = new GlobalConfig();
+        DbConfig dbConfig = new GlobalConfig.DbConfig();
+        // 设置主键生成策略为UUID
+        dbConfig.setIdType(IdType.UUID);
+        globalConfig.setDbConfig(dbConfig);
+        return globalConfig;
+    }
+}
+</code></pre>
+<p>在上述示例中，我们创建了一个<code>MybatisPlusConfig</code>类，并通过<code>@Bean</code>注解将<code>GlobalConfig</code>对象交给Spring容器管理。在<code>globalConfig</code>方法中，我们设置了主键生成策略为UUID。</p>
+<p><strong>3. 实体类使用@TableId注解</strong></p>
+<p>无论是通过配置文件设置全局策略，还是通过编程方式设置全局策略，都需要在实体类中使用<code>@TableId</code>注解来指定主键生成策略。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-java">@Data
+public class User {
+    @TableId(type = IdType.AUTO) // 设置主键生成策略为自增
+    private Long id;
+    // 其他属性...
+}
+</code></pre>
+<p>在上述示例中，我们使用<code>@TableId</code>注解，将实体类中的<code>id</code>属性的主键生成策略设置为自增，而不受全局策略的影响。</p>
+<p><strong>4. 多种主键生成策略的混合使用</strong></p>
+<p>在实际开发中，不同的表可能需要采用不同的主键生成策略。如果某个表需要使用特定的主键生成策略，可以在实体类中直接指定，而不受全局策略的影响。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-java">@Data
+public class Order {
+    @TableId(type = IdType.NONE) // 手动指定订单号作为主键
+    private String orderId;
+    // 其他属性...
+}
+</code></pre>
+<p>在上述示例中，我们使用<code>@TableId</code>注解，将实体类中的<code>orderId</code>属性设置为手动指定主键，而不使用全局策略。</p>
+<h2 id="批量操作">批量操作</h2>
+<h3 id="多记录删除批量delete">多记录删除（批量Delete）</h3>
+<p>MyBatis-Plus中，我们可以使用<code>deleteBatchIds</code>方法来实现多记录删除。该方法接收一个ID列表作为参数，可以删除多个记录。</p>
+<p><strong>代码实现：</strong></p>
+<p>假设我们有一个<code>User</code>实体类，对应数据库中的<code>user</code>表。现在我们要删除多个用户，可以使用<code>deleteBatchIds</code>方法来实现：</p>
+<pre><code class="language-java">@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public boolean deleteUsersByIds(List&lt;Long&gt; userIds) {
+        return removeByIds(userIds);
+    }
+}
+</code></pre>
+<p>在上述示例中，我们在<code>UserServiceImpl</code>类中定义了一个<code>deleteUsersByIds</code>方法，接收一个<code>userIds</code>列表作为参数，并调用<code>removeByIds</code>方法来执行多记录删除操作。</p>
+<h3 id="多记录查询批量select">多记录查询（批量Select）</h3>
+<p>MyBatis-Plus提供了<code>selectBatchIds</code>方法来实现多记录查询。该方法接收一个ID列表作为参数，可以查询多个记录。</p>
+<p><strong>代码实现：</strong></p>
+<p>假设我们还是使用上面的<code>User</code>实体类和<code>user</code>表，现在我们要根据多个用户ID查询用户信息：</p>
+<pre><code class="language-java">@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public List&lt;User&gt; getUsersByIds(List&lt;Long&gt; userIds) {
+        return listByIds(userIds);
+    }
+}
+</code></pre>
+<p>在上述示例中，我们在<code>UserServiceImpl</code>类中定义了一个<code>getUsersByIds</code>方法，接收一个<code>userIds</code>列表作为参数，并调用<code>listByIds</code>方法来执行多记录查询操作。</p>
+<h3 id="多记录更新批量update">多记录更新（批量Update）</h3>
+<p>MyBatis-Plus提供了<code>updateBatchById</code>方法来实现多记录更新。该方法接收一个实体对象列表作为参数，可以更新多个记录。</p>
+<p><strong>代码实现：</strong></p>
+<p>假设我们还是使用上面的<code>User</code>实体类和<code>user</code>表，现在我们要更新多个用户的信息：</p>
+<pre><code class="language-java">@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public boolean updateUsers(List&lt;User&gt; users) {
+        return updateBatchById(users);
+    }
+}
+</code></pre>
+<p>在上述示例中，我们在<code>UserServiceImpl</code>类中定义了一个<code>updateUsers</code>方法，接收一个<code>users</code>列表作为参数，并调用<code>updateBatchById</code>方法来执行多记录更新操作。</p>
+<h2 id="删除操作">删除操作</h2>
+<h3 id="删除方式">删除方式</h3>
+<p>在实际环境中，删除数据时有两种常见的处理方式：物理删除和逻辑删除。</p>
+<h4 id="物理删除">物理删除</h4>
+<p>物理删除是指直接从数据库中永久删除数据，使其不再存在于数据库中。这意味着一旦数据被物理删除，就无法恢复，数据将永久丢失。在某些情况下，物理删除可能是合适的选择，比如当数据过期、无用或包含敏感信息时。但是，需要慎重考虑物理删除的后果，确保没有重要数据会被误删。</p>
+<p><strong>代码实现：</strong></p>
+<p>假设我们使用<code>User</code>实体类和<code>user</code>表作为示例，下面是物理删除的代码示例：</p>
+<pre><code class="language-java">@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public boolean deleteUserById(Long userId) {
+        return removeById(userId);
+    }
+}
+</code></pre>
+<p>在上述代码中，<code>deleteUserById</code>方法接收一个<code>userId</code>作为参数，并调用<code>removeById</code>方法来执行物理删除操作。这样，执行该方法后，数据库中对应的用户数据将被永久删除。</p>
+<h4 id="逻辑删除">逻辑删除</h4>
+<p>逻辑删除是指在数据库中保留数据，但通过设置一个额外的字段（通常是状态字段）来标记数据是否可用。当进行删除操作时，不是直接从数据库中删除数据，而是将状态字段设置为标识数据不可用状态。这样，数据仍然保留在数据库中，但在查询时会自动忽略标记为不可用的数据，从逻辑上实现了删除效果。</p>
+<p>逻辑删除的好处是可以避免意外删除重要数据，同时保留了删除的记录用于后续查询或数据审计。逻辑删除适用于那些不希望真正删除数据但需要隐藏或标记的场景。</p>
+<h3 id="实现步骤-3">实现步骤</h3>
+<p>在MyBatis-Plus中，逻辑删除可以通过注解<code>@TableLogic</code>实现。首先，在实体类的状态字段上添加<code>@TableLogic</code>注解：</p>
+<pre><code class="language-java">@Data
+public class User {
+    @TableId(type = IdType.AUTO)
+    private Long id;
+    private String username;
+    @TableLogic(value = &quot;0&quot;, delval = &quot;1&quot;)
+    private Integer status; // 状态字段，用于逻辑删除
+}
+</code></pre>
+<p>然后，在<code>UserMapper</code>接口中启用逻辑删除功能：</p>
+<pre><code class="language-java">@Mapper
+public interface UserMapper extends BaseMapper&lt;User&gt; {
+}
+</code></pre>
+<p>在默认情况下，MyBatis-Plus启用了逻辑删除功能，但需要注意数据库表中的状态字段命名默认为<code>is_deleted</code>，也可以通过全局配置进行修改。当执行删除操作时，MyBatis-Plus会自动将<code>status</code>字段更新为逻辑删除的值（通常是0或1），而不是实际从数据库中删除数据。</p>
+<h3 id="关闭逻辑删除">关闭逻辑删除</h3>
+<blockquote>
+<p>小贴士</p>
+<ol>
+<li>逻辑删除功能默认是启用的，如果你不需要逻辑删除功能，可以在全局配置中禁用它。</li>
+</ol>
+</blockquote>
+<pre><code class="language-java">@Configuration
+public class MyBatisPlusConfig {
+
+    @Bean
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+        // 禁用逻辑删除
+        interceptor.addInnerInterceptor(new LogicSqlInjector() {
+            @Override
+            protected boolean doRemoveSql(Supplier&lt;MetaObject&gt; metaObject) {
+                return false;
+            }
+        });
+        return interceptor;
+    }
+}
+</code></pre>
+<h3 id="全局开启配置">全局开启配置</h3>
+<p>在Spring Boot中配置MyBatis-Plus的逻辑删除字面值需要在application.yml或application.properties配置文件中添加相应的配置。MyBatis-Plus提供了一组全局配置，其中包括逻辑删除相关的配置项。</p>
+<p><strong>1. 添加配置项</strong></p>
+<p>在<code>application.yml</code>或<code>application.properties</code>中添加MyBatis-Plus的全局配置项，包括逻辑删除字段名、逻辑删除字面值等。</p>
+<pre><code class="language-yaml">mybatis-plus:
+  global-config:
+    db-config:
+      # 表名前缀，可选配置，如果有表名前缀，需要加上
+      table-prefix: tbl_
+      # 逻辑删除字段名
+      logic-delete-field: deleted
+      # 逻辑删除字面值：未删除为0
+      logic-not-delete-value: 0
+      # 逻辑删除字面值：删除为1
+      logic-delete-value: 1
+</code></pre>
+<p>在上述配置中，我们配置了表名前缀、逻辑删除字段名以及逻辑删除的字面值。其中，<code>logic-delete-field</code>表示逻辑删除字段名，<code>logic-not-delete-value</code>表示未删除状态的字面值，<code>logic-delete-value</code>表示删除状态的字面值。</p>
+<p><strong>2. 实体类配置</strong></p>
+<p>在实体类中，需要添加与逻辑删除相关的字段，并使用<code>@TableLogic</code>注解标注该字段。</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import lombok.Data;
+
+@Data
+@TableName(value = &quot;tbl_user&quot;)
+public class User {
+    private Long id;
+    private String username;
+
+    // 逻辑删除字段
+    @TableLogic
+    private Integer deleted;
+}
+</code></pre>
+<p>在上述代码中，我们在<code>User</code>实体类中添加了一个名为<code>deleted</code>的整型字段，并使用<code>@TableLogic</code>注解标注该字段。这样，MyBatis-Plus会自动识别<code>deleted</code>字段为逻辑删除字段。</p>
+<p><strong>3. 数据库表配置</strong></p>
+<p>在数据库表中创建对应的<code>User</code>表，并添加<code>deleted</code>字段作为逻辑删除字段。</p>
+<pre><code class="language-sql">CREATE TABLE tbl_user (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    -- 添加逻辑删除字段
+    deleted INT NOT NULL DEFAULT 0
+);
+</code></pre>
+<p><strong>4. 使用逻辑删除功能</strong></p>
+<p>现在，我们已经配置了逻辑删除字面值和相应的实体类字段。在使用MyBatis-Plus进行删除操作时，MyBatis-Plus会自动根据配置进行逻辑删除。</p>
+<p><strong>实现案例</strong>：</p>
+<p>假设我们有一个<code>UserService</code>接口和<code>UserServiceImpl</code>实现类，我们可以在<code>UserServiceImpl</code>中调用MyBatis-Plus的删除方法来实现逻辑删除。</p>
+<pre><code class="language-java">@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public boolean deleteUserById(Long userId) {
+        // 调用MyBatis-Plus的逻辑删除方法
+        return removeById(userId);
+    }
+}
+</code></pre>
+<p>在上述代码中，我们通过调用<code>removeById</code>方法实现逻辑删除操作。根据逻辑删除字面值的配置，MyBatis-Plus会将<code>deleted</code>字段的值更新为1，表示数据已删除。</p>
+<h1 id="乐观锁">乐观锁</h1>
+<h2 id="概述-4">概述</h2>
+<p>MyBatis-Plus（简称MP）提供了乐观锁机制，用于解决多线程并发更新数据时的数据一致性问题。乐观锁是一种乐观的并发控制策略，它不会对数据库进行锁定，而是通过版本号（或者叫作时间戳）来实现并发控制。当两个或多个线程尝试同时修改同一条记录时，乐观锁会根据版本号来判断哪个线程的更新会成功，从而保证数据的一致性。</p>
+<h2 id="使用乐观锁的原理">使用乐观锁的原理</h2>
+<ol>
+<li>在数据库表中添加一个用于乐观锁的版本字段，通常是一个整数或时间戳类型。</li>
+<li>当执行更新操作时，首先会获取当前记录的版本号，并将版本号作为更新条件。</li>
+<li>如果另一个线程已经修改了数据并更新了版本号，那么当前更新操作会失败，因为版本号条件不匹配。</li>
+<li>在更新失败后，可以选择重试更新操作或者执行其他逻辑，以保证数据的一致性。</li>
+</ol>
+<h2 id="乐观锁实现示例">乐观锁实现示例</h2>
+<p>在MyBatis-Plus中，配置乐观锁拦截器可以实现对乐观锁的支持，使得在进行更新操作时，自动拼装带有版本号的动态SQL语句。乐观锁拦截器会在执行更新操作前进行拦截，并根据实体类中的乐观锁版本号字段，自动拼装带有版本号的更新SQL语句，从而实现乐观锁的功能。</p>
+<p><strong>1. 配置乐观锁拦截器</strong></p>
+<p>在Spring Boot中，配置乐观锁拦截器需要创建一个配置类，并在其中注册乐观锁拦截器。乐观锁拦截器是MyBatis-Plus提供的<code>OptimisticLockerInterceptor</code>类。</p>
+<pre><code class="language-java">@Configuration
+public class MyBatisPlusConfig {
+
+    @Bean
+    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
+        return new OptimisticLockerInterceptor();
+    }
+}
+</code></pre>
+<p>在上述代码中，我们创建了一个配置类<code>MyBatisPlusConfig</code>，并在其中注册了<code>OptimisticLockerInterceptor</code>乐观锁拦截器。</p>
+<p><strong>2. 实体类配置</strong></p>
+<p>在实体类中添加乐观锁版本号字段，并使用<code>@Version</code>注解标识该字段为乐观锁版本号。</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.Version;
+import lombok.Data;
+
+@Data
+@TableName(&quot;user&quot;)
+public class User {
+    private Long id;
+    private String username;
+    private String email;
+
+    @Version // 添加乐观锁注解
+    private Integer version;
+}
+</code></pre>
+<p>在上述代码中，我们在<code>User</code>实体类的<code>version</code>字段上添加了<code>@Version</code>注解，表示该字段是乐观锁版本号字段。</p>
+<p><strong>3. 动态SQL语句拼装</strong></p>
+<p>在进行更新操作时，乐观锁拦截器会自动拼装带有版本号的动态SQL语句。在执行更新操作时，MyBatis-Plus会检测实体类中的乐观锁版本号字段，并自动在更新SQL语句中增加版本号条件，以实现乐观锁的功能。</p>
+<p>下面是一个使用乐观锁的示例代码：</p>
+<pre><code class="language-java">@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService {
+
+    @Override
+    public boolean updateUser(User user) {
+        // 调用MyBatis-Plus的updateById方法进行更新操作
+        // 在更新操作时，MyBatis-Plus会自动更新版本号
+        return updateById(user);
+    }
+}
+</code></pre>
+<p>在上述代码中，我们在<code>UserServiceImpl</code>中调用<code>updateById</code>方法来进行更新操作。MyBatis-Plus会自动检测<code>User</code>对象中的版本号字段，并将版本号作为更新条件，实现乐观锁的功能。</p>
+<p><strong>4. 测试乐观锁</strong></p>
+<p>为了测试乐观锁的效果，我们可以编写一个测试方法来模拟并发更新的情况。</p>
+<pre><code class="language-java">@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserServiceImplTest {
+
+    @Autowired
+    private UserService userService;
+
+    @Test
+    public void testOptimisticLock() {
+        // 假设现在有一条id为1的用户记录，version为0
+        User user = userService.getById(1L);
+
+        // 线程1更新用户的信息
+        user.setUsername(&quot;user1-updated&quot;);
+        userService.updateUser(user);
+
+        // 线程2同时更新用户的信息
+        User user2 = userService.getById(1L);
+        user2.setUsername(&quot;user2-updated&quot;);
+        userService.updateUser(user2);
+    }
+}
+</code></pre>
+<p>在上述测试方法中，我们首先获取一条id为1的用户记录，然后模拟两个线程同时对这条记录进行更新操作。由于乐观锁的存在，只有其中一个线程的更新操作会成功，另一个线程的更新会失败。</p>
+<p><strong>5. 结果分析</strong></p>
+<p>当两个线程同时更新一条记录时，由于乐观锁的作用，其中一个线程的更新操作会成功，而另一个线程的更新会失败。失败的线程可以根据需要进行重试或者执行其他逻辑，以保证数据的一致性和完整性。</p>
+<h1 id="代码生成器">代码生成器</h1>
+<p>MyBatis-Plus（MP）代码生成器是一个强大的工具，可以帮助开发者快速生成与数据库表对应的Java实体类、Mapper接口、Service接口以及Controller等代码，从而大大提高开发效率。下面将详细并全面地讲解MP代码生成器的使用，并附带相应的代码实现来辅助理解。</p>
+<p><strong>1. 添加依赖</strong></p>
+<p>首先，我们需要在项目的<code>pom.xml</code>文件中添加MyBatis-Plus和相关数据库驱动的依赖。假设我们使用MySQL数据库，那么添加如下依赖：</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-plus-generator&lt;/artifactId&gt;
+    &lt;version&gt;最新版本&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>请注意将上述依赖中的<code>最新版本</code>替换为实际的MyBatis-Plus和MySQL版本号。</p>
+<p><strong>2. 配置数据源</strong></p>
+<p>接下来，在<code>application.properties</code>或<code>application.yml</code>中配置数据源信息。</p>
+<pre><code class="language-properties"># 数据库连接信息
+spring.datasource.url=jdbc:mysql://localhost:3306/db_example
+spring.datasource.username=root
+spring.datasource.password=your_password
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# MyBatis-Plus配置
+mybatis-plus.configuration.map-underscore-to-camel-case=true
+</code></pre>
+<p>请将上述配置中的<code>db_example</code>、<code>root</code>和<code>your_password</code>分别替换为实际的数据库名、用户名和密码。</p>
+<p><strong>3. 配置代码生成器</strong></p>
+<p>在使用MP代码生成器之前，我们需要配置代码生成器的参数，包括生成的代码输出路径、生成的代码包路径、作者信息、表名、主键生成策略等。</p>
+<p>我们可以通过创建一个代码生成器的配置类来完成配置，示例如下：</p>
+<pre><code class="language-java">import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.generator.AutoGenerator;
+import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
+import com.baomidou.mybatisplus.generator.config.GlobalConfig;
+import com.baomidou.mybatisplus.generator.config.PackageConfig;
+import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
+
+public class CodeGenerator {
+
+    public static void main(String[] args) {
+        // 1. 创建代码生成器
+        AutoGenerator generator = new AutoGenerator();
+
+        // 2. 全局配置
+        GlobalConfig globalConfig = new GlobalConfig();
+        String projectPath = System.getProperty(&quot;user.dir&quot;); // 获取项目根目录
+        globalConfig.setOutputDir(projectPath + &quot;/src/main/java&quot;); // 设置代码输出路径
+        globalConfig.setAuthor(&quot;YourName&quot;); // 设置作者
+        globalConfig.setOpen(false); // 生成完成后是否打开输出目录
+        globalConfig.setDateType(DateType.ONLY_DATE); // 设置日期类型为仅日期
+        globalConfig.setIdType(IdType.AUTO); // 设置主键生成策略为自增
+        generator.setGlobalConfig(globalConfig);
+
+        // 3. 数据源配置
+        DataSourceConfig dataSourceConfig = new DataSourceConfig();
+        dataSourceConfig.setUrl(&quot;jdbc:mysql://localhost:3306/db_example&quot;); // 数据库连接URL
+        dataSourceConfig.setDriverName(&quot;com.mysql.cj.jdbc.Driver&quot;); // 数据库驱动
+        dataSourceConfig.setUsername(&quot;root&quot;); // 数据库用户名
+        dataSourceConfig.setPassword(&quot;your_password&quot;); // 数据库密码
+        generator.setDataSource(dataSourceConfig);
+
+        // 4. 包配置
+        PackageConfig packageConfig = new PackageConfig();
+        packageConfig.setParent(&quot;com.example&quot;); // 设置生成的代码包路径
+        generator.setPackageInfo(packageConfig);
+
+        // 5. 策略配置
+        StrategyConfig strategyConfig = new StrategyConfig();
+        strategyConfig.setInclude(&quot;table_name&quot;); // 设置要生成代码的表名，多个表名用逗号分隔
+        strategyConfig.setControllerMappingHyphenStyle(true); // 设置Controller的映射地址为连字符形式
+        generator.setStrategy(strategyConfig);
+
+        // 6. 执行代码生成
+        generator.execute();
+    }
+}
+</code></pre>
+<p>在上述代码中，我们配置了代码生成器的全局配置、数据源配置、包配置以及策略配置。请将代码中的<code>YourName</code>、<code>db_example</code>和<code>your_password</code>分别替换为实际的作者名、数据库名和数据库密码。</p>
+<p><strong>4. 运行代码生成器</strong></p>
+<p>完成配置后，我们只需运行<code>CodeGenerator</code>类的<code>main</code>方法，即可生成对应的代码文件。生成的代码文件将输出在指定的包路径下。</p>
+<h1 id="新代码生成器">新代码生成器</h1>
+<blockquote>
+<p>小贴士</p>
+<ol>
+<li>旧版适用版本：mybatis-plus-generator 3.5.1 以下版本，3.5.1 及以上的请参考新代码生成器</li>
+</ol>
+</blockquote>
+<h2 id="快速生成">快速生成</h2>
+<pre><code class="language-java">FastAutoGenerator.create(&quot;url&quot;, &quot;username&quot;, &quot;password&quot;)
+    .globalConfig(builder -&gt; {
+        builder.author(&quot;baomidou&quot;) // 设置作者
+            .enableSwagger() // 开启 swagger 模式
+            .fileOverride() // 覆盖已生成文件
+            .outputDir(&quot;D://&quot;); // 指定输出目录
+    })
+    .dataSourceConfig(builder -&gt; builder.typeConvertHandler((globalConfig, typeRegistry, metaInfo) -&gt; {
+        int typeCode = metaInfo.getJdbcType().TYPE_CODE;
+        if (typeCode == Types.SMALLINT) {
+            // 自定义类型转换
+            return DbColumnType.INTEGER;
+        }
+        return typeRegistry.getColumnType(metaInfo);
+
+    }))
+    .packageConfig(builder -&gt; {
+        builder.parent(&quot;com.baomidou.mybatisplus.samples.generator&quot;) // 设置父包名
+            .moduleName(&quot;system&quot;) // 设置父包模块名
+            .pathInfo(Collections.singletonMap(OutputFile.xml, &quot;D://&quot;)); // 设置mapperXml生成路径
+    })
+    .strategyConfig(builder -&gt; {
+        builder.addInclude(&quot;t_simple&quot;) // 设置需要生成的表名
+            .addTablePrefix(&quot;t_&quot;, &quot;c_&quot;); // 设置过滤表前缀
+    })
+    .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
+    .execute();
+</code></pre>
+<h2 id="交互式生成">交互式生成</h2>
+<pre><code class="language-java">FastAutoGenerator.create(DATA_SOURCE_CONFIG)
+    // 全局配置
+    .globalConfig((scanner, builder) -&gt; builder.author(scanner.apply(&quot;请输入作者名称？&quot;)).fileOverride())
+    // 包配置
+    .packageConfig((scanner, builder) -&gt; builder.parent(scanner.apply(&quot;请输入包名？&quot;)))
+    // 策略配置
+    .strategyConfig((scanner, builder) -&gt; builder.addInclude(getTables(scanner.apply(&quot;请输入表名，多个英文逗号分隔？所有输入 all&quot;)))
+                        .controllerBuilder().enableRestStyle().enableHyphenStyle()
+                        .entityBuilder().enableLombok().addTableFills(
+                                new Column(&quot;create_time&quot;, FieldFill.INSERT)
+                        ).build())
+    /*
+        模板引擎配置，默认 Velocity 可选模板引擎 Beetl 或 Freemarker
+       .templateEngine(new BeetlTemplateEngine())
+       .templateEngine(new FreemarkerTemplateEngine())
+     */
+    .execute();
+
+
+// 处理 all 情况
+protected static List&lt;String&gt; getTables(String tables) {
+    return &quot;all&quot;.equals(tables) ? Collections.emptyList() : Arrays.asList(tables.split(&quot;,&quot;));
+}
+</code></pre>
+
+            </div>
+            
+              <div class="reward-btn">
+                <div class="reward-btn-text">赞赏</div>
+              </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      RiftRays
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://riftrays.github.io/2m8J3JVh/" title="Mybatis-Plus">https://riftrays.github.io/2m8J3JVh/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://riftrays.github.io/tag-MyBatis/"># MyBatis</a>
+    
+      <a href="https://riftrays.github.io/tag-MyBatis-Plus/"># MyBatis-Plus</a>
+    
+      <a href="https://riftrays.github.io/tag-Java/"># Java</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="Spring Boot" href="https://riftrays.github.io/springboot/">Spring Boot</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="Spring Boot" href="https://riftrays.github.io/springboot/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="Lombok" href="https://riftrays.github.io/b5cgF9qH5/">Lombok</a>
+        <a class="nav-mobile-next" title="Lombok" href="https://riftrays.github.io/b5cgF9qH5/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+            
+  
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-box">
+  <footer class="footer">
+    <center id="runTimeBox">
+      已运行:<span id="run_time"></span>
+    </center>
+    <span id="busuanzi_container_site_pv">浏览数:<span id="busuanzi_value_site_pv"></span> 次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span> 人</span>
+
+    <script>
+      BirthDay = new Date('2019/01/01');
+      if (BirthDay.getTime()) {
+        function runTime() {
+          str = "";
+          today = new Date();
+          timeold = today.getTime() - BirthDay.getTime();
+          msPerDay = 24 * 60 * 60 * 1000;
+          e_daysold = timeold / msPerDay;
+          daysold = Math.floor(e_daysold);
+          str += daysold + "天";
+          return str;
+        }
+        setInterval(function () {
+          $("#run_time").html(runTime());
+        }, 1000);
+      } else {
+        document.querySelector('.footer').removeChild(document.querySelector('#runTimeBox'));
+      }
+    </script>
+    <div class="poweredby">
+      Your time is limited, so don't waste it living someone else's life ... Stay Hungry. Stay Foolish.
+    </div>
+  </footer>
+  
+    
+        <div class="pisces back-to-top" id="back_to_top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span class="scrollpercent"> <span id="back_to_top_text">0</span>% </span>
+            
+        </div>
+        
+          
+            
+              <div class="bg-img">
+                <img src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/30_Throne2_1_4k.jpg" />
+              </div>
+              
+                
+                  
+                        
+</div>
+<script>
+  let sideBarOpen = "sidebar-open";
+  let body = document.body;
+  let back2Top = document.querySelector("#back_to_top"),
+    back2TopText = document.querySelector("#back_to_top_text"),
+    drawerBox = document.querySelector("#drawer_box"),
+    rightSideBar = document.querySelector(".sidebar"),
+    viewport = document.querySelector("body");
+
+  function scrollAnimation(currentY, targetY) {
+    let needScrollTop = targetY - currentY;
+    let _currentY = currentY;
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10);
+      _currentY += dist;
+      window.scrollTo(_currentY, currentY);
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY);
+      } else {
+        window.scrollTo(_currentY, targetY);
+      }
+    }, 1);
+  }
+
+  back2Top.addEventListener("click", function (e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+
+  window.addEventListener("scroll", function (e) {
+    let percent =
+      (document.scrollingElement.scrollTop /
+        (document.scrollingElement.scrollHeight -
+          document.scrollingElement.clientHeight)) *
+      100;
+    if (percent > 1 && !back2Top.classList.contains("back-top-active")) {
+      back2Top.classList.add("back-top-active");
+    }
+    if (percent == 0) {
+      back2Top.classList.remove("back-top-active");
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  let hasCacu = false;
+  window.addEventListener("resize", function (e) {
+    calcuHeight();
+  });
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (
+      (!hasCacu && back2Top.classList.contains("pisces")) ||
+      back2Top.classList.contains("gemini")
+    ) {
+      let sideBar = document.querySelector(".sidebar");
+      let navUl = document.querySelector("#site_nav");
+      sideBar.style =
+        "margin-top:" + (navUl.offsetHeight + navUl.offsetTop + 15) + "px;";
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+
+  let open = false,
+    MOTION_TIME = 300,
+    RIGHT_MOVE_DIS = "320px";
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll(".right-motion");
+    let right = drawerBox.classList.contains("right");
+
+    let transitionDir = right
+      ? "transition.slideRightIn"
+      : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingRight: "0px",
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingLeft: "0px",
+      };
+    }
+
+    drawerBox.onclick = function () {
+      open = !open;
+      jQuery.Velocity(rightSideBar, "stop");
+      jQuery.Velocity(viewport, "stop");
+      jQuery.Velocity(rightMotions, "stop");
+      if (open) {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: RIGHT_MOVE_DIS,
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, transitionDir, {});
+            },
+          }
+        );
+        jQuery.Velocity(viewport, openProp, {
+          duration: MOTION_TIME,
+        });
+      } else {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: "0px",
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, {
+                opacity: 0,
+              });
+            },
+          }
+        );
+        jQuery.Velocity(viewport, closeProp, {
+          duration: MOTION_TIME,
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle("muse-line");
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    };
+  }
+
+  // 链接跳转
+  let newWindow = "false";
+  if (newWindow === "true") {
+    let links = document.querySelectorAll(".post-body a");
+    links.forEach((item) => {
+      if (!item.classList.contains("btn")) {
+        item.setAttribute("target", "_blank");
+      }
+    });
+  }
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
+  // 离开当前页title变化
+  var leaveTitle = "😭菜~请给个机会~拜托了！";
+  var normal_title = document.title;
+  if (leaveTitle) {
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState == "hidden") {
+        normal_title = document.title;
+        document.title = leaveTitle;
+      } else {
+        document.title = normal_title;
+      }
+    });
+  }
+</script>
+
+<link rel="stylesheet" href="/media/css/jquery.fancybox.css" />
+<script src="/media/js/jquery.fancybox.js"></script>
+
+<script>
+  let images = document.querySelectorAll(".section img");
+  images.forEach((image) => {
+    var parent = image.parentElement;
+    var next = image.nextElementSibling;
+    parent.removeChild(image);
+    var aelem = document.createElement("a");
+    aelem.href = image.src;
+    aelem.dataset["fancybox"] = "images";
+    aelem.dataset["rel"] = "fancybox-button";
+    aelem.classList.add("fancybox");
+    aelem.appendChild(image);
+    parent.insertBefore(aelem, next);
+  });
+</script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+            <img id="zfb" class="reward-img" src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/1689773094686.jpg" alt="赞赏码">
+          
+          
+            <img id="wx" class="reward-img" src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/mm_facetoface_collect_qrcode_1689773482372.jpg" alt="赞赏码">
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip"> 多多打赏~鼓励作者更多原创内容！</p>
+    </div>
+    <div class="bottom">
+      
+      <div id="zfbBtn" class="pay-text">
+        支付宝
+      </div>
+      
+      
+      <div id="wxBtn" class="pay-text">
+        微信支付
+      </div>
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        jQuery.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        jQuery.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        jQuery.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        jQuery.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      jQuery.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      jQuery.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
+  </div>
+</body>
+<input hidden id="copy" />
+<script>
+  !function () {
+    let times = document.querySelectorAll('.publish-time');
+    for (let i = 0; i < times.length; i++) {
+      let date = times[i].dataset.t;
+      let time = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
+      if (time < 60) {
+        str = time + '秒之前';
+      } else if (time < 3600) {
+        str = Math.floor(time / 60) + '分钟之前';
+      } else if (time >= 3600 && time < 86400) {
+        str = Math.floor(time / 3600) + '小时之前';
+      } else if (time >= 86400 && time < 259200) {
+        str = Math.floor(time / 86400) + '天之前';
+      } else {
+        str = times[i].textContent;
+      }
+      times[i].textContent = str;
+    }
+  }();
+</script>
+
+<script>
+  let language = '';
+  if (language !== '') {
+    let map = new Map();
+    if (language === 'en') {
+      map.set('search', 'Search');
+      map.set('category', 'Categories');
+      map.set('article', 'Articles');
+      map.set('tag', 'Tags');
+      map.set('top', 'Top');
+      map.set('publish', 'published');
+      map.set('minute', ' minutes');
+      map.set('read-more', 'Read More');
+      map.set('view', 'View');
+      map.set('words', ' words');
+      map.set('category-in', 'category in');
+      map.set('preview', 'Meta');
+      map.set('index', 'Toc');
+      map.set('no-archives', "You haven't created yet");
+      map.set('archives', " articles in total");
+      map.set('cloud-tags', " tags in total");
+      map.set('copyright', "Copyright: ");
+      map.set('author', "Author: ");
+      map.set('link', "Link: ");
+      map.set('leave-message', "Leave a message");
+      map.set('format', "Links Format");
+      map.set('site-name', "Name: ");
+      map.set('site-link', "Link: ");
+      map.set('site-desc', "Desc: ");
+      map.set('stat', " related results, taking ");
+      map.set('stat-time', " ms");
+      map.set('site-img', "Image: ");
+    }
+
+    if (map.size > 0) {
+      let lanElems = document.querySelectorAll('.language');
+      lanElems.forEach(elem => {
+        let lan = elem.dataset.lan, text = map.get(lan);
+        if (elem.__proto__ === HTMLInputElement.prototype) {
+          elem.placeholder = text
+        } else {
+          if (elem.dataset.count) {
+            text = elem.dataset.count + text;
+          }
+          elem.textContent = text;
+        }
+      })
+    }
+  }
+
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+
+</script>
+<script src="/media/js/motion.js"></script>
+
+
+  <script
+    src="https://jsdelivr.codeqihan.com/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+  <script>
+    var scroll = new SmoothScroll('a[href*="#"]', {
+      speed: 200
+    });
+  </script>
+
+
+
+<script src="/media/js/mouse/peace.js"></script>
+
+
+  <script src="/media/js/cool.js"></script>
+
+
+
+  <div class="snow-container"></div>
+  <script color="0,205,205" pointer-events="auto" zIndex="-1" opacity='0.7' count="99" src="/media/js/bg/canvas-nest.js"></script>
+
+</html>

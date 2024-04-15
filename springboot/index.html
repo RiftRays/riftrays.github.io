@@ -1,0 +1,2882 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="RiftRays&#39;s Blog">
+<meta name="description" content="年轻且优秀 积极且颓废">
+<meta name="theme-color" content="#000">
+<title>Spring Boot | RiftRays&#39;s Blog</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1713170724295">
+<link rel="stylesheet" href="/media/css/pisces.css">
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.loli.net/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/pojoaque.css"
+  rel="stylesheet">
+
+<script src="https://jsdelivr.codeqihan.com/npm/pace-js@1.0.2/pace.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/black/pace-theme-center-atom.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="/styles/main.css">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/media/js/jquery.js"></script>
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://jsdelivr.codeqihan.com/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://jsdelivr.codeqihan.com/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+
+<script defer src="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://jsdelivr.codeqihan.com/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+
+  <meta name="description" content="Spring Boot" />
+  <meta name="keywords" content="Spring,SpringBoot" />
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    <style>
+.gridea-search-input{
+    height: 30px;
+    width: 200px;
+    box-sizing: border-box;
+    padding: 0 15px 0 30px;
+    border: 1px solid #e3e3e3;
+    border-radius: 15px;
+    color: #273849;
+    outline: none;
+    transition: border-color 0.2s ease;
+    background: #fff url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='80' height='65'%3E%3Cpath d='M936.265 854.34L757.43 675.52c46.499-63.168 74.02-141.125 74.02-225.398 0-210.1-170.945-381.039-381.055-381.039S69.346 240.023 69.346 450.122c0 210.105 170.94 381.043 381.049 381.043 84.275 0 162.235-27.52 225.405-74.019l178.833 178.819c11.27 11.265 26.036 16.903 40.813 16.903 14.777 0 29.543-5.638 40.819-16.903 22.536-22.546 22.536-59.09 0-81.625zM163.14 450.122C163.14 291.733 292 162.87 450.396 162.87s287.261 128.862 287.261 287.252c0 158.39-128.867 287.252-287.261 287.252S163.14 608.512 163.14 450.122z' fill='%23C4C4C4'/%3E%3C/svg%3E") 8px 7px no-repeat;
+    background-size: 20px;
+    vertical-align: middle !important;
+}
+.gridea-search-input:focus {
+  border-color: #666666;
+  right: 0;
+}
+</style>
+
+<div class="pisces">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>RiftRays&#39;s Blog</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">年轻且优秀 积极且颓废</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io" target="_self">
+                  <i class="fa fa-globe"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io/archives" target="_self">
+                  <i class="fa fa-archive"></i> 笔记
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://riftrays.github.io/tags" target="_self">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+          
+            
+              <li class="nav-item ">
+                <a href="/friends/" target="_self">
+                  
+                    <i class="fa fa-address-book"></i> 友链
+                  
+                </a>
+              </li>
+            
+          
+          
+            <li id="fa_search" class="nav-item">
+				<a href="javascript:void(0);">
+					<span class="language" data-lan="search">
+						<div class="gridea-search-div">
+							<form id="gridea-search-form" action="https://riftrays.github.io/search/">
+								<input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
+							</form>
+						</div>
+					</span>
+				</a>
+			</li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout pisces ">
+      <div class="section-layout-wrapper">
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body pisces" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">RiftRays</p>
+    
+    <div class="site-description right-motion">
+      
+        <p id="binft">年轻且优秀 积极且颓废</p>
+      
+    </div>
+    
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">24</span>
+        <span class="site-item-stat-name language" data-lan="article">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">11</span>
+        <span class="site-item-stat-name language" data-lan="tag">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+  
+  
+    <div class="sidebar-item sidebar-item-social">
+      <div class="social-item">
+        
+          
+            <a href="https://github.com/RiftRays">
+              <i class="fa fa-github-alt" title="GitHub"></i>
+            </a>
+          
+            <a href="mailto:RiftRays@gmail.com">
+              <i class="fa fa-envelope" title="Gmail"></i>
+            </a>
+          
+            <a href="">
+              <i class="fa fa-comments" title="WeChat"></i>
+            </a>
+          
+            <a href="">
+              <i class="fa fa-qq" title="QQ"></i>
+            </a>
+          
+        
+        
+      </div>
+    </div>
+  
+
+
+
+  <div style="width: 100%; position: relative;">
+    <canvas id="canvasDiyBlock" style="width:100%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+    <script src="/media/js/magic/clock.js"></script>
+  </div>
+
+</div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#spring-boot">Spring Boot</a>
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#%E7%89%B9%E6%80%A7">特性</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4">开发步骤</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BAspring-boot%E9%A1%B9%E7%9B%AE">创建Spring Boot项目</a></li>
+<li><a href="#idea%E5%88%9B%E5%BB%BAspring-boot%E9%A1%B9%E7%9B%AE">IDEA创建Spring Boot项目</a></li>
+<li><a href="#%E5%8F%96%E6%B6%88%E5%90%AF%E5%8A%A8banner%E5%9B%BE%E6%A0%87">取消启动banner图标</a></li>
+<li><a href="#sprin%E5%BC%95%E5%AF%BC%E7%B1%BB">Sprin引导类</a></li>
+<li><a href="#%E5%92%8C%E4%BC%A0%E7%BB%9Fspring%E6%A1%86%E6%9E%B6%E5%AF%B9%E6%AF%94">和传统Spring框架对比</a></li>
+<li><a href="#%E4%B8%8Espring%E5%BC%80%E5%8F%91%E7%9A%84%E5%BC%82%E5%90%8C">与Spring开发的异同</a></li>
+<li><a href="#%E4%B8%8Espring%E9%85%8D%E7%BD%AE%E7%9A%84%E5%B7%AE%E5%BC%82">与Spring配置的差异</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE">依赖配置</a>
+<ul>
+<li><a href="#%E8%B5%B7%E6%AD%A5%E4%BE%9D%E8%B5%96">起步依赖</a></li>
+<li><a href="#%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83">编写规范</a>
+<ul>
+<li><a href="#maven-%E4%BE%9D%E8%B5%96%E5%9D%90%E6%A0%87%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83">Maven 依赖坐标编写规范</a></li>
+<li><a href="#gradle-%E4%BE%9D%E8%B5%96%E5%9D%90%E6%A0%87%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83">Gradle 依赖坐标编写规范</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE">项目配置</a>
+<ul>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F">配置方式</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BC%98%E5%85%88%E7%BA%A7">配置文件优先级</a></li>
+</ul>
+</li>
+<li><a href="#properties">properties</a>
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0-2">概述</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99">语法规则</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8">使用</a></li>
+</ul>
+</li>
+<li><a href="#yaml">YAML</a>
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0-3">概述</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99-2">语法规则</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2">注意事项</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-2">使用</a></li>
+<li><a href="#%E6%AF%94%E8%BE%83">比较</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE">多环境配置</a>
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0-4">概述</a></li>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%B8%80">方式一</a></li>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%BA%8C">方式二</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E5%88%86%E7%B1%BB">配置分类</a></li>
+<li><a href="#%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE">存放位置</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E4%BC%98%E5%85%88%E7%BA%A7">配置优先级</a></li>
+<li><a href="#maven%E4%B8%8Espringboot%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%85%BC%E5%AE%B9">Maven与SpringBoot多环境兼容</a></li>
+<li><a href="#%E5%8A%A0%E8%BD%BDmaven%E5%AF%B9%E5%BA%94%E7%9A%84%E5%B1%9E%E6%80%A7">加载Maven对应的属性</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B4%E5%90%88%E4%B8%89%E6%96%B9%E6%8A%80%E6%9C%AF">整合三方技术</a>
+<ul>
+<li><a href="#%E6%95%B4%E5%90%88junit">整合JUnit</a></li>
+<li><a href="#%E6%95%B4%E5%90%88mybatis">整合MyBatis</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    jQuery.Velocity(hideElement, 'stop');
+    jQuery.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        jQuery.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://riftrays.github.io/springboot/"> Spring Boot </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item">
+      <i class="fa fa-thumb-tack"></i>
+      <span class="language" data-lan="top">置顶</span>
+      <span class="post-meta-divider">|</span>
+    </span>
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2021-01-01 22:41:03">2021-01-01 22:41:03</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">标签:</span>
+       
+      <a href="https://riftrays.github.io/tag-Spring/"> <span>Spring</span> </a>、   
+      <a href="https://riftrays.github.io/tag-SpringBoot/">
+        <span>SpringBoot</span>
+      </a>
+       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >55<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >13600<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+      
+    <span
+      id="/springboot/"
+      data-flag-title="Spring Boot"
+      class="meta-item pc-show leancloud_visitors"
+    >
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span
+        ><span class="language" data-lan="view">浏览量:</span>:<span
+          class="leancloud-visitors-count"
+        ></span
+      ></span>
+    </span>
+    
+  </div>
+</section>
+
+            <div class="post-body next-md-body" id="post_body">
+              <h1 id="spring-boot">Spring Boot</h1>
+<h2 id="概述">概述</h2>
+<p>Spring Boot是一个开源的Java框架，它是Spring框架的扩展，旨在简化和加速Java应用程序的开发。Spring Boot专注于使构建、配置和部署基于Spring的应用程序变得更加容易。它采用&quot;约定优于配置&quot;的原则，通过提供默认配置和自动化的配置方式，使开发人员能够快速地启动和运行应用程序。</p>
+<h2 id="特性">特性</h2>
+<ol>
+<li>
+<p><strong>自动配置</strong>：Spring Boot根据项目中所包含的依赖库，自动配置应用程序。这意味着不必手动配置每个细节，大部分情况下只需少量的配置即可。</p>
+</li>
+<li>
+<p><strong>起步依赖</strong>：Spring Boot引入了&quot;起步依赖&quot;的概念，这是预先配置好的依赖项集合，可以帮助快速地集成各种功能模块（例如数据库、安全性、Web等）到应用程序中。</p>
+</li>
+<li>
+<p><strong>嵌入式Web服务器</strong>：Spring Boot内置了常用的Web服务器，如Tomcat、Jetty和Undertow，使能够以独立应用程序的形式轻松地运行Web应用。</p>
+</li>
+<li>
+<p><strong>Actuator</strong>：Spring Boot提供了Actuator模块，用于监控和管理应用程序。它可以提供应用程序的健康状况、运行时信息等，方便开发人员进行调试和监控。</p>
+</li>
+<li>
+<p><strong>外部化配置</strong>：Spring Boot支持将配置从代码中分离，可以通过属性文件、YAML文件、环境变量等方式进行配置，使得应用程序更具灵活性。</p>
+</li>
+<li>
+<p><strong>简化的安全性配置</strong>：Spring Boot简化了安全性配置，通过起步依赖可以很容易地添加安全性功能，例如身份验证和授权。</p>
+</li>
+<li>
+<p><strong>容易集成</strong>：Spring Boot与其他Spring生态系统组件无缝集成，例如Spring Data、Spring Security等。</p>
+</li>
+</ol>
+<h1 id="开发步骤">开发步骤</h1>
+<ol>
+<li>
+<p><strong>项目初始化</strong>：</p>
+<ul>
+<li>创建一个新的Maven或Gradle项目，或者使用现有的项目作为基础。</li>
+<li>在项目的构建文件中添加Spring相关依赖，如Spring Boot起步依赖或Spring框架的核心模块。</li>
+</ul>
+</li>
+<li>
+<p><strong>定义数据模型</strong>：</p>
+<ul>
+<li>根据应用程序的需求，定义实体类（POJO）来表示数据模型，这些实体类通常映射到数据库表。</li>
+<li>使用注解（如<code>@Entity</code>、<code>@Table</code>等）来标识实体类，并定义实体类的属性以及它们之间的关系（如一对多、多对一等）。</li>
+</ul>
+</li>
+<li>
+<p><strong>创建数据访问层</strong>：</p>
+<ul>
+<li>使用Spring的数据访问技术（如Spring Data JPA或Spring JDBC）来访问数据库。</li>
+<li>定义Repository接口，通过方法签名来声明数据查询和操作。Spring将根据方法命名约定自动生成查询。</li>
+</ul>
+</li>
+<li>
+<p><strong>创建业务逻辑层</strong>：</p>
+<ul>
+<li>实现Service层，用于处理业务逻辑。</li>
+<li>在Service层中调用数据访问层的方法，处理业务逻辑，并对数据进行处理和转换。</li>
+</ul>
+</li>
+<li>
+<p><strong>创建控制器层</strong>：</p>
+<ul>
+<li>创建Controller类，用于处理HTTP请求和响应。</li>
+<li>使用注解（如<code>@RestController</code>、<code>@RequestMapping</code>等）来标识控制器，并定义请求映射。</li>
+</ul>
+</li>
+<li>
+<p><strong>配置依赖注入</strong>：</p>
+<ul>
+<li>使用Spring的依赖注入（DI）机制来管理组件之间的依赖关系。</li>
+<li>在类中使用<code>@Autowired</code>注解来标记需要自动注入的依赖。</li>
+</ul>
+</li>
+<li>
+<p><strong>配置应用程序</strong>：</p>
+<ul>
+<li>配置应用程序的属性，可以使用<code>application.properties</code>或<code>application.yml</code>文件进行配置。</li>
+<li>定义数据源、日志配置、端口号等应用程序相关的配置信息。</li>
+</ul>
+</li>
+<li>
+<p><strong>处理异常和错误</strong>：</p>
+<ul>
+<li>实现全局异常处理，以处理应用程序中出现的异常和错误情况。</li>
+<li>可以使用<code>@ControllerAdvice</code>注解来定义全局异常处理类。</li>
+</ul>
+</li>
+<li>
+<p><strong>测试应用程序</strong>：</p>
+<ul>
+<li>编写单元测试和集成测试来验证应用程序的功能和正确性。</li>
+<li>使用JUnit、Mockito等测试框架来编写和运行测试用例。</li>
+</ul>
+</li>
+<li>
+<p><strong>运行应用程序</strong>：</p>
+<ul>
+<li>使用Maven或Gradle构建项目，并生成可执行的JAR或WAR文件。</li>
+<li>使用命令行或集成开发环境（IDE）来运行应用程序。</li>
+</ul>
+</li>
+<li>
+<p><strong>部署应用程序</strong>：</p>
+<ul>
+<li>将生成的可执行文件部署到服务器或云平台上，以使应用程序可以在生产环境中运行。</li>
+</ul>
+</li>
+</ol>
+<h2 id="创建spring-boot项目">创建Spring Boot项目</h2>
+<ol>
+<li>
+<p>打开浏览器，并访问Spring Initializr网站：<a href="https://start.spring.io/">https://start.spring.io/</a></p>
+</li>
+<li>
+<p>在Spring Initializr网站上，可以看到一个简单的界面，用于配置新项目的基本信息。需要提供以下信息：</p>
+<ul>
+<li>
+<p><strong>项目信息</strong>：输入项目的基本信息，如Group、Artifact、Name和Description。</p>
+</li>
+<li>
+<p><strong>依赖</strong>：选择需要的起步依赖。这些依赖将自动添加到的项目中，并提供所需的功能，如Web、数据访问、安全等。</p>
+</li>
+<li>
+<p><strong>Java版本</strong>：选择希望使用的Java版本。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>配置完成后，点击&quot;Generate&quot;按钮，Spring Initializr将生成一个包含配置的项目结构的Zip文件。</p>
+</li>
+<li>
+<p>下载生成的Zip文件，并解压到的开发环境中。</p>
+</li>
+<li>
+<p>使用喜欢的IDE（如IntelliJ IDEA、Eclipse等），打开解压后的项目文件夹。</p>
+</li>
+<li>
+<p>如果使用Maven，可以直接导入为Maven项目，IDE会自动检测并加载Maven依赖。</p>
+</li>
+<li>
+<p>开始编写的Spring Boot应用程序的代码，包括控制器、业务逻辑和数据访问等。</p>
+</li>
+<li>
+<p>运行Spring Boot应用程序，可以使用IDE的运行按钮或使用命令行运行<code>mvn spring-boot:run</code>。</p>
+</li>
+<li>
+<p>通过浏览器或其他工具访问的应用程序，检查是否正常运行。</p>
+</li>
+</ol>
+<h2 id="idea创建spring-boot项目">IDEA创建Spring Boot项目</h2>
+<ol>
+<li>
+<p>打开IntelliJ IDEA，并选择&quot;Create New Project&quot;（创建新项目）。</p>
+</li>
+<li>
+<p>在弹出的窗口中，选择&quot;Spring Initializr&quot;选项，然后点击&quot;Next&quot;（下一步）。</p>
+</li>
+<li>
+<p>在下一个窗口中，配置项目的基本信息：</p>
+<ul>
+<li>
+<p><strong>Project SDK</strong>：选择希望使用的Java SDK版本。</p>
+</li>
+<li>
+<p><strong>Spring Initializr Service URL</strong>：默认情况下，IntelliJ IDEA会自动使用Spring Initializr服务。如果有特定需求，也可以选择使用本地的Spring Initializr服务。</p>
+</li>
+<li>
+<p><strong>Project</strong>：选择&quot;Maven&quot;或&quot;Gradle&quot;作为构建工具。</p>
+</li>
+<li>
+<p><strong>Language</strong>：选择Java。</p>
+</li>
+<li>
+<p><strong>Group</strong>：输入的项目组织或公司的名称。</p>
+</li>
+<li>
+<p><strong>Artifact</strong>：输入项目的名称。</p>
+</li>
+<li>
+<p><strong>Name</strong>：输入项目的显示名称。</p>
+</li>
+<li>
+<p><strong>Description</strong>：输入项目的描述信息（可选）。</p>
+</li>
+</ul>
+<p>确保配置正确后，点击&quot;Next&quot;（下一步）。</p>
+</li>
+<li>
+<p>在下一个窗口中，选择需要的Spring Boot起步依赖。可以根据项目需求选择Web、数据访问、安全等不同的依赖。选择完成后，点击&quot;Next&quot;（下一步）。</p>
+</li>
+<li>
+<p>接下来，选择项目存储路径，并配置项目的命名空间（package）。</p>
+</li>
+<li>
+<p>完成以上步骤后，点击&quot;Finish&quot;（完成），IntelliJ IDEA将会为创建一个Spring Boot项目，并自动下载和配置所需的依赖。</p>
+</li>
+<li>
+<p>项目创建完成后，可以在IDEA的项目视图中看到项目的结构，其中包含了主应用程序类（通常带有<code>@SpringBootApplication</code>注解）和默认的目录结构。</p>
+</li>
+<li>
+<p>开始编写的Spring Boot应用程序的代码，包括控制器、业务逻辑和数据访问等。</p>
+</li>
+<li>
+<p>运行Spring Boot应用程序，可以在主应用程序类上点击右键，然后选择&quot;Run 'YourApplicationName'&quot;，或者使用快捷键<code>Shift + F10</code>运行。</p>
+</li>
+<li>
+<p>在启动成功后，通过浏览器或其他工具访问的应用程序，检查是否正常运行。</p>
+</li>
+</ol>
+<h2 id="取消启动banner图标">取消启动banner图标</h2>
+<p>在Spring Boot应用启动时，会默认显示一个启动banner图标，包含Spring Boot的Logo以及项目的名称和版本等信息。有时候，我们可能希望取消这个启动banner图标的显示，以便在控制台中获得更干净的输出。</p>
+<p><strong>方法一：通过配置文件取消</strong></p>
+<p>可以通过在<code>application.properties</code>或<code>application.yml</code>配置文件中添加如下配置来取消启动banner图标的显示：</p>
+<pre><code class="language-properties">spring.main.banner-mode=off
+</code></pre>
+<p>或者在<code>application.yml</code>中：</p>
+<pre><code class="language-yaml">spring:
+  main:
+    banner-mode: off
+</code></pre>
+<p><strong>方法二：通过编程方式取消</strong></p>
+<p>我们还可以通过编程方式取消启动banner图标的显示，即在Spring Boot应用的主类中添加相应的代码。下面是一个Java代码示例：</p>
+<pre><code class="language-java">import org.springframework.boot.Banner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MyApplication {
+
+    public static void main(String[] args) {
+        SpringApplication app = new SpringApplication(MyApplication.class);
+        app.setBannerMode(Banner.Mode.OFF); // 取消启动banner图标的显示
+        app.run(args);
+    }
+
+}
+</code></pre>
+<p>在上述代码中，我们通过<code>SpringApplication</code>类的<code>setBannerMode()</code>方法将启动banner图标的显示模式设置为<code>Banner.Mode.OFF</code>，从而取消了启动时的图标显示。</p>
+<h2 id="sprin引导类">Sprin引导类</h2>
+<p>在Spring Boot中，引导类（Bootstrap Class）是一个Java类，它是Spring Boot应用程序的入口点。引导类通常是一个带有<code>main</code>方法的类，它被用来启动应用程序。</p>
+<p>引导类的主要作用是启用Spring Boot框架和自动配置。它会自动扫描应用程序中的组件（组件扫描），加载配置文件，并根据依赖关系和配置信息自动配置应用程序的各种功能。</p>
+<p>在引导类中，需要使用<code>@SpringBootApplication</code>注解来标记该类。<code>@SpringBootApplication</code>是一个复合注解，包含了<code>@Configuration</code>、<code>@EnableAutoConfiguration</code>和<code>@ComponentScan</code>三个注解。它们的作用如下：</p>
+<ol>
+<li>
+<p><code>@Configuration</code>: 声明该类是一个配置类，相当于Spring中的XML配置文件。</p>
+</li>
+<li>
+<p><code>@EnableAutoConfiguration</code>: 开启Spring Boot的自动配置功能。它会根据项目的依赖和配置，自动配置各种Spring框架和第三方库的Bean。</p>
+</li>
+<li>
+<p><code>@ComponentScan</code>: 启用组件扫描，Spring Boot会自动扫描引导类所在包及其子包下的组件（包括控制器、服务、存储库等），将它们注册为Spring的Bean。</p>
+</li>
+</ol>
+<p>示例引导类代码如下：</p>
+<pre><code class="language-java">import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MyApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(MyApplication.class, args);
+    }
+}
+</code></pre>
+<p>在上述示例中，<code>MyApplication</code>类是引导类，通过<code>SpringApplication.run()</code>方法启动了Spring Boot应用程序。</p>
+<blockquote>
+<p>小贴士</p>
+<ol>
+<li>引导类应该放在项目的根包下或者根包的子包下，这样可以确保<code>@ComponentScan</code>扫描到所有需要注册为Bean的组件。一旦引导类配置好，Spring Boot将会根据其自动配置的特性，简化应用程序的开发和部署过程。</li>
+</ol>
+</blockquote>
+<h2 id="和传统spring框架对比">和传统Spring框架对比</h2>
+<table>
+<thead>
+<tr>
+<th>特点</th>
+<th>Spring Boot</th>
+<th>传统 Spring 框架</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>概述</td>
+<td>用于简化Java应用程序开发的开源框架</td>
+<td>综合的Java企业级应用程序框架</td>
+</tr>
+<tr>
+<td>项目初始化</td>
+<td>提供快速初始化项目的工具</td>
+<td>需要手动配置和初始化项目</td>
+</tr>
+<tr>
+<td>配置简化</td>
+<td>配置更简化，采用约定优于配置原则</td>
+<td>配置相对复杂，需要显式配置各种组件</td>
+</tr>
+<tr>
+<td>使用起步依赖</td>
+<td>使用起步依赖（Starter）简化依赖管理</td>
+<td>需要手动管理项目所需的依赖</td>
+</tr>
+<tr>
+<td>内置嵌入式Web服务器</td>
+<td>内置Tomcat、Jetty等嵌入式Web服务器</td>
+<td>需要手动部署Web服务器</td>
+</tr>
+<tr>
+<td>XML配置 vs Java配置</td>
+<td>推荐使用基于Java的配置，如注解和Java Config</td>
+<td>主要使用XML配置（也支持注解和Java Config）</td>
+</tr>
+<tr>
+<td>组件自动配置</td>
+<td>自动配置Spring Bean和其他组件，无需手动配置</td>
+<td>需要显式配置Spring Bean和其他组件</td>
+</tr>
+<tr>
+<td>环境配置</td>
+<td>使用application.properties或application.yaml进行配置</td>
+<td>使用properties或XML文件进行配置</td>
+</tr>
+<tr>
+<td>版本兼容性</td>
+<td>版本兼容性较好，更容易进行升级和迁移</td>
+<td>升级和迁移相对复杂，可能需要修改部分配置和代码</td>
+</tr>
+<tr>
+<td>微服务和云原生应用支持</td>
+<td>优秀的支持微服务和云原生应用开发</td>
+<td>支持微服务和云原生应用开发，但需要更多手动配置和集成</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>小贴士</p>
+<ol>
+<li>Spring Boot和传统Spring框架并不是彼此互斥的，Spring Boot是在传统Spring框架的基础上进行进一步简化和封装，目的是提供更便捷的开发体验。</li>
+<li>在选择使用哪种框架时，可以根据项目需求、团队经验以及个人偏好来进行权衡和决策。</li>
+</ol>
+</blockquote>
+<h2 id="与spring开发的异同">与Spring开发的异同</h2>
+<p><strong>相同点</strong>：</p>
+<ol>
+<li>
+<p><strong>定义数据模型</strong>：无论是使用Spring还是Spring Boot，都需要定义数据模型，即实体类（POJO），用于表示数据模型和数据库映射。</p>
+</li>
+<li>
+<p><strong>创建数据访问层</strong>：在两种情况下，都需要创建数据访问层，使用Spring的数据访问技术（如Spring Data JPA或Spring JDBC）来访问数据库。</p>
+</li>
+<li>
+<p><strong>创建业务逻辑层</strong>：业务逻辑的处理在Spring和Spring Boot中都是必要的，通过Service层来实现。</p>
+</li>
+<li>
+<p><strong>创建控制器层</strong>：在Spring和Spring Boot中都需要创建Controller类，用于处理HTTP请求和响应。</p>
+</li>
+<li>
+<p><strong>配置依赖注入</strong>：在Spring和Spring Boot中，都使用依赖注入（DI）机制来管理组件之间的依赖关系。</p>
+</li>
+<li>
+<p><strong>处理异常和错误</strong>：在两种情况下，都需要处理异常和错误情况，实现全局异常处理。</p>
+</li>
+<li>
+<p><strong>测试应用程序</strong>：无论使用Spring还是Spring Boot，编写单元测试和集成测试来验证应用程序的功能和正确性是必要的。</p>
+</li>
+</ol>
+<p><strong>不同点</strong>：</p>
+<ol>
+<li>
+<p><strong>配置方式</strong>：最显著的不同是配置方式。在传统的Spring框架中，需要手动配置大部分内容，包括数据源、事务管理、Web容器等，通常需要使用XML配置文件。而在Spring Boot中，采用&quot;约定优于配置&quot;的原则，很多配置都是自动完成的，可以通过属性文件或YAML文件来进行配置。</p>
+</li>
+<li>
+<p><strong>起步依赖</strong>：Spring Boot引入了起步依赖的概念，通过这种方式，可以很方便地添加所需功能的依赖，而不需要手动选择和配置每个依赖项。这在传统的Spring框架中是没有的。</p>
+</li>
+<li>
+<p><strong>嵌入式Web服务器</strong>：Spring Boot内置了常用的Web服务器（如Tomcat、Jetty和Undertow），使得可以以独立应用程序的形式运行Web应用，而传统的Spring框架通常需要将应用部署到外部的Web容器中。</p>
+</li>
+<li>
+<p><strong>项目初始化</strong>：在使用Spring Boot时，可以使用Spring Initializr工具来快速初始化一个Spring Boot项目，选择需要的依赖项和配置，从而大大简化了项目的初始化过程。</p>
+</li>
+<li>
+<p><strong>简化配置</strong>：由于Spring Boot的自动配置特性，很多常规的配置都不再需要手动编写，使得开发者能够更加专注于业务逻辑的实现。</p>
+</li>
+</ol>
+<h2 id="与spring配置的差异">与Spring配置的差异</h2>
+<table>
+<thead>
+<tr>
+<th>配置区别</th>
+<th>Spring开发</th>
+<th>Spring Boot开发</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>配置方式</td>
+<td>使用XML配置文件进行手动配置</td>
+<td>采用&quot;约定优于配置&quot;，使用属性文件或YAML文件进行自动配置</td>
+</tr>
+<tr>
+<td>依赖管理</td>
+<td>需要手动管理依赖项</td>
+<td>引入起步依赖，能够快速添加所需功能的依赖</td>
+</tr>
+<tr>
+<td>数据源配置</td>
+<td>需要手动配置数据源</td>
+<td>自动根据配置文件设置数据源和数据库连接池</td>
+</tr>
+<tr>
+<td>Web服务器配置</td>
+<td>需要手动部署到外部Web服务器（如Tomcat、Jetty等）</td>
+<td>内置嵌入式Web服务器（如Tomcat、Jetty和Undertow），可以独立运行Web应用</td>
+</tr>
+<tr>
+<td>项目初始化</td>
+<td>手动创建并配置项目</td>
+<td>使用Spring Initializr工具快速初始化项目</td>
+</tr>
+<tr>
+<td>简化配置</td>
+<td>需要手动编写大量常规配置</td>
+<td>自动化配置，减少了常规配置的编写</td>
+</tr>
+<tr>
+<td>事务管理</td>
+<td>需要手动配置事务管理</td>
+<td>自动配置事务管理，无需手动设置事务</td>
+</tr>
+<tr>
+<td>组件扫描</td>
+<td>需要手动配置组件扫描</td>
+<td>自动扫描组件，无需手动配置扫描路径</td>
+</tr>
+<tr>
+<td>简化REST API开发</td>
+<td>需要额外配置REST API（如使用Spring MVC）</td>
+<td>内置Spring Web模块，简化REST API的开发</td>
+</tr>
+<tr>
+<td>管理端点和健康检查</td>
+<td>需要手动配置Actuator端点和健康检查</td>
+<td>自动暴露Actuator端点，可用于监控和管理应用程序</td>
+</tr>
+<tr>
+<td>自动配置和装配</td>
+<td>需要手动配置和装配组件</td>
+<td>自动配置和装配组件，减少了手动配置的复杂性</td>
+</tr>
+</tbody>
+</table>
+<p>注意：上述表格中的内容是一般性的配置区别，具体差异可能因实际项目和版本而有所不同。Spring Boot的自动化配置使得开发者能够更快速地启动和运行应用程序，而传统的Spring开发可能需要手动处理更多的配置和集成工作。</p>
+<h1 id="依赖配置">依赖配置</h1>
+<h2 id="起步依赖">起步依赖</h2>
+<p>Spring Boot的起步依赖（Starter Dependencies）是一组预配置的依赖项，它们使能够快速启动和运行特定类型的应用程序。这些依赖项将常用的库和框架集成到项目中，无需手动添加大量依赖项或配置文件，从而简化了开发过程。</p>
+<p>Spring Boot的起步依赖通常以<code>spring-boot-starter-*</code>的命名形式出现，其中<code>*</code>表示不同类型的功能或模块。以下是一些常见的Spring Boot起步依赖：</p>
+<ol>
+<li>
+<p><strong>spring-boot-starter-web</strong>：用于构建Web应用程序，包含了Spring MVC、Tomcat（或其他嵌入式Web服务器）以及其他与Web开发相关的依赖。</p>
+</li>
+<li>
+<p><strong>spring-boot-starter-data-jpa</strong>：用于使用JPA（Java Persistence API）进行数据持久化，包含了Spring Data JPA和与JPA相关的依赖。</p>
+</li>
+<li>
+<p><strong>spring-boot-starter-data-mongodb</strong>：用于使用MongoDB数据库，包含了Spring Data MongoDB和MongoDB驱动的依赖。</p>
+</li>
+<li>
+<p><strong>spring-boot-starter-thymeleaf</strong>：用于使用Thymeleaf模板引擎进行视图渲染。</p>
+</li>
+<li>
+<p><strong>spring-boot-starter-security</strong>：用于实现基本的安全功能，包含了Spring Security和一些与安全相关的依赖。</p>
+</li>
+<li>
+<p><strong>spring-boot-starter-test</strong>：用于编写单元测试和集成测试，包含了JUnit、Mockito等测试框架的依赖。</p>
+</li>
+<li>
+<p><strong>spring-boot-starter-actuator</strong>：用于监控和管理Spring Boot应用程序，包含了健康检查、监控端点等依赖。</p>
+</li>
+</ol>
+<p>除了上述常见的起步依赖，还有很多其他功能的起步依赖可供选择，涵盖了各种场景和需求。</p>
+<blockquote>
+<p>小贴士</p>
+<ol>
+<li>所有SpringBoot项目要继承的项目，定义了若干个坐标版本号（依赖管理，而非依赖），以达到减少依赖冲突的目的</li>
+<li>spring-boot-starter-parent（2.5.0）与 spring-boot-starter-parent（2.4.6）共计57处坐标版本不同</li>
+<li>使用任意坐标时，仅书写GAV中的G和A，V由SpringBoot提供。如发生坐标错误，再指定version（要小心版本冲突）</li>
+</ol>
+</blockquote>
+<hr>
+<p>Jetty比Tomcat更轻量级，可扩展性更强（相较于Tomcat），谷歌应用引擎（GAE）已经全面切换为Jetty</p>
+<pre><code class="language-xml">&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;!--web起步依赖环境中，排除Tomcat起步依赖--&gt;
+        &lt;exclusions&gt;
+            &lt;exclusion&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;
+            &lt;/exclusion&gt;
+        &lt;/exclusions&gt;
+    &lt;/dependency&gt;
+    &lt;!--添加Jetty起步依赖，版本由SpringBoot的starter控制--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-jetty&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<h2 id="编写规范">编写规范</h2>
+<p>在Spring Boot项目中，可以使用Maven或Gradle来管理依赖项。无论选择哪种构建工具，依赖坐标的编写规范都遵循相应的标准。下面我将分别介绍Maven和Gradle的依赖坐标编写规范：</p>
+<h3 id="maven-依赖坐标编写规范">Maven 依赖坐标编写规范</h3>
+<p>在Maven的<code>pom.xml</code>文件中，可以通过<code>&lt;dependency&gt;</code>元素来添加依赖项。Maven的依赖坐标包括三个主要部分：groupId、artifactId和version。编写规范如下：</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;组织或公司标识&lt;/groupId&gt;
+    &lt;artifactId&gt;项目或模块标识&lt;/artifactId&gt;
+    &lt;version&gt;版本号&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>例如，添加Spring Boot的Web起步依赖，可以使用以下坐标：</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;version&gt;2.5.2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="gradle-依赖坐标编写规范">Gradle 依赖坐标编写规范</h3>
+<p>在Gradle的<code>build.gradle</code>文件中，可以通过<code>dependencies</code>块来添加依赖项。Gradle的依赖坐标由<code>group</code>、<code>name</code>和<code>version</code>组成。编写规范如下：</p>
+<pre><code class="language-groovy">dependencies {
+    implementation group: '组织或公司标识', name: '项目或模块标识', version: '版本号'
+}
+</code></pre>
+<p>例如，使用Gradle添加Spring Boot的Web起步依赖，可以使用以下坐标：</p>
+<pre><code class="language-groovy">dependencies {
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.5.2'
+}
+</code></pre>
+<p>无论使用Maven还是Gradle，确保依赖坐标编写正确，这样构建工具才能正确解析并下载相应的依赖项。同时，版本号的选择也很重要，确保使用稳定和兼容的版本，以避免潜在的问题和冲突。通过遵循这些规范，可以有效地管理Spring Boot项目的依赖项。</p>
+<h1 id="项目配置">项目配置</h1>
+<h2 id="配置方式">配置方式</h2>
+<p>Spring Boot提供了多种配置形式，使可以根据项目需求选择最合适的配置方式。以下是Spring Boot常见的配置形式：</p>
+<ol>
+<li>
+<p><strong>应用程序属性配置文件（Application Properties/YAML）</strong>：这是最常用的配置方式之一，通过在应用程序的属性配置文件中定义属性键值对来配置应用程序。属性配置文件可以是标准的<code>.properties</code>文件，也可以是更灵活的<code>.yaml</code>或<code>.yml</code>文件。可以在配置文件中设置各种属性，包括数据库连接、服务器端口、日志级别等。</p>
+</li>
+<li>
+<p><strong>命令行参数</strong>：可以通过命令行传递参数来配置Spring Boot应用程序。例如，可以使用<code>--server.port=8080</code>来指定服务器端口，或使用<code>--spring.datasource.url=jdbc:mysql://localhost:3306/mydb</code>来指定数据库连接URL。</p>
+</li>
+<li>
+<p><strong>环境变量</strong>：可以使用操作系统的环境变量来配置Spring Boot应用程序。Spring Boot会自动将环境变量与应用程序的属性进行匹配。</p>
+</li>
+<li>
+<p><strong>Java系统属性</strong>：可以通过Java系统属性来配置Spring Boot应用程序。这可以通过在应用程序启动命令中使用<code>-D</code>参数来设置。</p>
+</li>
+<li>
+<p><strong>配置类</strong>：可以创建一个专门的配置类，并使用注解（如<code>@Configuration</code>、<code>@Bean</code>等）来定义和配置应用程序的组件。</p>
+</li>
+<li>
+<p><strong>自定义配置文件</strong>：除了应用程序属性配置文件外，还可以使用自定义的配置文件。通过使用<code>@PropertySource</code>注解或在<code>@Configuration</code>类中使用<code>@PropertySources</code>注解，可以引入其他的属性配置文件。</p>
+</li>
+<li>
+<p><strong>Profile（环境）配置</strong>：Spring Boot支持使用不同的环境配置文件，例如<code>application-dev.properties</code>、<code>application-prod.properties</code>等，用于在不同的环境中设置不同的配置。可以使用<code>spring.profiles.active</code>属性指定当前激活的环境配置。</p>
+</li>
+</ol>
+<h2 id="配置文件优先级">配置文件优先级</h2>
+<p>Spring Boot项目中同时存在<code>application.yml</code>、<code>application.yaml</code>和<code>application.properties</code>这三个配置文件，Spring Boot会按照一定的优先级顺序加载这些配置文件。具体的优先级如下：application.<strong>properties</strong> &gt; application.<strong>yml</strong> &gt; application.<strong>yaml</strong></p>
+<ol>
+<li>
+<p><code>application.properties</code>: 这是最常见的Spring Boot配置文件，默认的配置文件名。如果存在该文件，它将具有最高的优先级。</p>
+</li>
+<li>
+<p><code>application.yml</code>和<code>application.yaml</code>: 这两个文件的优先级相同，如果同时存在，它们的配置将会合并。如果想使用<code>application.yml</code>和<code>application.yaml</code>文件中的配置，建议使用<code>yaml</code>格式，因为它更易读、易写。</p>
+</li>
+</ol>
+<p>根据上述优先级，当三个配置文件都存在时，<code>application.properties</code>的配置将拥有最高优先级，而<code>application.yml</code>和<code>application.yaml</code>的配置将会合并，并在有冲突的情况下，后面加载的配置文件会覆盖前面加载的配置文件中的相同配置项。如果在<code>application.yml</code>和<code>application.yaml</code>文件中存在相同配置项的冲突，后加载的配置文件将会覆盖前面加载的配置文件中的相同配置项。</p>
+<h1 id="properties">properties</h1>
+<h2 id="概述-2">概述</h2>
+<p>Properties文件是一种常用的配置文件格式，通常用于存储简单的键值对配置信息。它在Java应用程序中广泛用于配置各种参数和选项。</p>
+<h2 id="语法规则">语法规则</h2>
+<ol>
+<li>
+<p>键值对：每行表示一个键值对，用等号（<code>=</code>）或冒号（<code>:</code>）分隔键和值，并且键与值之间没有空格。</p>
+<pre><code class="language-properties">key1=value1
+key2:value2
+</code></pre>
+</li>
+<li>
+<p>注释：使用井号（<code>#</code>）或感叹号（<code>!</code>）作为注释的起始字符。注释会被忽略，不会影响配置解析。</p>
+<pre><code class="language-properties"># 这是注释
+key=value # 这也是注释
+</code></pre>
+</li>
+<li>
+<p>空行：空行会被忽略，可以用于增加配置文件的可读性。</p>
+<pre><code class="language-properties">key=value
+
+key2=value2
+</code></pre>
+</li>
+<li>
+<p>转义字符：如果键或值中包含等号、冒号、井号或感叹号等特殊字符，可以使用反斜杠（<code>\</code>）进行转义。</p>
+<pre><code class="language-properties">special\=key=value
+</code></pre>
+</li>
+</ol>
+<h2 id="注意事项">注意事项</h2>
+<ol>
+<li>
+<p>键和值的顺序不影响配置文件的解析，但是建议保持一致性，便于阅读和维护。</p>
+</li>
+<li>
+<p>键是唯一的，不可重复，如果出现重复的键，后面的键值对会覆盖前面的。</p>
+</li>
+<li>
+<p>键和值都可以是字符串，不过值会被当作字符串来处理。如果需要其他类型的值，需要在代码中进行类型转换。</p>
+</li>
+<li>
+<p>Properties文件通常用于存储简单的配置信息，对于复杂的数据结构，可以考虑使用YAML或JSON等格式。</p>
+</li>
+<li>
+<p>Properties文件是以ISO-8859-1字符集编码的，如果需要包含非ASCII字符，需要进行正确的编码转换。</p>
+</li>
+</ol>
+<p>在Java中，可以使用<code>java.util.Properties</code>类来读取和处理Properties文件，也可以通过Spring框架提供的<code>@PropertySource</code>注解来加载Properties配置文件。确保在使用Properties文件时遵循以上语法规则和注意事项，以确保配置文件能够正确解析和使用。</p>
+<h2 id="使用">使用</h2>
+<ol>
+<li>
+<p>创建Properties配置文件：<br>
+在<code>src/main/resources</code>目录下创建一个新的文件，命名为<code>application.properties</code>。</p>
+</li>
+<li>
+<p>编写配置信息：<br>
+在<code>application.properties</code>文件中，按照键值对的方式编写配置信息。示例如下：</p>
+</li>
+</ol>
+<pre><code class="language-properties">server.port=8080
+spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+spring.datasource.username=myuser
+spring.datasource.password=mypassword
+</code></pre>
+<ol start="3">
+<li>加载配置信息：<br>
+与使用YAML配置文件类似，Spring Boot会自动加载<code>application.properties</code>中的配置信息，并将其转换为Java对象供应用程序使用。你可以在代码中通过<code>@Value</code>注解或者<code>@ConfigurationProperties</code>注解来获取配置值。</li>
+</ol>
+<p>使用<code>@Value</code>注解示例：</p>
+<pre><code class="language-java">import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyComponent {
+    @Value(&quot;${server.port}&quot;)
+    private int serverPort;
+
+    @Value(&quot;${spring.datasource.url}&quot;)
+    private String dbUrl;
+
+    // 其他业务逻辑
+}
+</code></pre>
+<p>或者使用<code>@ConfigurationProperties</code>注解：</p>
+<pre><code class="language-java">import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@Component
+@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)
+public class DataSourceConfig {
+    private String url;
+    private String username;
+    private String password;
+
+    // getter和setter方法
+}
+</code></pre>
+<p>或者使用<code>Environment对象</code>：</p>
+<pre><code class="language-java">import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.env.Environment;
+
+@SpringBootApplication
+public class MyApp {
+
+    @Autowired
+    private Environment environment;
+
+    public static void main(String[] args) {
+        SpringApplication.run(MyApp.class, args);
+    }
+
+    // 在应用程序的某个方法中使用Environment对象
+    public void printConfigProperty() {
+        String propertyValue = environment.getProperty(&quot;spring.datasource.url&quot;);
+        System.out.println(&quot;配置属性的值：&quot; + propertyValue);
+    }
+}
+</code></pre>
+<ol start="4">
+<li>运行项目：<br>
+在配置文件编写完成后，启动Spring Boot应用程序，它将自动加载Properties配置文件中的配置，并将其应用于相应的组件。</li>
+</ol>
+<h1 id="yaml">YAML</h1>
+<h2 id="概述-3">概述</h2>
+<p>YAML（YAML Ain't Markup Language）是一种用于数据序列化的格式，它的设计目标是人类可读性高、易于书写和解析。YAML的文件扩展名可以是<code>.yaml</code>或<code>.yml</code>，这两种扩展名可以互相替代使用，没有本质上的区别。</p>
+<p>实际上，<code>.yml</code>是<code>.yaml</code>的简化形式，它是为了在文件名中更方便地表示YAML格式而引入的。YAML规范定义了<code>.yaml</code>作为官方的文件扩展名，但<code>.yml</code>也得到广泛接受并广泛使用，尤其在许多编程框架和工具中，<code>.yml</code>被作为默认的YAML文件扩展名。</p>
+<p>因此，<code>yml</code>和<code>yaml</code>在功能和语法上是完全相同的，唯一的区别就是文件扩展名的不同。可以根据个人喜好或特定的编程环境来选择使用<code>.yml</code>或<code>.yaml</code>的文件扩展名。无论选择哪个扩展名，YAML解析器都能够正确地解析文件内容。</p>
+<h2 id="语法规则-2">语法规则</h2>
+<ol>
+<li>键值对：使用冒号(<code>:</code>)表示键值对，键和值之间用空格隔开。</li>
+</ol>
+<pre><code class="language-yaml">key: value
+</code></pre>
+<ol start="2">
+<li>列表：使用连字符(<code>-</code>)表示列表中的元素，每个元素占一行，与前面的元素用空格隔开。</li>
+</ol>
+<pre><code class="language-yaml">- item1
+- item2
+- item3
+</code></pre>
+<ol start="3">
+<li>嵌套结构：可以嵌套使用键值对和列表，用空格缩进表示层级关系。</li>
+</ol>
+<pre><code class="language-yaml">key1:
+  subkey1: value1
+  subkey2: value2
+key2:
+  - item1
+  - item2
+</code></pre>
+<ol start="4">
+<li>注释：使用井号(<code>#</code>)表示注释，从<code>#</code>开始到行末的内容都将被视为注释，不会被解析。</li>
+</ol>
+<pre><code class="language-yaml"># 这是注释
+key: value  # 这也是注释
+</code></pre>
+<ol start="5">
+<li>多行字符串：使用<code>|</code>表示保留换行的多行字符串，内容会保留原格式。</li>
+</ol>
+<pre><code class="language-yaml">multi-line: |
+  This is a
+  multi-line
+  string.
+</code></pre>
+<ol start="6">
+<li>折叠多行字符串：使用<code>&gt;</code>表示折叠多行字符串，换行符会被转换为空格。</li>
+</ol>
+<pre><code class="language-yaml">folded-line: &gt;
+  This is a
+  folded multi-line
+  string.
+</code></pre>
+<h2 id="注意事项-2">注意事项</h2>
+<ol>
+<li>
+<p><strong>缩进和格式</strong>：YAML使用缩进来表示层级关系，通常使用空格作为缩进，但不要混用空格和制表符。建议在整个配置文件中保持一致的缩进风格，以避免解析错误。</p>
+</li>
+<li>
+<p><strong>大小写敏感</strong>：YAML是大小写敏感的，因此<code>Key</code>和<code>key</code>是不同的键。要保持键的一致性，以便正确匹配和获取配置项。</p>
+</li>
+<li>
+<p><strong>注释</strong>：YAML支持使用<code>#</code>符号进行行内注释，但不支持块注释。注释应该放在合适的位置，提高配置文件的可读性，但要注意不要在重要的键值对上方添加注释，以免干扰解析。</p>
+</li>
+<li>
+<p><strong>引号</strong>：在需要的情况下使用引号来包裹字符串，特别是包含特殊字符或空格的字符串。YAML支持单引号、双引号和折叠式引号。</p>
+<pre><code class="language-yaml">key: &quot;value with spaces&quot;
+key2: 'single-quoted value'
+</code></pre>
+</li>
+<li>
+<p><strong>特殊字符</strong>：一些特殊字符，如<code>:</code>、<code>#</code>、<code>{</code>、<code>}</code>等，需要进行转义处理，使用反斜杠（<code>\</code>）进行转义。</p>
+</li>
+<li>
+<p><strong>多行字符串</strong>：YAML支持多行字符串，可以使用<code>|</code>或<code>&gt;</code>符号表示。</p>
+<ul>
+<li>使用<code>|</code>表示保留换行符，保持多行文本的原样格式。</li>
+<li>使用<code>&gt;</code>表示折叠换行符，将多行文本折叠成一行，并用空格替换换行符。</li>
+</ul>
+<pre><code class="language-yaml">key1: |
+  This is a
+  multiline
+  text.
+
+key2: &gt;
+  This is a
+  multiline text.
+</code></pre>
+</li>
+<li>
+<p><strong>数组</strong>：YAML中的数组可以使用方括号（<code>[]</code>）表示，数组元素之间使用逗号（<code>,</code>）分隔。</p>
+<pre><code class="language-yaml">fruits:
+  - apple
+  - banana
+  - orange
+</code></pre>
+</li>
+<li>
+<p><strong>对象</strong>：YAML中的对象可以使用冒号（<code>:</code>）表示，冒号后的值可以是简单的值，也可以是嵌套的对象。</p>
+<pre><code class="language-yaml">person:
+  name: John
+  age: 30
+  address:
+    city: New York
+    zip: &quot;10001&quot;
+</code></pre>
+</li>
+<li>
+<p><strong>类型推断</strong>：YAML会根据内容自动推断数据类型，如字符串、整数、布尔值等。确保键值对的值按照预期类型进行书写，避免类型错误。</p>
+</li>
+<li>
+<p><strong>包含文件</strong>：YAML支持通过<code>!include</code>或<code>!include_dir_merge_list</code>等标签来包含其他文件或目录，但这取决于解析器的支持和配置。</p>
+</li>
+</ol>
+<h2 id="使用-2">使用</h2>
+<p>在Spring Boot中，使用YAML配置文件是非常常见和方便的。YAML配置文件可以替代传统的Properties配置文件，并且在Spring Boot项目中，使用YAML配置文件可以更加清晰地组织配置信息，提高可读性和维护性。下面是在Spring Boot中使用YAML配置文件的基本步骤：</p>
+<ol>
+<li>
+<p>创建YAML配置文件：<br>
+在Spring Boot项目的<code>src/main/resources</code>目录下创建一个新的文件，命名为<code>application.yml</code>或者<code>application.yaml</code>。这是Spring Boot默认加载的配置文件名。</p>
+</li>
+<li>
+<p>编写配置信息：<br>
+在<code>application.yml</code>文件中，可以使用YAML的语法来编写配置信息。以下是一个简单的示例：</p>
+</li>
+</ol>
+<pre><code class="language-yaml">server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/mydb
+    username: myuser
+    password: mypassword
+</code></pre>
+<ol start="3">
+<li>加载配置信息：<br>
+Spring Boot会自动加载<code>application.yml</code>中的配置信息，并将其转换为Java对象，供应用程序使用。你可以在代码中通过<code>@Value</code>注解或<code>@ConfigurationProperties</code>注解来获取配置值。</li>
+</ol>
+<p>示例代码：</p>
+<pre><code class="language-java">import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyComponent {
+    @Value(&quot;${server.port}&quot;)
+    private int serverPort;
+
+    @Value(&quot;${spring.datasource.url}&quot;)
+    private String dbUrl;
+
+    // 其他业务逻辑
+}
+</code></pre>
+<p>或者使用<code>@ConfigurationProperties</code>注解：</p>
+<pre><code class="language-java">import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@Component
+@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)
+public class DataSourceConfig {
+    private String url;
+    private String username;
+    private String password;
+
+    // getter和setter方法
+}
+</code></pre>
+<ol start="4">
+<li>运行项目：<br>
+在配置文件编写完成后，启动Spring Boot应用程序，它将自动加载YAML配置文件中的配置，并将其应用于相应的组件。</li>
+</ol>
+<hr>
+<p>自定义对象封装数据警告解决方案</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;
+    &lt;optional&gt;true&lt;/optional&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="比较">比较</h2>
+<table>
+<thead>
+<tr>
+<th>特点</th>
+<th>YAML</th>
+<th>Properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>结构</td>
+<td>使用缩进和层级结构，更具可读性</td>
+<td>使用键值对的形式，较为扁平</td>
+</tr>
+<tr>
+<td>嵌套支持</td>
+<td>支持嵌套结构，可以表示复杂的数据关系</td>
+<td>不支持嵌套结构，仅适合简单的键值对配置</td>
+</tr>
+<tr>
+<td>注释</td>
+<td>支持行内注释和块注释</td>
+<td>仅支持行内注释</td>
+</tr>
+<tr>
+<td>数据类型推断</td>
+<td>自动推断数据类型，支持字符串、整数、浮点数、布尔值等</td>
+<td>一般将所有值都视为字符串类型</td>
+</tr>
+<tr>
+<td>字符串表示</td>
+<td>支持多行字符串和引号表示，可保留换行符</td>
+<td>一般使用单行字符串表示，换行使用转义字符</td>
+</tr>
+<tr>
+<td>键名大小写敏感</td>
+<td>大小写敏感，键名区分大小写</td>
+<td>大小写不敏感，键名不区分大小写</td>
+</tr>
+<tr>
+<td>特殊字符转义</td>
+<td>支持特殊字符转义，使用反斜杠（\）进行转义</td>
+<td>特殊字符通常不需要转义</td>
+</tr>
+<tr>
+<td>数组和列表</td>
+<td>使用短横线（-）表示数组或列表的元素</td>
+<td>不直接支持数组或列表，通常使用逗号分隔多个值</td>
+</tr>
+<tr>
+<td>文件引入</td>
+<td>支持通过<code>!include</code>标签引入其他文件或片段</td>
+<td>不支持直接引入其他文件，但可以通过代码或工具实现</td>
+</tr>
+<tr>
+<td>扩展性和可读性</td>
+<td>结构清晰，易于理解和维护</td>
+<td>简单直观，适用于小型配置文件</td>
+</tr>
+<tr>
+<td>生态和应用领域的支持</td>
+<td>主要在现代开发中使用，如Spring Boot和其他云原生应用</td>
+<td>在传统Java应用中广泛使用，特别是基于Java EE的企业应用</td>
+</tr>
+</tbody>
+</table>
+<p>需要根据具体的需求和项目环境选择适合的配置文件格式。YAML适合复杂的配置结构和需要更好可读性的场景，而Properties适合简单的键值对配置和传统Java应用的场景。</p>
+<h1 id="多环境配置">多环境配置</h1>
+<h2 id="概述-4">概述</h2>
+<p><img src="https://cdn.staticaly.com/gh/VincentAstor/Vincent@master/SpringBoot/image-20230719163535835.5qojpnwjeog0.jpg" alt="image-20230719163535835" style="zoom:25%;" /><img src="https://cdn.staticaly.com/gh/VincentAstor/Vincent@master/SpringBoot/image-20230719163611826.wxx0kgxs7io.jpg" alt="image-20230719163611826" style="zoom:25%;" /><img src="https://cdn.staticaly.com/gh/VincentAstor/Vincent@master/SpringBoot/image-20230719163735644.19me9ige1z4w.jpg" alt="image-20230719163735644" style="zoom:25%;" /></p>
+<p>在Spring Boot中，你可以使用标准的YAML配置文件来配置多个环境（多环节）的启动参数。通过使用不同的配置文件，你可以为不同的环境提供不同的配置，比如开发环境、测试环境和生产环境。这样可以方便地切换配置，而无需更改代码。</p>
+<p>标准的YAML配置文件命名规则是<code>application-{profile}.yml</code>，其中<code>{profile}</code>是你要指定的环境名称，比如<code>dev</code>、<code>test</code>、<code>prod</code>等。默认情况下，Spring Boot会加载名为<code>application.yml</code>的主配置文件，如果存在对应环境的配置文件，例如<code>application-dev.yml</code>，则会根据当前激活的环境加载相应的配置，覆盖主配置文件中的属性。</p>
+<h2 id="方式一">方式一</h2>
+<ol>
+<li>创建<code>application.yml</code>主配置文件：</li>
+</ol>
+<pre><code class="language-yaml"># application.yml - 主配置文件
+myapp:
+  name: &quot;My App&quot;
+  version: &quot;1.0.0&quot;
+</code></pre>
+<ol start="2">
+<li>创建<code>application-dev.yml</code>开发环境配置文件：</li>
+</ol>
+<pre><code class="language-yaml"># application-dev.yml - 开发环境配置文件
+myapp:
+  db:
+    url: &quot;jdbc:mysql://localhost:3306/dev_db&quot;
+    username: &quot;dev_user&quot;
+    password: &quot;dev_password&quot;
+</code></pre>
+<ol start="3">
+<li>创建<code>application-test.yml</code>测试环境配置文件：</li>
+</ol>
+<pre><code class="language-yaml"># application-test.yml - 测试环境配置文件
+myapp:
+  db:
+    url: &quot;jdbc:mysql://localhost:3306/test_db&quot;
+    username: &quot;test_user&quot;
+    password: &quot;test_password&quot;
+</code></pre>
+<ol start="4">
+<li>创建<code>application-prod.yml</code>生产环境配置文件：</li>
+</ol>
+<pre><code class="language-yaml"># application-prod.yml - 生产环境配置文件
+myapp:
+  db:
+    url: &quot;jdbc:mysql://production-server/prod_db&quot;
+    username: &quot;prod_user&quot;
+    password: &quot;prod_password&quot;
+</code></pre>
+<p>根据上面的配置，当你在不同的环境中启动应用程序时，Spring Boot会自动加载对应的配置文件。例如，在开发环境中启动应用程序，它会加载<code>application.yml</code>和<code>application-dev.yml</code>，从而使用开发环境的数据库配置。</p>
+<p>你可以通过在启动命令中指定<code>--spring.profiles.active</code>参数来激活特定的配置环境，比如：</p>
+<pre><code>java -jar your-application.jar --spring.profiles.active=dev
+</code></pre>
+<p>这样，应用程序将加载<code>application.yml</code>和<code>application-dev.yml</code>的配置。</p>
+<h2 id="方式二">方式二</h2>
+<p>可以在YAML配置文件中进行Spring Boot的多环境配置。Spring Boot支持使用<code>.yml</code>或<code>.yaml</code>格式的配置文件。下面是在YAML配置文件中进行多环境配置的步骤：</p>
+<ol>
+<li>
+<p>创建配置文件：为每个环境创建不同的YAML配置文件，命名为<code>application-{profile}.yml</code>或<code>application-{profile}.yaml</code>，其中<code>{profile}</code>是环境名称（例如<code>dev</code>表示开发环境，<code>test</code>表示测试环境，<code>prod</code>表示生产环境）。</p>
+</li>
+<li>
+<p>配置属性：在每个配置文件中，使用YAML的语法来设置对应环境的属性值。例如，数据库连接信息、日志级别、第三方服务的URL等。</p>
+</li>
+</ol>
+<p>以下是一个示例的YAML配置文件：</p>
+<pre><code class="language-yaml"># application-dev.yml
+spring:
+  profiles:
+    active: dev
+
+# 数据库配置
+datasource:
+  url: jdbc:mysql://localhost:3306/devdb
+  username: devuser
+  password: devpass
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG
+
+# 其他配置项
+myapp:
+  someProperty: value
+</code></pre>
+<ol start="3">
+<li>设置当前环境：与前面的方法类似，在应用启动时，可以通过<code>spring.profiles.active</code>属性来指定当前的环境。可以在YAML配置文件中添加以下配置：</li>
+</ol>
+<pre><code class="language-yaml">spring:
+  profiles:
+    active: dev
+    
+# 新的写法如下
+spring:
+	config:
+		active:
+			on-profile: dev
+</code></pre>
+<ol start="4">
+<li>使用<code>@Profile</code>注解：除了配置文件外，仍然可以使用<code>@Profile</code>注解在Java代码中标注特定环境的配置类或方法，以控制在特定环境下是否生效。</li>
+</ol>
+<h2 id="配置分类">配置分类</h2>
+<p>在 Spring Boot 中，可以通过不同级别的配置文件来覆盖和补充应用程序的配置。以下是 Spring Boot 中的四级配置文件，按优先级从高到低排列：</p>
+<p><strong>1级：file:config/application.yml</strong>（最高优先级）：位于项目根目录的 <code>config</code> 文件夹下的 <code>application.yml</code> 配置文件。此配置文件具有最高的优先级，任何在该文件中定义的配置将覆盖其他级别的配置。</p>
+<p><strong>2级：file:application.yml</strong>：位于项目根目录下的 <code>application.yml</code> 配置文件。如果某些配置没有在 <code>file:config/application.yml</code> 中定义，将尝试在此处查找配置。</p>
+<p><strong>3级：classpath:config/application.yml</strong>：位于 classpath（类路径）下的 <code>config</code> 文件夹下的 <code>application.yml</code> 配置文件。如果某些配置没有在上述两个文件中定义，将尝试在此处查找配置。</p>
+<p><strong>4级：classpath:application.yml</strong>（最低优先级）：位于 classpath（类路径）下的 <code>application.yml</code> 配置文件。如果所有其他级别的配置都没有定义某些配置，将尝试在此处查找默认配置。</p>
+<p>配置文件的优先级由上到下，高优先级的配置将覆盖低优先级的配置。这种配置文件层级的设计使得在不同环境中使用不同的配置变得十分灵活，可以根据需要选择性地覆盖或补充配置，而无需改变应用程序代码。1级与2级留做系统打包后设置通用属性。3级与4级用于系统开发阶段设置通用属性。</p>
+<h2 id="存放位置">存放位置</h2>
+<ol>
+<li>
+<p><strong>src/main/resources 目录：</strong> 这是默认的配置文件存放位置。将配置文件放在 <code>src/main/resources</code> 目录下可以让 Spring Boot 自动加载并应用这些配置。</p>
+</li>
+<li>
+<p><strong>外部目录：</strong> 可以通过指定启动时的命令行参数 <code>--spring.config.location</code> 或环境变量 <code>SPRING_CONFIG_LOCATION</code> 来指定外部目录，其中包含应用程序的配置文件。例如，<code>java -jar myapp.jar --spring.config.location=/path/to/config/</code>。</p>
+</li>
+<li>
+<p><strong>classpath 目录之外的地方：</strong> 除了 <code>src/main/resources</code> 目录，Spring Boot 还支持从 classpath 目录之外的其他位置加载配置文件。通过使用 <code>--spring.config.additional-location</code> 参数，可以指定其他的配置文件位置，例如 <code>java -jar myapp.jar --spring.config.additional-location=/path/to/external/config/</code>。</p>
+</li>
+<li>
+<p><strong>项目根目录：</strong> 在项目根目录中直接放置配置文件也是可以的，但通常不建议这样做，以免混淆项目结构。</p>
+</li>
+</ol>
+<h2 id="配置优先级">配置优先级</h2>
+<p>参考文档：https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config</p>
+<p>Spring Boot lets you externalize your configuration so that you can work with the same application code in different environments. You can use a variety of external configuration sources including Java properties files, YAML files, environment variables, and command-line arguments.</p>
+<p>Property values can be injected directly into your beans by using the <code>@Value</code> annotation, accessed through Spring’s <code>Environment</code> abstraction, or be <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.typesafe-configuration-properties">bound to structured objects</a> through <code>@ConfigurationProperties</code>.</p>
+<p>Spring Boot uses a very particular <code>PropertySource</code> order that is designed to allow sensible overriding of values. Later property sources can override the values defined in earlier ones. Sources are considered in the following order:</p>
+<ol>
+<li>Default properties (specified by setting <code>SpringApplication.setDefaultProperties</code>).</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/6.0.10/javadoc-api/org/springframework/context/annotation/PropertySource.html"><code>@PropertySource</code></a> annotations on your <code>@Configuration</code> classes. Please note that such property sources are not added to the <code>Environment</code> until the application context is being refreshed. This is too late to configure certain properties such as <code>logging.*</code> and <code>spring.main.*</code> which are read before refresh begins.</li>
+<li>Config data (such as <code>application.properties</code> files).</li>
+<li>A <code>RandomValuePropertySource</code> that has properties only in <code>random.*</code>.</li>
+<li>OS environment variables.</li>
+<li>Java System properties (<code>System.getProperties()</code>).</li>
+<li>JNDI attributes from <code>java:comp/env</code>.</li>
+<li><code>ServletContext</code> init parameters.</li>
+<li><code>ServletConfig</code> init parameters.</li>
+<li>Properties from <code>SPRING_APPLICATION_JSON</code> (inline JSON embedded in an environment variable or system property).</li>
+<li>Command line arguments.</li>
+<li><code>properties</code> attribute on your tests. Available on <a href="https://docs.spring.io/spring-boot/docs/3.1.1/api/org/springframework/boot/test/context/SpringBootTest.html"><code>@SpringBootTest</code></a> and the <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.autoconfigured-tests">test annotations for testing a particular slice of your application</a>.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/6.0.10/javadoc-api/org/springframework/test/context/DynamicPropertySource.html"><code>@DynamicPropertySource</code></a> annotations in your tests.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/6.0.10/javadoc-api/org/springframework/test/context/TestPropertySource.html"><code>@TestPropertySource</code></a> annotations on your tests.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.devtools.globalsettings">Devtools global settings properties</a> in the <code>$HOME/.config/spring-boot</code> directory when devtools is active.</li>
+</ol>
+<h2 id="maven与springboot多环境兼容">Maven与SpringBoot多环境兼容</h2>
+<p>当使用 Maven 和 Spring Boot 进行多环境兼容配置时，可以通过 Maven 的 <code>profiles</code> 和 Spring Boot 的多环境配置文件相结合来实现。下面是详细的步骤：</p>
+<p><strong>步骤 1：创建 Maven 的 profiles</strong></p>
+<ol>
+<li>在项目的根目录下，打开 <code>pom.xml</code> 文件。</li>
+<li>在 <code>&lt;project&gt;</code> 元素下添加 <code>&lt;profiles&gt;</code> 元素，用于定义不同的环境配置。</li>
+<li>在 <code>&lt;profiles&gt;</code> 元素中，添加多个 <code>&lt;profile&gt;</code> 元素，每个 <code>&lt;profile&gt;</code> 元素代表一个环境配置（如开发、测试、生产等）。</li>
+<li>在每个 <code>&lt;profile&gt;</code> 元素中，可以设置 <code>&lt;id&gt;</code> 属性来标识该配置，并通过 <code>&lt;properties&gt;</code> 元素设置环境相关的属性值。例如，可以设置数据库连接信息、日志级别等。</li>
+<li>确保每个 <code>&lt;profile&gt;</code> 元素包含 <code>&lt;activation&gt;</code> 元素，用于指定激活该配置的条件。例如，可以根据 Maven 的 <code>activeByDefault</code> 属性或环境变量来激活特定的配置。</li>
+</ol>
+<p>示例 <code>pom.xml</code> 文件：</p>
+<pre><code class="language-xml">&lt;project&gt;
+    &lt;!-- 其他项目配置 --&gt;
+
+    &lt;profiles&gt;
+        &lt;!-- 开发环境配置 --&gt;
+        &lt;profile&gt;
+            &lt;id&gt;dev&lt;/id&gt;
+            &lt;properties&gt;
+                &lt;spring.profiles.active&gt;dev&lt;/spring.profiles.active&gt;
+                &lt;!-- 其他环境相关的属性 --&gt;
+            &lt;/properties&gt;
+            &lt;activation&gt;
+                &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
+            &lt;/activation&gt;
+        &lt;/profile&gt;
+
+        &lt;!-- 测试环境配置 --&gt;
+        &lt;profile&gt;
+            &lt;id&gt;test&lt;/id&gt;
+            &lt;properties&gt;
+                &lt;spring.profiles.active&gt;test&lt;/spring.profiles.active&gt;
+                &lt;!-- 其他环境相关的属性 --&gt;
+            &lt;/properties&gt;
+        &lt;/profile&gt;
+
+        &lt;!-- 生产环境配置 --&gt;
+        &lt;profile&gt;
+            &lt;id&gt;prod&lt;/id&gt;
+            &lt;properties&gt;
+                &lt;spring.profiles.active&gt;prod&lt;/spring.profiles.active&gt;
+                &lt;!-- 其他环境相关的属性 --&gt;
+            &lt;/properties&gt;
+        &lt;/profile&gt;
+    &lt;/profiles&gt;
+
+    &lt;!-- 其他项目配置 --&gt;
+&lt;/project&gt;
+</code></pre>
+<p><strong>步骤 2：创建 Spring Boot 的多环境配置文件</strong></p>
+<ol>
+<li>在 <code>src/main/resources</code> 目录下，创建多个配置文件，每个配置文件代表一个环境配置。例如，可以创建 <code>application-dev.properties</code>（用于开发环境）、<code>application-test.properties</code>（用于测试环境）、<code>application-prod.properties</code>（用于生产环境）等。</li>
+<li>在每个配置文件中，设置与相应环境相关的属性值。例如，可以设置数据库连接信息、日志级别等。</li>
+</ol>
+<p>示例 <code>application-dev.properties</code> 文件：</p>
+<pre><code class="language-properties"># 开发环境数据库连接信息
+spring.datasource.url=jdbc:mysql://localhost:3306/dev_db
+spring.datasource.username=dev_user
+spring.datasource.password=dev_password
+
+# 开发环境日志级别
+logging.level.root=DEBUG
+</code></pre>
+<p>示例 <code>application-test.properties</code> 文件：</p>
+<pre><code class="language-properties"># 测试环境数据库连接信息
+spring.datasource.url=jdbc:mysql://localhost:3306/test_db
+spring.datasource.username=test_user
+spring.datasource.password=test_password
+
+# 测试环境日志级别
+logging.level.root=INFO
+</code></pre>
+<p>示例 <code>application-prod.properties</code> 文件：</p>
+<pre><code class="language-properties"># 生产环境数据库连接信息
+spring.datasource.url=jdbc:mysql://production-server:3306/prod_db
+spring.datasource.username=prod_user
+spring.datasource.password=prod_password
+
+# 生产环境日志级别
+logging.level.root=WARN
+</code></pre>
+<p><strong>步骤 3：使用 Maven 配置打包</strong></p>
+<ol>
+<li>使用 Maven 的 <code>maven-resources-plugin</code> 插件配置打包过程，使得对应环境的配置文件能够正确地打包到最终的可执行 Jar 或 War 文件中。</li>
+<li>在 <code>pom.xml</code> 中添加以下插件配置：</li>
+</ol>
+<pre><code class="language-xml">&lt;project&gt;
+    &lt;!-- 其他项目配置 --&gt;
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;!-- 其他插件配置 --&gt;
+
+            &lt;!-- Maven Resources Plugin 配置 --&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;
+                &lt;version&gt;3.2.0&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;delimiters&gt;
+                        &lt;delimiter&gt;@&lt;/delimiter&gt;
+                    &lt;/delimiters&gt;
+                    &lt;useDefaultDelimiters&gt;false&lt;/useDefaultDelimiters&gt;
+                    &lt;overwrite&gt;true&lt;/overwrite&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+
+    &lt;!-- 其他项目配置 --&gt;
+&lt;/project&gt;
+</code></pre>
+<p><strong>步骤 4：运行应用程序</strong></p>
+<ol>
+<li>使用 Maven 打包应用程序。在项目根目录下执行命令：<code>mvn clean package</code>。</li>
+<li>Maven 将根据配置的激活环境打包对应的配置文件到可执行 Jar 或 War 文件中。</li>
+<li>运行应用程序时，可以使用以下方式激活特定的配置文件：
+<ul>
+<li>使用命令行参数：<code>java -jar myapp.jar --spring.profiles.active=dev</code></li>
+<li>使用环境变量：<code>export SPRING_PROFILES_ACTIVE=dev</code>（Linux 环境）</li>
+<li>在 <code>application.properties</code> 或 <code>application.yml</code> 中指定：<code>spring.profiles.active=dev</code></li>
+</ul>
+</li>
+</ol>
+<p>通过以上步骤，可以成功实现 Maven 与 Spring Boot 的多环境兼容配置。在不同的环境中，应用程序将使用相应的配置文件，从而确保在不同环境下应用程序的正确运行和部署。</p>
+<h2 id="加载maven对应的属性">加载Maven对应的属性</h2>
+<p>对于源码中非 Java 类（例如 XML 配置文件、YAML 配置文件、资源文件等）的操作，如果希望加载 Maven 对应的属性，可以使用 Spring Boot 提供的占位符机制和配置文件加载策略来实现。</p>
+<ol>
+<li>
+<p><strong>使用占位符机制：</strong> 在 Spring Boot 中，可以在配置文件中使用占位符来引用 Maven 的属性。Maven 的属性可以通过 <code>${}</code> 语法在配置文件中进行引用。</p>
+<p>示例 <code>application.yml</code> 文件：</p>
+<pre><code class="language-yaml">server:
+  port: ${server.port}
+datasource:
+  url: ${spring.datasource.url}
+  username: ${spring.datasource.username}
+  password: ${spring.datasource.password}
+</code></pre>
+<p>在上述示例中，<code>${server.port}</code>、<code>${spring.datasource.url}</code>、<code>${spring.datasource.username}</code> 和 <code>${spring.datasource.password}</code> 都是引用了 Maven 中定义的属性，Spring Boot 将在启动时根据 Maven 属性的值进行替换。</p>
+</li>
+<li>
+<p><strong>配置文件加载策略：</strong> Spring Boot 会自动加载项目根目录下的 <code>application.properties</code> 或 <code>application.yml</code> 配置文件。但如果希望在其他位置放置配置文件，并加载 Maven 的属性，可以通过以下方式实现：</p>
+<ul>
+<li>
+<p>将配置文件放置在 Maven 项目的 <code>src/main/resources</code> 目录中，然后在配置文件中使用占位符引用 Maven 的属性，如前面的示例所示。</p>
+</li>
+<li>
+<p>如果希望在其他位置放置配置文件（例如外部目录），可以使用 <code>--spring.config.location</code> 参数指定外部配置文件的位置。例如，<code>java -jar myapp.jar --spring.config.location=/path/to/config/</code>。Spring Boot 将自动加载指定位置的配置文件，并根据 Maven 属性的值进行替换。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>总之，可以在源码中的非 Java 类中使用 Spring Boot 的占位符机制，通过引用 Maven 的属性来实现配置的加载。同时，可以根据需要选择合适的配置文件加载策略，确保配置文件能够正确加载 Maven 的属性值。这样，可以在不同环境中更加灵活地配置应用程序的属性。</p>
+<hr>
+<p>假设有一个 Spring Boot 应用程序，需要配置数据库连接信息，并且希望通过 Maven 属性来设置这些信息。</p>
+<ol>
+<li>首先，在 Maven 的 <code>pom.xml</code> 文件中添加数据库连接信息的属性和开启对默认占位符的解析。</li>
+</ol>
+<pre><code class="language-xml">&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;encoding&gt;utf-8&lt;/encoding&gt;
+                &lt;useDefaultDelimiters&gt;true&lt;/useDefaultDelimiters&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+&lt;project&gt;
+    &lt;!-- 其他项目配置 --&gt;
+
+    &lt;properties&gt;
+        &lt;db.url&gt;jdbc:mysql://localhost:3306/mydb&lt;/db.url&gt;
+        &lt;db.username&gt;myuser&lt;/db.username&gt;
+        &lt;db.password&gt;mypassword&lt;/db.password&gt;
+    &lt;/properties&gt;
+
+    &lt;!-- 其他项目配置 --&gt;
+&lt;/project&gt;
+</code></pre>
+<ol start="2">
+<li>在 <code>src/main/resources</code> 目录下创建 <code>application.yml</code> 配置文件，并在其中使用占位符引用 Maven 的属性。</li>
+</ol>
+<pre><code class="language-yaml"># src/main/resources/application.yml
+
+spring:
+  datasource:
+    url: ${db.url}
+    username: ${db.username}
+    password: ${db.password}
+</code></pre>
+<ol start="3">
+<li>创建一个简单的 Spring Boot 应用程序，用于测试配置。</li>
+</ol>
+<pre><code class="language-java">import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@SpringBootApplication
+public class MyAppApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MyAppApplication.class, args);
+    }
+}
+
+@Component
+@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)
+class DataSourceProperties {
+    private String url;
+    private String username;
+    private String password;
+
+    // Getters and setters
+
+    // Test method to print database connection information
+    public void printDatabaseConfig() {
+        System.out.println(&quot;Database URL: &quot; + url);
+        System.out.println(&quot;Database Username: &quot; + username);
+        System.out.println(&quot;Database Password: &quot; + password);
+    }
+}
+</code></pre>
+<p>在上述示例中，在 <code>pom.xml</code> 中定义了数据库连接信息的 Maven 属性，并在 <code>application.yml</code> 中使用占位符引用这些属性。然后，通过 <code>DataSourceProperties</code> 类使用 <code>@ConfigurationProperties</code> 注解将属性值绑定到类中，并在 <code>printDatabaseConfig</code> 方法中打印出来。</p>
+<p>当运行这个应用程序时，Spring Boot 将加载 <code>application.yml</code> 中的配置，将 Maven 的属性值替换到对应的占位符中。这样，就成功地在配置文件中使用了占位符引用 Maven 的属性，实现了动态加载配置。</p>
+<h1 id="整合三方技术">整合三方技术</h1>
+<h2 id="整合junit">整合JUnit</h2>
+<p>步骤1：添加依赖项<br>
+首先，在项目的构建文件（例如pom.xml）中添加所需的依赖项。确保包含JUnit和Spring Boot Test相关的依赖项。</p>
+<pre><code class="language-xml">&lt;!-- JUnit 依赖 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+    &lt;artifactId&gt;junit-jupiter-api&lt;/artifactId&gt;
+    &lt;version&gt;5.7.2&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Spring Boot Test 依赖 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;version&gt;2.5.4&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>步骤2：编写测试类<br>
+创建一个测试类，并使用JUnit的注解标记测试方法。</p>
+<pre><code class="language-java">import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.web.client.TestRestTemplate.HttpClientOption;
+import org.springframework.boot.test.web.client.TestRestTemplate.ResponseExtractor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.web.client.RestTemplate;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class MyControllerTest {
+
+    @Autowired
+    private TestRestTemplate restTemplate;
+
+    @Test
+    public void testHelloEndpoint() {
+        String url = &quot;/hello&quot;;
+        ResponseEntity&lt;String&gt; response = restTemplate.getForEntity(url, String.class);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(&quot;Hello, World!&quot;, response.getBody());
+    }
+}
+</code></pre>
+<p>在上面的示例中，使用了<code>@SpringBootTest</code>注解来标记测试类，并指定<code>WebEnvironment.RANDOM_PORT</code>以在随机端口上启动应用程序的嵌入式服务器。使用<code>@Autowired</code>注解注入<code>TestRestTemplate</code>来进行HTTP请求的模拟。</p>
+<p>步骤3：运行测试<br>
+使用常规的JUnit运行器（如JUnit Jupiter或JUnit 4）来运行测试类。测试类中的测试方法将会执行，并且可以通过<code>assertEquals</code>等断言方法进行断言和验证。</p>
+<blockquote>
+<p>小贴士</p>
+<ol>
+<li>可以使用<code>TestRestTemplate</code>来发送HTTP请求并进行断言。这使得可以测试控制器、服务或其他组件的行为和结果。</li>
+<li>示例中使用了Spring Boot 2.x的方式，如果使用的是较早的版本，请相应地调整依赖项和注解的版本。</li>
+</ol>
+</blockquote>
+<h2 id="整合mybatis">整合MyBatis</h2>
+<p>步骤1：添加依赖项<br>
+首先，需要在项目的构建文件（例如pom.xml）中添加Spring Boot和MyBatis的依赖项。</p>
+<pre><code class="language-xml">&lt;!-- Spring Boot 依赖 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;version&gt;2.5.4&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- MyBatis 依赖 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
+    &lt;version&gt;2.2.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- MySQL 驱动依赖 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;version&gt;8.0.26&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>步骤2：配置数据源和MyBatis<br>
+在application.properties或application.yml中配置数据源和MyBatis。</p>
+<pre><code class="language-yaml"># application.yml
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/mydatabase
+    username: your_username
+    password: your_password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
+</code></pre>
+<p>在上述配置中，指定了数据库连接的URL、用户名和密码，以及MySQL驱动的类名。还指定了MyBatis Mapper文件的位置，这里假设它们位于<code>src/main/resources/mappers/</code>目录下。</p>
+<p>步骤3：创建Mapper接口和XML文件<br>
+创建MyBatis的Mapper接口和XML文件，用于定义数据库操作。</p>
+<pre><code class="language-java">// UserMapper.java
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+@Mapper
+public interface UserMapper {
+    @Select(&quot;SELECT id, username, email FROM users WHERE id = #{id}&quot;)
+    User findById(Long id);
+}
+</code></pre>
+<pre><code class="language-xml">&lt;!-- UserMapper.xml --&gt;
+
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;com.example.mapper.UserMapper&quot;&gt;
+    &lt;!-- 这里可以定义更多的数据库操作 --&gt;
+&lt;/mapper&gt;
+</code></pre>
+<p>步骤4：实现Service层和Controller层<br>
+创建Service层和Controller层，用于调用MyBatis的Mapper接口进行数据库操作。</p>
+<pre><code class="language-java">// UserService.java
+
+import com.example.mapper.UserMapper;
+import com.example.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+
+    private final UserMapper userMapper;
+
+    @Autowired
+    public UserService(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
+
+    public User getUserById(Long id) {
+        return userMapper.findById(id);
+    }
+}
+</code></pre>
+<pre><code class="language-java">// UserController.java
+
+import com.example.model.User;
+import com.example.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class UserController {
+
+    private final UserService userService;
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping(&quot;/users/{id}&quot;)
+    public User getUserById(@PathVariable Long id) {
+        return userService.getUserById(id);
+    }
+}
+</code></pre>
+<p>在上面的示例中，创建了UserService和UserController，其中UserService调用MyBatis的UserMapper接口来查询数据库，并返回User对象。UserController暴露了一个REST API来获取用户信息。</p>
+<p>步骤5：运行应用程序<br>
+现在，可以运行Spring Boot应用程序，并访问UserController暴露的REST API来测试MyBatis集成是否正常工作。</p>
+<p>当访问<code>/users/{id}</code>时，UserController将调用UserService，并通过MyBatis查询数据库，并返回相应的用户信息。</p>
+
+            </div>
+            
+              <div class="reward-btn">
+                <div class="reward-btn-text">赞赏</div>
+              </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      RiftRays
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://riftrays.github.io/springboot/" title="Spring Boot">https://riftrays.github.io/springboot/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://riftrays.github.io/tag-Spring/"># Spring</a>
+    
+      <a href="https://riftrays.github.io/tag-SpringBoot/"># SpringBoot</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="Maven 进阶" href="https://riftrays.github.io/MavenAdvanced/">Maven 进阶</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="Maven 进阶" href="https://riftrays.github.io/MavenAdvanced/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="Mybatis-Plus" href="https://riftrays.github.io/2m8J3JVh/">Mybatis-Plus</a>
+        <a class="nav-mobile-next" title="Mybatis-Plus" href="https://riftrays.github.io/2m8J3JVh/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+            
+  
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-box">
+  <footer class="footer">
+    <center id="runTimeBox">
+      已运行:<span id="run_time"></span>
+    </center>
+    <span id="busuanzi_container_site_pv">浏览数:<span id="busuanzi_value_site_pv"></span> 次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span> 人</span>
+
+    <script>
+      BirthDay = new Date('2019/01/01');
+      if (BirthDay.getTime()) {
+        function runTime() {
+          str = "";
+          today = new Date();
+          timeold = today.getTime() - BirthDay.getTime();
+          msPerDay = 24 * 60 * 60 * 1000;
+          e_daysold = timeold / msPerDay;
+          daysold = Math.floor(e_daysold);
+          str += daysold + "天";
+          return str;
+        }
+        setInterval(function () {
+          $("#run_time").html(runTime());
+        }, 1000);
+      } else {
+        document.querySelector('.footer').removeChild(document.querySelector('#runTimeBox'));
+      }
+    </script>
+    <div class="poweredby">
+      Your time is limited, so don't waste it living someone else's life ... Stay Hungry. Stay Foolish.
+    </div>
+  </footer>
+  
+    
+        <div class="pisces back-to-top" id="back_to_top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span class="scrollpercent"> <span id="back_to_top_text">0</span>% </span>
+            
+        </div>
+        
+          
+            
+              <div class="bg-img">
+                <img src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/30_Throne2_1_4k.jpg" />
+              </div>
+              
+                
+                  
+                        
+</div>
+<script>
+  let sideBarOpen = "sidebar-open";
+  let body = document.body;
+  let back2Top = document.querySelector("#back_to_top"),
+    back2TopText = document.querySelector("#back_to_top_text"),
+    drawerBox = document.querySelector("#drawer_box"),
+    rightSideBar = document.querySelector(".sidebar"),
+    viewport = document.querySelector("body");
+
+  function scrollAnimation(currentY, targetY) {
+    let needScrollTop = targetY - currentY;
+    let _currentY = currentY;
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10);
+      _currentY += dist;
+      window.scrollTo(_currentY, currentY);
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY);
+      } else {
+        window.scrollTo(_currentY, targetY);
+      }
+    }, 1);
+  }
+
+  back2Top.addEventListener("click", function (e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+
+  window.addEventListener("scroll", function (e) {
+    let percent =
+      (document.scrollingElement.scrollTop /
+        (document.scrollingElement.scrollHeight -
+          document.scrollingElement.clientHeight)) *
+      100;
+    if (percent > 1 && !back2Top.classList.contains("back-top-active")) {
+      back2Top.classList.add("back-top-active");
+    }
+    if (percent == 0) {
+      back2Top.classList.remove("back-top-active");
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  let hasCacu = false;
+  window.addEventListener("resize", function (e) {
+    calcuHeight();
+  });
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (
+      (!hasCacu && back2Top.classList.contains("pisces")) ||
+      back2Top.classList.contains("gemini")
+    ) {
+      let sideBar = document.querySelector(".sidebar");
+      let navUl = document.querySelector("#site_nav");
+      sideBar.style =
+        "margin-top:" + (navUl.offsetHeight + navUl.offsetTop + 15) + "px;";
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+
+  let open = false,
+    MOTION_TIME = 300,
+    RIGHT_MOVE_DIS = "320px";
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll(".right-motion");
+    let right = drawerBox.classList.contains("right");
+
+    let transitionDir = right
+      ? "transition.slideRightIn"
+      : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingRight: "0px",
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingLeft: "0px",
+      };
+    }
+
+    drawerBox.onclick = function () {
+      open = !open;
+      jQuery.Velocity(rightSideBar, "stop");
+      jQuery.Velocity(viewport, "stop");
+      jQuery.Velocity(rightMotions, "stop");
+      if (open) {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: RIGHT_MOVE_DIS,
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, transitionDir, {});
+            },
+          }
+        );
+        jQuery.Velocity(viewport, openProp, {
+          duration: MOTION_TIME,
+        });
+      } else {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: "0px",
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, {
+                opacity: 0,
+              });
+            },
+          }
+        );
+        jQuery.Velocity(viewport, closeProp, {
+          duration: MOTION_TIME,
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle("muse-line");
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    };
+  }
+
+  // 链接跳转
+  let newWindow = "false";
+  if (newWindow === "true") {
+    let links = document.querySelectorAll(".post-body a");
+    links.forEach((item) => {
+      if (!item.classList.contains("btn")) {
+        item.setAttribute("target", "_blank");
+      }
+    });
+  }
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
+  // 离开当前页title变化
+  var leaveTitle = "😭菜~请给个机会~拜托了！";
+  var normal_title = document.title;
+  if (leaveTitle) {
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState == "hidden") {
+        normal_title = document.title;
+        document.title = leaveTitle;
+      } else {
+        document.title = normal_title;
+      }
+    });
+  }
+</script>
+
+<link rel="stylesheet" href="/media/css/jquery.fancybox.css" />
+<script src="/media/js/jquery.fancybox.js"></script>
+
+<script>
+  let images = document.querySelectorAll(".section img");
+  images.forEach((image) => {
+    var parent = image.parentElement;
+    var next = image.nextElementSibling;
+    parent.removeChild(image);
+    var aelem = document.createElement("a");
+    aelem.href = image.src;
+    aelem.dataset["fancybox"] = "images";
+    aelem.dataset["rel"] = "fancybox-button";
+    aelem.classList.add("fancybox");
+    aelem.appendChild(image);
+    parent.insertBefore(aelem, next);
+  });
+</script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+            <img id="zfb" class="reward-img" src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/1689773094686.jpg" alt="赞赏码">
+          
+          
+            <img id="wx" class="reward-img" src="https://cdn.jsdelivr.net/gh/VincentAstor/Vincent@master/Blog/mm_facetoface_collect_qrcode_1689773482372.jpg" alt="赞赏码">
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip"> 多多打赏~鼓励作者更多原创内容！</p>
+    </div>
+    <div class="bottom">
+      
+      <div id="zfbBtn" class="pay-text">
+        支付宝
+      </div>
+      
+      
+      <div id="wxBtn" class="pay-text">
+        微信支付
+      </div>
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        jQuery.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        jQuery.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        jQuery.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        jQuery.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      jQuery.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      jQuery.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
+  </div>
+</body>
+<input hidden id="copy" />
+<script>
+  !function () {
+    let times = document.querySelectorAll('.publish-time');
+    for (let i = 0; i < times.length; i++) {
+      let date = times[i].dataset.t;
+      let time = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
+      if (time < 60) {
+        str = time + '秒之前';
+      } else if (time < 3600) {
+        str = Math.floor(time / 60) + '分钟之前';
+      } else if (time >= 3600 && time < 86400) {
+        str = Math.floor(time / 3600) + '小时之前';
+      } else if (time >= 86400 && time < 259200) {
+        str = Math.floor(time / 86400) + '天之前';
+      } else {
+        str = times[i].textContent;
+      }
+      times[i].textContent = str;
+    }
+  }();
+</script>
+
+<script>
+  let language = '';
+  if (language !== '') {
+    let map = new Map();
+    if (language === 'en') {
+      map.set('search', 'Search');
+      map.set('category', 'Categories');
+      map.set('article', 'Articles');
+      map.set('tag', 'Tags');
+      map.set('top', 'Top');
+      map.set('publish', 'published');
+      map.set('minute', ' minutes');
+      map.set('read-more', 'Read More');
+      map.set('view', 'View');
+      map.set('words', ' words');
+      map.set('category-in', 'category in');
+      map.set('preview', 'Meta');
+      map.set('index', 'Toc');
+      map.set('no-archives', "You haven't created yet");
+      map.set('archives', " articles in total");
+      map.set('cloud-tags', " tags in total");
+      map.set('copyright', "Copyright: ");
+      map.set('author', "Author: ");
+      map.set('link', "Link: ");
+      map.set('leave-message', "Leave a message");
+      map.set('format', "Links Format");
+      map.set('site-name', "Name: ");
+      map.set('site-link', "Link: ");
+      map.set('site-desc', "Desc: ");
+      map.set('stat', " related results, taking ");
+      map.set('stat-time', " ms");
+      map.set('site-img', "Image: ");
+    }
+
+    if (map.size > 0) {
+      let lanElems = document.querySelectorAll('.language');
+      lanElems.forEach(elem => {
+        let lan = elem.dataset.lan, text = map.get(lan);
+        if (elem.__proto__ === HTMLInputElement.prototype) {
+          elem.placeholder = text
+        } else {
+          if (elem.dataset.count) {
+            text = elem.dataset.count + text;
+          }
+          elem.textContent = text;
+        }
+      })
+    }
+  }
+
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+
+</script>
+<script src="/media/js/motion.js"></script>
+
+
+  <script
+    src="https://jsdelivr.codeqihan.com/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+  <script>
+    var scroll = new SmoothScroll('a[href*="#"]', {
+      speed: 200
+    });
+  </script>
+
+
+
+<script src="/media/js/mouse/peace.js"></script>
+
+
+  <script src="/media/js/cool.js"></script>
+
+
+
+  <div class="snow-container"></div>
+  <script color="0,205,205" pointer-events="auto" zIndex="-1" opacity='0.7' count="99" src="/media/js/bg/canvas-nest.js"></script>
+
+</html>
